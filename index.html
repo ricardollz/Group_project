@@ -125,9 +125,6 @@ tbody td{padding:8px 10px;vertical-align:top}
 </head>
 <body>
 
-<div style="background:#f59e0b;color:#000;text-align:center;padding:8px;font-size:13px;font-weight:700;letter-spacing:.5px">
-  🚀 TESTE DE PIPELINE — Se voce esta vendo isso, o deploy automatico funcionou! v1.1 — 17/Jun/2026
-</div>
 <header>
   <div class="logo">LLZ <span>Garantidora</span> — Acoes WhatsApp</div>
   <div class="meta">
@@ -143,6 +140,7 @@ tbody td{padding:8px 10px;vertical-align:top}
   <div class="tab"         onclick="tab(this,'templates')">Templates HSM</div>
   <div class="tab"         onclick="tab(this,'piloto')">Piloto Voz</div>
   <div class="tab"         onclick="tab(this,'diario')">Diario de Bordo</div>
+  <div class="tab"         onclick="tab(this,'perfis')">Perfis de Cliente</div>
 </div>
 
 <div class="content">
@@ -440,6 +438,201 @@ tbody td{padding:8px 10px;vertical-align:top}
     <div class="diary-tags"><span class="pill py">Planejado</span><span class="pill pgr">25.194 unidades</span></div>
     <div class="diary-body" style="color:#718096">Maior lote da proxima semana. SEM_HISTORICO com mais de 1 ano de atraso — divida muito antiga. Ultima abordagem digital antes de encaminhar para via juridica ou piloto de voz.</div>
   </div>
+
+</div><!-- /diario -->
+
+<!-- ==================== PERFIS DE CLIENTE ==================== -->
+<div id="panel-perfis" class="panel">
+
+  <div class="insight">
+    <p><span class="icon">🧠</span><strong>Como chegamos nos perfis:</strong> Cruzamos a base de inadimplencia com o historico completo de pagamentos (681.559 registros). Para cada unidade inadimplente, verificamos se ela ja pagou alguma vez usando canal digital (bot, portal, EZCHAT, MUNDIALE) ou sempre usou operador humano. Esse historico virou o perfil de canal — e cada perfil recebe uma abordagem diferente.</p>
+  </div>
+
+  <!-- PERFIS CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:24px">
+
+    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #3b82f6;border-radius:10px;padding:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="background:#1e3a5f;border-radius:8px;padding:8px 12px;font-size:18px">💻</div>
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#fff">SO_DIGITAL</div>
+          <div style="font-size:11px;color:#3b82f6;font-weight:600">Canal exclusivamente digital</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
+        Toda vez que esse cliente pagou, foi via bot, portal online, EZCHAT ou MUNDIALE. Nunca precisou de um operador humano. <strong style="color:#e2e8f0">Ele ja sabe usar o canal digital.</strong>
+      </p>
+      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
+        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
+        <code style="font-size:11px;color:#86efac">digital > 0 AND humano == 0</code>
+      </div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
+      <div style="font-size:20px;font-weight:700;color:#3b82f6">5.892 <span style="font-size:12px;color:#718096">unidades (13,6%)</span></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
+        <span class="pill pb" style="font-size:10px">llz_digital_recente_v1</span>
+        <span class="pill pb" style="font-size:10px;margin-left:4px">llz_digital_antigo_v1</span>
+      </div>
+      <div style="margin-top:10px">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
+        <div style="font-size:12px;color:#a0aec0">Alta taxa de leitura (6,1%). Resolve no bot sem precisar de humano.</div>
+      </div>
+    </div>
+
+    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #f59e0b;border-radius:10px;padding:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="background:#3b2f1a;border-radius:8px;padding:8px 12px;font-size:18px">🤝</div>
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#fff">SO_HUMANO</div>
+          <div style="font-size:11px;color:#f59e0b;font-weight:600">Canal exclusivamente humano</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
+        Sempre pagou falando com um operador. Nunca usou o bot ou portal. <strong style="color:#e2e8f0">Nao confia (ou nao sabe usar) o canal digital.</strong> Precisa de abordagem diferente.
+      </p>
+      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
+        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
+        <code style="font-size:11px;color:#86efac">humano > 0 AND digital == 0</code>
+      </div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
+      <div style="font-size:20px;font-weight:700;color:#f59e0b">8.234 <span style="font-size:12px;color:#718096">unidades (19,1%)</span></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
+        <span class="pill py" style="font-size:10px">llz_g4_notificacao_debito_v1</span>
+        <span class="pill py" style="font-size:10px;margin-left:4px">llz_g5_urgente_v1</span>
+      </div>
+      <div style="margin-top:10px">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
+        <div style="font-size:12px;color:#a0aec0">Entrega boa, leitura menor. Nao converte no bot — candidato ao piloto de voz Moveo.ai.</div>
+      </div>
+    </div>
+
+    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #a855f7;border-radius:10px;padding:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="background:#2d1f4a;border-radius:8px;padding:8px 12px;font-size:18px">🔀</div>
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#fff">MISTO</div>
+          <div style="font-size:11px;color:#a855f7;font-weight:600">Usou os dois canais</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
+        Ja pagou tanto pelo bot quanto com operador humano. <strong style="color:#e2e8f0">Flexivel — aceita os dois canais.</strong> Geralmente tem maior propensao a negociar acordo.
+      </p>
+      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
+        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
+        <code style="font-size:11px;color:#86efac">digital > 0 AND humano > 0</code>
+      </div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
+      <div style="font-size:20px;font-weight:700;color:#a855f7">2.930 <span style="font-size:12px;color:#718096">unidades (6,8%)</span></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
+        <span class="pill" style="background:#2d1f4a;color:#c084fc;font-size:10px">llz_g3_reengajamento_historico_v1</span>
+      </div>
+      <div style="margin-top:10px">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
+        <div style="font-size:12px;color:#a0aec0">Melhor taxa de acordo. Ja conhece o processo, so precisa de um empurrao.</div>
+      </div>
+    </div>
+
+    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #6b7280;border-radius:10px;padding:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <div style="background:#1f2937;border-radius:8px;padding:8px 12px;font-size:18px">❓</div>
+        <div>
+          <div style="font-size:16px;font-weight:700;color:#fff">SEM_HISTORICO</div>
+          <div style="font-size:11px;color:#9ca3af;font-weight:600">Nunca pagou em nenhum canal</div>
+        </div>
+      </div>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
+        Nao aparece em nenhuma base de pagamento. Pode ser um cliente novo que ainda nao pagou nada, ou alguem que sempre ignorou todas as abordagens. <strong style="color:#e2e8f0">O maior grupo e o mais desafiador.</strong>
+      </p>
+      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
+        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
+        <code style="font-size:11px;color:#86efac">ausente na base de pagamentos</code>
+      </div>
+      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
+      <div style="font-size:20px;font-weight:700;color:#9ca3af">26.114 <span style="font-size:12px;color:#718096">unidades (60,5%)</span></div>
+      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
+        <span class="pill pgr" style="font-size:10px">llz_sem_hist_recente_v1</span>
+        <span class="pill pgr" style="font-size:10px;margin-left:4px">llz_g6_pre_judicial_v1</span>
+      </div>
+      <div style="margin-top:10px">
+        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
+        <div style="font-size:12px;color:#a0aec0">Leitura mais baixa. 365d+: candidato ao piloto de voz como primeiro contato real.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FLUXO DE CLASSIFICACAO -->
+  <div class="stitle">Como a classificacao acontece — fluxo</div>
+  <div class="card" style="margin-bottom:16px">
+    <div style="display:flex;align-items:flex-start;gap:0;flex-wrap:wrap">
+
+      <div style="flex:1;min-width:160px;text-align:center;padding:12px 8px">
+        <div style="background:#1e3a5f;border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="font-size:11px;color:#93c5fd;font-weight:700;margin-bottom:4px">PASSO 1</div>
+          <div style="font-size:12px;color:#e2e8f0">Carregar base de inadimplencia</div>
+          <div style="font-size:10px;color:#718096;margin-top:4px">ID Unidade como chave</div>
+        </div>
+        <div style="font-size:20px;color:#2d3748">→</div>
+      </div>
+
+      <div style="flex:1;min-width:160px;text-align:center;padding:12px 8px">
+        <div style="background:#14532d;border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="font-size:11px;color:#86efac;font-weight:700;margin-bottom:4px">PASSO 2</div>
+          <div style="font-size:12px;color:#e2e8f0">Cruzar com historico de pagamentos</div>
+          <div style="font-size:10px;color:#718096;margin-top:4px">681.559 registros</div>
+        </div>
+        <div style="font-size:20px;color:#2d3748">→</div>
+      </div>
+
+      <div style="flex:1;min-width:160px;text-align:center;padding:12px 8px">
+        <div style="background:#3b2f1a;border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="font-size:11px;color:#fbbf24;font-weight:700;margin-bottom:4px">PASSO 3</div>
+          <div style="font-size:12px;color:#e2e8f0">Contar pagamentos por canal</div>
+          <div style="font-size:10px;color:#718096;margin-top:4px">digital vs humano por unidade</div>
+        </div>
+        <div style="font-size:20px;color:#2d3748">→</div>
+      </div>
+
+      <div style="flex:1;min-width:160px;text-align:center;padding:12px 8px">
+        <div style="background:#2d1f4a;border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="font-size:11px;color:#c084fc;font-weight:700;margin-bottom:4px">PASSO 4</div>
+          <div style="font-size:12px;color:#e2e8f0">Classificar perfil de canal</div>
+          <div style="font-size:10px;color:#718096;margin-top:4px">SO_DIGITAL / SO_HUMANO / MISTO / SEM</div>
+        </div>
+        <div style="font-size:20px;color:#2d3748">→</div>
+      </div>
+
+      <div style="flex:1;min-width:160px;text-align:center;padding:12px 8px">
+        <div style="background:#1e3a5f;border-radius:8px;padding:12px;margin-bottom:8px">
+          <div style="font-size:11px;color:#93c5fd;font-weight:700;margin-bottom:4px">PASSO 5</div>
+          <div style="font-size:12px;color:#e2e8f0">Atribuir template HSM</div>
+          <div style="font-size:10px;color:#718096;margin-top:4px">Perfil + dias em atraso</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OPERADORES DIGITAIS -->
+  <div class="stitle">Operadores considerados "canal digital"</div>
+  <div class="card">
+    <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:14px">
+      Um pagamento e classificado como <strong style="color:#60a5fa">digital</strong> quando o operador registrado na base de pagamentos for um dos seguintes:
+    </p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <div style="background:#1e3a5f;border:1px solid #3b82f6;border-radius:7px;padding:8px 14px;font-size:12px;color:#93c5fd;font-weight:600">MUNDIALE</div>
+      <div style="background:#1e3a5f;border:1px solid #3b82f6;border-radius:7px;padding:8px 14px;font-size:12px;color:#93c5fd;font-weight:600">EZCHAT</div>
+      <div style="background:#1e3a5f;border:1px solid #3b82f6;border-radius:7px;padding:8px 14px;font-size:12px;color:#93c5fd;font-weight:600">MORADOR</div>
+      <div style="background:#1e3a5f;border:1px solid #3b82f6;border-radius:7px;padding:8px 14px;font-size:12px;color:#93c5fd;font-weight:600">TELA_FATURA*</div>
+    </div>
+    <p style="font-size:11px;color:#718096;margin-top:10px">* Qualquer operador contendo "TELA_FATURA" no nome e classificado como digital.</p>
+    <p style="font-size:11px;color:#718096;margin-top:6px">Todos os demais operadores sao considerados <strong style="color:#f59e0b">canal humano</strong>.</p>
+  </div>
+
+</div><!-- /perfis -->
 
 </div><!-- /diario -->
 
