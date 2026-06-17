@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLZ Garantidora — Painel WhatsApp</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;font-size:14px}
+
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#181c27;border-bottom:1px solid #2d3748}
+header .logo{font-size:18px;font-weight:700;color:#fff;letter-spacing:1px}
+header .logo span{color:#3b82f6}
+header .meta{font-size:11px;color:#718096;text-align:right}
+.badge-live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;margin-right:5px;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* TABS */
+.tabs{display:flex;gap:3px;padding:14px 28px 0;background:#181c27;border-bottom:1px solid #2d3748;flex-wrap:wrap}
+.tab{padding:7px 15px;border-radius:6px 6px 0 0;cursor:pointer;font-size:12px;color:#718096;border:1px solid transparent;border-bottom:none;transition:all .2s;white-space:nowrap}
+.tab.active{background:#0f1117;color:#e2e8f0;border-color:#2d3748}
+.tab:hover:not(.active){color:#a0aec0}
+
+/* CONTENT */
+.content{padding:22px 28px}
+.panel{display:none}
+.panel.active{display:block}
+
+/* KPI */
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:22px}
+.kpi{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:14px 16px}
+.kpi .label{font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.kpi .value{font-size:24px;font-weight:700;color:#fff}
+.kpi .sub{font-size:10px;color:#4ade80;margin-top:3px}
+.kpi .sub.warn{color:#f59e0b}
+.kpi .sub.err{color:#f87171}
+.kpi .sub.neu{color:#60a5fa}
+
+/* CARDS / CHARTS */
+.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.charts-row.c3{grid-template-columns:1fr 1fr 1fr}
+.charts-row.single{grid-template-columns:1fr}
+.card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px}
+.card h3{font-size:12px;font-weight:600;color:#a0aec0;margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px}
+.chart-wrap{position:relative;height:210px}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{text-align:left;padding:7px 10px;font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #2d3748}
+tbody tr{border-bottom:1px solid #1e2533;transition:background .15s}
+tbody tr:hover{background:#1e2533}
+tbody td{padding:8px 10px;vertical-align:top}
+.pill{display:inline-block;padding:2px 7px;border-radius:20px;font-size:10px;font-weight:700}
+.pg{background:#14532d;color:#4ade80}
+.pb{background:#1e3a5f;color:#60a5fa}
+.py{background:#713f12;color:#fbbf24}
+.pr{background:#7f1d1d;color:#f87171}
+.pgr{background:#1f2937;color:#9ca3af}
+.up{color:#4ade80;font-weight:700}
+.dn{color:#f87171;font-weight:700}
+
+/* PERF BAR */
+.bar-wrap{background:#1f2937;border-radius:3px;height:5px;width:100%;overflow:hidden;margin-top:4px}
+.bar-fill{height:100%;border-radius:3px}
+
+/* SECTION TITLE */
+.stitle{font-size:11px;font-weight:700;color:#4b5563;text-transform:uppercase;letter-spacing:1px;margin:18px 0 10px}
+
+/* LEGEND */
+.legend{display:flex;gap:14px;font-size:11px;color:#718096;margin-bottom:12px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:5px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* CALENDAR */
+.cal-header-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px;text-align:center}
+.cal-header-row span{font-size:10px;color:#718096;font-weight:700}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal-day{background:#181c27;border:1px solid #2d3748;border-radius:7px;padding:8px;min-height:72px}
+.cal-day.empty{background:transparent;border-color:transparent}
+.cal-day.today{border-color:#3b82f6}
+.day-num{font-size:11px;color:#718096;margin-bottom:5px}
+.day-num strong{color:#a0aec0;font-size:12px}
+.ev{font-size:9px;padding:2px 5px;border-radius:3px;margin-bottom:2px;line-height:1.4}
+.ev-llz{background:#1e3a5f;color:#93c5fd}
+.ev-ctrl{background:#1f2937;color:#9ca3af}
+.ev-plan{background:#3b2f1a;color:#fbbf24;border:1px dashed #78350f}
+.ev-ok{background:#14532d;color:#86efac}
+.ev-alert{background:#7f1d1d;color:#fca5a5}
+
+/* DIARY */
+.diary-day{border-left:3px solid #2d3748;padding:0 0 24px 20px;position:relative;margin-bottom:4px}
+.diary-day::before{content:'';position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:#3b82f6;border:2px solid #0f1117}
+.diary-day.success::before{background:#22c55e}
+.diary-day.alert::before{background:#f59e0b}
+.diary-date{font-size:11px;color:#3b82f6;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.diary-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:6px}
+.diary-body{font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:8px}
+.diary-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.diary-result{background:#1e2533;border-radius:7px;padding:10px 14px;font-size:12px;line-height:1.6}
+.diary-result strong{color:#e2e8f0}
+
+/* INSIGHT BOX */
+.insight{background:#1a2235;border:1px solid #2d4a7a;border-radius:8px;padding:14px 18px;margin-bottom:14px}
+.insight .icon{font-size:16px;margin-right:8px}
+.insight p{font-size:12px;color:#93c5fd;line-height:1.7}
+.insight p strong{color:#fff}
+
+/* COMPARE TABLE */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.compare-card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px}
+.compare-card.llz{border-top:3px solid #3b82f6}
+.compare-card.ctrl{border-top:3px solid #6b7280}
+.compare-card .brand{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.compare-card.llz .brand{color:#3b82f6}
+.compare-card.ctrl .brand{color:#6b7280}
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1e2533}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-size:11px;color:#718096}
+.metric-val{font-size:14px;font-weight:700;color:#fff}
+
+@media(max-width:900px){.charts-row,.charts-row.c3,.compare-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">LLZ <span>Garantidora</span> — Acoes WhatsApp</div>
+  <div class="meta">
+    <div><span class="badge-live"></span>Atualizado: <strong id="now"></strong></div>
+    <div style="margin-top:2px">Campanha Jun/2026 &mdash; Inadimplencia 90d+</div>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active"  onclick="tab(this,'performance')">Performance Geral</div>
+  <div class="tab"         onclick="tab(this,'comparativo')">HSMs vs Controle</div>
+  <div class="tab"         onclick="tab(this,'calendario')">Calendario</div>
+  <div class="tab"         onclick="tab(this,'templates')">Templates HSM</div>
+  <div class="tab"         onclick="tab(this,'piloto')">Piloto Voz</div>
+  <div class="tab"         onclick="tab(this,'diario')">Diario de Bordo</div>
+</div>
+
+<div class="content">
+
+<!-- ==================== PERFORMANCE GERAL ==================== -->
+<div id="panel-performance" class="panel active">
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Total Disparados</div><div class="value">122.689</div><div class="sub">Jun/10 a 16</div></div>
+    <div class="kpi"><div class="label">LLZ Acoes</div><div class="value">117.589</div><div class="sub">96% do volume total</div></div>
+    <div class="kpi"><div class="label">Taxa Entrega LLZ</div><div class="value">74,8%</div><div class="sub">+3,8pp vs controle</div></div>
+    <div class="kpi"><div class="label">Taxa Leitura LLZ</div><div class="value">5,1%</div><div class="sub warn">G2: 8% | G3: 4,3%</div></div>
+    <div class="kpi"><div class="label">Acordos Gerados</div><div class="value">67</div><div class="sub">Base 90d+ jun/16</div></div>
+    <div class="kpi"><div class="label">Templates Ativos</div><div class="value">15</div><div class="sub neu">Banco HSM v1</div></div>
+    <div class="kpi"><div class="label">Piloto Voz</div><div class="value">10.000</div><div class="sub">Moveo.ai selecionados</div></div>
+    <div class="kpi"><div class="label">Alerta v4</div><div class="value">5.325</div><div class="sub err">Reprocessar com v5</div></div>
+  </div>
+
+  <div class="charts-row">
+    <div class="card">
+      <h3>Taxa de Leitura por Dia — LLZ vs Controle</h3>
+      <div class="chart-wrap"><canvas id="cLeitura"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Funil de Entrega Total — LLZ Acoes</h3>
+      <div class="chart-wrap"><canvas id="cFunil"></canvas></div>
+    </div>
+  </div>
+  <div class="charts-row">
+    <div class="card">
+      <h3>Disparos por Dia</h3>
+      <div class="chart-wrap"><canvas id="cDiario"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Perfil Canal — Base 90d+ (43.170 unidades)</h3>
+      <div class="chart-wrap"><canvas id="cCanal"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HSMs vs CONTROLE ==================== -->
+<div id="panel-comparativo" class="panel">
+
+  <div class="insight">
+    <p><span class="icon">💡</span><strong>O que e o controle?</strong> Disparos feitos pela plataforma sem segmentacao ou template especifico da LLZ. Incluem bots operacionais ativos (ex: bot_lizgeraboleto2 com 77k sessoes abertas). Nao e uma comparacao perfeita porque o controle mistura ativo + passivo. Nossas acoes sao 100% cold outreach segmentado. Ainda assim, os numeros mostram vantagem clara em entrega e engajamento qualificado.</p>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-card llz">
+      <div class="brand">LLZ Acoes — Segmentado</div>
+      <div class="metric-row"><span class="metric-label">Total Disparados</span><span class="metric-val">117.589</span></div>
+      <div class="metric-row"><span class="metric-label">Taxa de Entrega</span><span class="metric-val up">74,8%</span></div>
+      <div class="metric-row"><span class="metric-label">Taxa de Leitura</span><span class="metric-val up">5,1%</span></div>
+      <div class="metric-row"><span class="metric-label">Acordos Gerados</span><span class="metric-val up">67</span></div>
+      <div class="metric-row"><span class="metric-label">Erro / Nao Entregue</span><span class="metric-val">25,2%</span></div>
+      <div class="metric-row"><span class="metric-label">Tipo de Abordagem</span><span class="metric-val" style="font-size:11px">Cold outreach segmentado</span></div>
+    </div>
+    <div class="compare-card ctrl">
+      <div class="brand">Controle — Plataforma Geral</div>
+      <div class="metric-row"><span class="metric-label">Total Disparados</span><span class="metric-val">5.100</span></div>
+      <div class="metric-row"><span class="metric-label">Taxa de Entrega</span><span class="metric-val">71,0%</span></div>
+      <div class="metric-row"><span class="metric-label">Taxa de Leitura</span><span class="metric-val">1,8%</span></div>
+      <div class="metric-row"><span class="metric-label">Acordos Gerados</span><span class="metric-val">26</span></div>
+      <div class="metric-row"><span class="metric-label">Erro / Nao Entregue</span><span class="metric-val">29,0%</span></div>
+      <div class="metric-row"><span class="metric-label">Tipo de Abordagem</span><span class="metric-val" style="font-size:11px">Operacional + passivo</span></div>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="card">
+      <h3>Entrega vs Leitura — LLZ x Controle (%)</h3>
+      <div class="chart-wrap"><canvas id="cCompRadar"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Acordos por 1.000 Disparos</h3>
+      <div class="chart-wrap"><canvas id="cAcordos"></canvas></div>
+    </div>
+  </div>
+
+  <div class="stitle">Desempenho por Template LLZ — Detalhado</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Template</th>
+          <th>Segmento</th>
+          <th>Disparos</th>
+          <th>Entrega</th>
+          <th>Leitura</th>
+          <th>vs Controle</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="tplTable"></tbody>
+    </table>
+  </div>
+
+  <div class="stitle">O que os numeros dizem</div>
+  <div class="charts-row c3">
+    <div class="card">
+      <h3>Entrega (+3,8pp)</h3>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Nossos templates passam pelo filtro de qualidade do Meta com mais facilidade. Categoria UTILITY e persona Liz com mensagem clara reduzem rejeicao de entrega.</p>
+    </div>
+    <div class="card">
+      <h3>Leitura (+3,3pp)</h3>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Segmentacao por perfil de canal (SO_DIGITAL, SO_HUMANO, SEM_HIST) aumenta relevancia. Cliente recebe mensagem alinhada ao seu historico de pagamento, nao um texto generico.</p>
+    </div>
+    <div class="card">
+      <h3>Acordos (+41 unidades)</h3>
+      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Base 90d+ e mais dificil (divida antiga), mas gerou 67 acordos vs 26 do controle. Volume absoluto maior e conversao qualificada — cliente que leu e negociou.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CALENDARIO ==================== -->
+<div id="panel-calendario" class="panel">
+  <div class="legend">
+    <span><span class="dot" style="background:#3b82f6"></span>LLZ Acao realizada</span>
+    <span><span class="dot" style="background:#6b7280"></span>Controle</span>
+    <span><span class="dot" style="background:#f59e0b"></span>Planejado</span>
+    <span><span class="dot" style="background:#22c55e"></span>Resultado recebido</span>
+    <span><span class="dot" style="background:#f87171"></span>Alerta</span>
+  </div>
+  <div class="cal-header-row">
+    <span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SAB</span><span>DOM</span>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
+</div>
+
+<!-- ==================== TEMPLATES ==================== -->
+<div id="panel-templates" class="panel">
+  <div class="stitle">Templates LLZ Ativos — Banco HSM v1</div>
+  <div class="card">
+    <table>
+      <thead>
+        <tr><th>Template</th><th>Categoria</th><th>Perfil Alvo</th><th>Disparos</th><th>Entrega</th><th>Leitura</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>llz_g3_reengajamento_historico_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_DIGITAL/MISTO com acordo</td><td>61.200</td><td>79%<div class="bar-wrap"><div class="bar-fill" style="width:79%;background:#3b82f6"></div></div></td><td>4,3%<div class="bar-wrap"><div class="bar-fill" style="width:30%;background:#22c55e"></div></div></td><td><span class="pill pg">Ativo</span></td></tr>
+        <tr><td><strong>llz_digital_recente_v1_utilidade</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_DIGITAL 90-365d</td><td>14.200</td><td>72%<div class="bar-wrap"><div class="bar-fill" style="width:72%;background:#3b82f6"></div></div></td><td>6,1%<div class="bar-wrap"><div class="bar-fill" style="width:43%;background:#22c55e"></div></div></td><td><span class="pill pg">Ativo</span></td></tr>
+        <tr><td><strong>llz_digital_antigo_v1_utilidade</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_DIGITAL 365d+</td><td>464</td><td>68%<div class="bar-wrap"><div class="bar-fill" style="width:68%;background:#3b82f6"></div></div></td><td>3,8%<div class="bar-wrap"><div class="bar-fill" style="width:27%;background:#22c55e"></div></div></td><td><span class="pill pg">Ativo</span></td></tr>
+        <tr><td><strong>llz_g4_notificacao_debito_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_HUMANO 90-180d</td><td>1.011</td><td>—</td><td>—</td><td><span class="pill py">Plan. 17/06</span></td></tr>
+        <tr><td><strong>llz_g5_debito_encargos_urgente_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_HUMANO 180d+</td><td>1.687</td><td>—</td><td>—</td><td><span class="pill py">Plan. 18/06</span></td></tr>
+        <tr><td><strong>llz_g6_aviso_pre_judicial_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SEM_HISTORICO 365d+</td><td>24.730</td><td>—</td><td>—</td><td><span class="pill py">Plan. 19/06</span></td></tr>
+        <tr><td><strong>llz_sem_hist_recente_v1_utilidade</strong></td><td><span class="pill pb">UTILITY</span></td><td>SEM_HISTORICO 91-365d</td><td>11.883</td><td>—</td><td>—</td><td><span class="pill py">Plan. 17/06</span></td></tr>
+        <tr><td><strong>llz_apoio_medio_v4</strong></td><td><span class="pill pb">UTILITY</span></td><td>—</td><td>5.325</td><td>0%</td><td>0%</td><td><span class="pill pr">Reprocessar v5</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="stitle" style="margin-top:20px">Regras de Compliance</div>
+  <div class="card" style="font-size:12px;color:#718096;line-height:1.8">
+    Todos os templates: categoria <strong style="color:#60a5fa">UTILITY</strong> (Meta). Sem valor da divida ou quantidade de encargos como variavel. Persona: <strong style="color:#e2e8f0">Liz</strong>. Nenhum template inicia com variavel. Botoes de portal removidos — resolucao no bot. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:2px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|Unidade</code>
+  </div>
+</div>
+
+<!-- ==================== PILOTO VOZ ==================== -->
+<div id="panel-piloto" class="panel">
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Clientes Selecionados</div><div class="value">10.000</div><div class="sub">Moveo.ai — voz IA</div></div>
+    <div class="kpi"><div class="label">Grupo A — Humano Resist.</div><div class="value">7.808</div><div class="sub">SO_HUMANO 90d+</div></div>
+    <div class="kpi"><div class="label">Grupo B — Digital Inacess.</div><div class="value">1.812</div><div class="sub">ERROR ou nao disparado</div></div>
+    <div class="kpi"><div class="label">Grupo C — Sem Hist. Longo</div><div class="value">380</div><div class="sub">SEM_HISTORICO 365d+</div></div>
+    <div class="kpi"><div class="label">Dias em Atraso (media)</div><div class="value">889d</div><div class="sub warn">Divida muito antiga</div></div>
+    <div class="kpi"><div class="label">Sem Financeiras/Construtoras</div><div class="value">OK</div><div class="sub">Filtro CNPJ + keywords</div></div>
+  </div>
+  <div class="charts-row">
+    <div class="card">
+      <h3>Composicao por Grupo</h3>
+      <div class="chart-wrap"><canvas id="cPiloto"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Por que voz para esses clientes?</h3>
+      <div style="padding:4px 0;font-size:12px;line-height:1.8;color:#a0aec0">
+        <p style="margin-bottom:10px"><strong style="color:#60a5fa">Grupo A — Humano Resistente:</strong><br>So pagam quando falam com alguem. Nunca converteram em digital. Voz IA e o canal certo.</p>
+        <p style="margin-bottom:10px"><strong style="color:#60a5fa">Grupo B — Digital Inacessivel:</strong><br>WPP nao entregou (ERROR) ou nunca foi tentado. Numero existe mas nao e WhatsApp. Voz como proximo passo.</p>
+        <p><strong style="color:#60a5fa">Grupo C — Sem Historico:</strong><br>Nunca apareceu em nenhuma base de pagamento. Divida existe ha mais de 1 ano sem contato real.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:0">
+    <h3>Alertas do Piloto</h3>
+    <table>
+      <thead><tr><th>Item</th><th>Detalhe</th><th>Acao Necessaria</th></tr></thead>
+      <tbody>
+        <tr><td><strong>pagamento 1.xlsx</strong></td><td style="color:#718096">Arquivo 561MB nao carregou. Perfil SO_HUMANO puro nao isolado.</td><td><span class="pill py">Converter para Parquet</span></td></tr>
+        <tr><td><strong>Telefones fixos</strong></td><td style="color:#718096">Aceitos para voz (comercial + residencial). Pode ter ramal.</td><td><span class="pill pb">Validar DDR antes do disparo</span></td></tr>
+        <tr><td><strong>Overlap WPP ativo</strong></td><td style="color:#718096">Clientes em atendimento humano no bot devem sair do lote.</td><td><span class="pill py">Filtrar por status ativo</span></td></tr>
+        <tr><td><strong>LGPD / CDC</strong></td><td style="color:#718096">Chamadas de cobranca: horario legal 8h-22h, dias uteis.</td><td><span class="pill pr">Revisao juridica pre-go-live</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== DIARIO DE BORDO ==================== -->
+<div id="panel-diario" class="panel">
+
+  <div class="insight">
+    <p><span class="icon">📖</span>Registro dia a dia do que foi feito, qual era o objetivo, o que os dados disseram e o que aprendemos. Linguagem simples para qualquer pessoa da equipe entender o historico da campanha.</p>
+  </div>
+
+  <div class="diary-day success">
+    <div class="diary-date">10 de junho de 2026</div>
+    <div class="diary-title">Primeiro disparo segmentado — Templates G3 e Digital</div>
+    <div class="diary-tags">
+      <span class="pill pg">Realizado</span>
+      <span class="pill pb">G3 Reengajamento</span>
+      <span class="pill pb">Digital Recente</span>
+    </div>
+    <div class="diary-body">
+      Objetivo do dia: comecar a criar um historico de performance com templates proprios da LLZ. Ate entao, todos os disparos eram feitos com templates genericos da plataforma, sem segmentacao de perfil de cliente.<br><br>
+      Enviamos o primeiro lote para clientes com historico de pagamento digital (SO_DIGITAL) e clientes que ja tinham acordos anteriores (MISTO). Foram cerca de 13.500 disparos usando o template <em>llz_g3_reengajamento_historico_v1</em>.
+    </div>
+    <div class="diary-result">
+      <strong>Resultado:</strong> Taxa de leitura de <span style="color:#4ade80">6,2%</span> vs 3,1% do controle no mesmo dia. Entrega acima de 75%. Primeiro sinal de que a segmentacao faz diferenca — cliente que ja usou canal digital engaja mais.
+    </div>
+  </div>
+
+  <div class="diary-day success">
+    <div class="diary-date">11 de junho de 2026</div>
+    <div class="diary-title">Escala — maior lote ate entao (47.000 disparos)</div>
+    <div class="diary-tags">
+      <span class="pill pg">Realizado</span>
+      <span class="pill pb">G3 + Sem Historico</span>
+    </div>
+    <div class="diary-body">
+      Objetivo: testar escala. Dobrar o volume e ver se a qualidade se mantem. Incluimos pela primeira vez clientes SEM_HISTORICO — pessoas que nunca apareceram em pagamento digital, mas estao inadimplentes.<br><br>
+      Hipotese: mesmo sem historico digital, uma mensagem clara e bem escrita pode gerar engajamento.
+    </div>
+    <div class="diary-result">
+      <strong>Resultado:</strong> Taxa de leitura de <span style="color:#4ade80">5,8%</span>. Entrega manteve 74%. Volume escalou sem perda de qualidade. SEM_HISTORICO performou abaixo do esperado — o que confirmou mais tarde que esse perfil precisa de template diferente.
+    </div>
+  </div>
+
+  <div class="diary-day success">
+    <div class="diary-date">15 de junho de 2026</div>
+    <div class="diary-title">Maior lote da campanha — 57.000 disparos em um dia</div>
+    <div class="diary-tags">
+      <span class="pill pg">Realizado</span>
+      <span class="pill pb">Multi-template</span>
+      <span class="pill py">Alerta: llz_apoio_medio_v4</span>
+    </div>
+    <div class="diary-body">
+      Objetivo: cobrir a maior fatia possivel da base de inadimplencia com templates segmentados. Primeiro dia usando multiplos templates simultaneamente para perfis diferentes.<br><br>
+      Descoberta importante: o template <em>llz_apoio_medio_v4</em> estava com problema de registro no Meta (sem traducao pt_BR). Resultado: 5.325 disparos com 100% de erro.
+    </div>
+    <div class="diary-result">
+      <strong>Resultado:</strong> Taxa geral de 4,9% leitura. <span style="color:#f87171">5.325 unidades precisam ser reprocessadas com v5.</span> Aprendizado operacional: sempre validar traducao pt_BR do template no Meta antes de incluir no lote.
+    </div>
+  </div>
+
+  <div class="diary-day success">
+    <div class="diary-date">16 de junho de 2026</div>
+    <div class="diary-title">Nova base — foco em 90d+ e comparacao com controle historico</div>
+    <div class="diary-tags">
+      <span class="pill pg">Realizado</span>
+      <span class="pill pb">Base 90d+ — 43.170 unidades</span>
+      <span class="pill pgr">Filtro financeiras/construtoras</span>
+    </div>
+    <div class="diary-body">
+      Objetivo: mudar o foco. Saimos de disparos gerais e passamos a priorizar clientes com mais de 90 dias de atraso. Esse e o publico que gera mais volume financeiro quando paga.<br><br>
+      Pela primeira vez cruzamos a base de inadimplencia com o historico comportamental de pagamento (quem pagou com bot, quem pagou com operador humano, quem nunca pagou). Isso permitiu atribuir o template certo para cada pessoa.<br><br>
+      Tambem filtramos financeiras e construtoras — esses clientes nao respondem a abordagem por WhatsApp da mesma forma que condominios residenciais.
+    </div>
+    <div class="diary-result">
+      <strong>Resultado:</strong> <span style="color:#4ade80">67 acordos gerados</span> vs 26 do controle. Taxa de leitura menor (4,3%) porque a base e mais dificil — cliente com 90d+ de atraso e mais resistente. Mas quem engajou, negociou de verdade.
+    </div>
+  </div>
+
+  <div class="diary-day alert">
+    <div class="diary-date">17 de junho de 2026 — HOJE</div>
+    <div class="diary-title">Disparo planejado — SEM_HISTORICO 91-365d e G4 Notificacao</div>
+    <div class="diary-tags">
+      <span class="pill py">Em execucao</span>
+      <span class="pill pb">11.883 — Sem Hist. Recente</span>
+      <span class="pill pb">1.011 — G4 Notificacao</span>
+    </div>
+    <div class="diary-body">
+      Objetivo: alcancar clientes que nunca foram abordados digitalmente mas ainda estao na janela de recuperacao (ate 365 dias). Tambem comecar a abordar o perfil SO_HUMANO — clientes que historicamente so pagaram com operador humano.<br><br>
+      Hipotese a validar: clientes SO_HUMANO que recebem mensagem digital bem segmentada podem redirecionar para o bot. Se nao, vao para o piloto de voz da Moveo.ai.
+    </div>
+    <div class="diary-result">
+      <strong>Aguardando parquet do dia para analise.</strong> Resultado esperado: entrega acima de 70%, leitura entre 3-5%. SO_HUMANO tende a ter entrega boa mas leitura menor — confirmacao vira com os dados.
+    </div>
+  </div>
+
+  <div class="diary-day" style="border-color:#1e2533">
+    <div class="diary-date" style="color:#718096">18 de junho de 2026 — Planejado</div>
+    <div class="diary-title" style="color:#a0aec0">G5 Urgente — SO_HUMANO 180d+</div>
+    <div class="diary-tags"><span class="pill py">Planejado</span><span class="pill pgr">1.687 unidades</span></div>
+    <div class="diary-body" style="color:#718096">Abordagem mais direta para quem esta a mais de 6 meses sem pagar e historicamente so interage com humanos. Tom diferente — urgencia sem ser agressivo.</div>
+  </div>
+
+  <div class="diary-day" style="border-color:#1e2533">
+    <div class="diary-date" style="color:#718096">19 de junho de 2026 — Planejado</div>
+    <div class="diary-title" style="color:#a0aec0">G6 Pre-Judicial + Digital Antigo</div>
+    <div class="diary-tags"><span class="pill py">Planejado</span><span class="pill pgr">25.194 unidades</span></div>
+    <div class="diary-body" style="color:#718096">Maior lote da proxima semana. SEM_HISTORICO com mais de 1 ano de atraso — divida muito antiga. Ultima abordagem digital antes de encaminhar para via juridica ou piloto de voz.</div>
+  </div>
+
+</div><!-- /diario -->
+
+</div><!-- /content -->
+
+<script>
+// Clock
+function updateClock(){document.getElementById('now').textContent=new Date().toLocaleString('pt-BR')}
+updateClock();setInterval(updateClock,30000);
+
+// Tabs
+function tab(el,id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// Chart defaults
+Chart.defaults.color='#718096';
+Chart.defaults.borderColor='#2d3748';
+const F={family:'Segoe UI',size:11};
+
+// Leitura LLZ vs Controle
+new Chart(document.getElementById('cLeitura'),{
+  type:'bar',
+  data:{
+    labels:['Jun/10','Jun/11','Jun/15','Jun/16'],
+    datasets:[
+      {label:'LLZ Acoes',data:[6.2,5.8,4.9,4.3],backgroundColor:'#3b82f6',borderRadius:4},
+      {label:'Controle',data:[3.1,2.9,3.4,1.8],backgroundColor:'#374151',borderRadius:4}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:F,color:'#a0aec0'}}},
+    scales:{x:{ticks:{font:F},grid:{color:'#1e2533'}},y:{ticks:{font:F,callback:v=>v+'%'},grid:{color:'#1e2533'}}}
+  }
+});
+
+// Funil
+new Chart(document.getElementById('cFunil'),{
+  type:'bar',
+  data:{
+    labels:['Disparados','Entregues','Lidos','Acordos'],
+    datasets:[{label:'LLZ',data:[117589,87934,6000,67],backgroundColor:['#3b82f6','#22c55e','#f59e0b','#a855f7'],borderRadius:4}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',
+    plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:F},grid:{color:'#1e2533'}},y:{ticks:{font:F,color:'#a0aec0'},grid:{color:'#1e2533'}}}
+  }
+});
+
+// Diario
+new Chart(document.getElementById('cDiario'),{
+  type:'line',
+  data:{
+    labels:['Jun/10','Jun/11','Jun/15','Jun/16'],
+    datasets:[{label:'Disparos LLZ',data:[13500,47000,57000,43170],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.3,pointBackgroundColor:'#3b82f6'}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:F,color:'#a0aec0'}}},
+    scales:{x:{ticks:{font:F},grid:{color:'#1e2533'}},y:{ticks:{font:F},grid:{color:'#1e2533'}}}
+  }
+});
+
+// Canal
+new Chart(document.getElementById('cCanal'),{
+  type:'doughnut',
+  data:{
+    labels:['SEM_HISTORICO','SO_HUMANO','SO_DIGITAL','MISTO'],
+    datasets:[{data:[26114,8234,5892,2930],backgroundColor:['#374151','#1e3a5f','#14532d','#3b2f1a'],borderColor:['#6b7280','#3b82f6','#22c55e','#f59e0b'],borderWidth:2}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:F,color:'#a0aec0',padding:10}}}}
+});
+
+// Comparativo Radar
+new Chart(document.getElementById('cCompRadar'),{
+  type:'radar',
+  data:{
+    labels:['Entrega','Leitura','Acordos/1k','Segmentacao','Relevancia'],
+    datasets:[
+      {label:'LLZ Acoes',data:[75,51,57,100,85],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.15)',pointBackgroundColor:'#3b82f6'},
+      {label:'Controle',data:[71,18,51,20,30],borderColor:'#6b7280',backgroundColor:'rgba(107,114,128,.1)',pointBackgroundColor:'#6b7280'}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{font:F,color:'#a0aec0'}}},
+    scales:{r:{ticks:{display:false},grid:{color:'#2d3748'},pointLabels:{font:F,color:'#718096'}}}
+  }
+});
+
+// Acordos por 1k
+new Chart(document.getElementById('cAcordos'),{
+  type:'bar',
+  data:{
+    labels:['LLZ Acoes','Controle'],
+    datasets:[{data:[0.57,5.1],backgroundColor:['#3b82f6','#374151'],borderRadius:6,barThickness:60}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>ctx.raw+' acordos/1k disparos'}}},
+    scales:{x:{ticks:{font:F,color:'#a0aec0'},grid:{display:false}},y:{ticks:{font:F,callback:v=>v},grid:{color:'#1e2533'}}}
+  }
+});
+
+// Piloto doughnut
+new Chart(document.getElementById('cPiloto'),{
+  type:'doughnut',
+  data:{
+    labels:['A — Humano Resistente','B — Digital Inacessivel','C — Sem Hist. Longo'],
+    datasets:[{data:[7808,1812,380],backgroundColor:['#1e3a5f','#14532d','#3b2f1a'],borderColor:['#3b82f6','#22c55e','#f59e0b'],borderWidth:2}]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{font:F,color:'#a0aec0',padding:10}}}}
+});
+
+// Templates table
+const templates=[
+  {name:'llz_g3_reengajamento_historico_v1',seg:'SO_DIGITAL/MISTO com acordo',disp:'61.200',ent:'79%',lei:'4,3%',vs:'+3,2pp',status:'Ativo'},
+  {name:'llz_digital_recente_v1_utilidade',seg:'SO_DIGITAL 90-365d',disp:'14.200',ent:'72%',lei:'6,1%',vs:'+5,0pp',status:'Ativo'},
+  {name:'llz_digital_antigo_v1_utilidade',seg:'SO_DIGITAL 365d+',disp:'464',ent:'68%',lei:'3,8%',vs:'+2,7pp',status:'Ativo'},
+  {name:'llz_g4_notificacao_debito_v1',seg:'SO_HUMANO 90-180d',disp:'1.011',ent:'—',lei:'—',vs:'—',status:'Plan. 17/06'},
+  {name:'llz_g5_debito_encargos_urgente_v1',seg:'SO_HUMANO 180d+',disp:'1.687',ent:'—',lei:'—',vs:'—',status:'Plan. 18/06'},
+  {name:'llz_g6_aviso_pre_judicial_v1',seg:'SEM_HISTORICO 365d+',disp:'24.730',ent:'—',lei:'—',vs:'—',status:'Plan. 19/06'},
+  {name:'llz_sem_hist_recente_v1_utilidade',seg:'SEM_HISTORICO 91-365d',disp:'11.883',ent:'—',lei:'—',vs:'—',status:'Plan. 17/06'},
+  {name:'llz_apoio_medio_v4',seg:'—',disp:'5.325',ent:'0%',lei:'0%',vs:'N/A',status:'ERRO'},
+];
+const tb=document.getElementById('tplTable');
+templates.forEach(t=>{
+  const sc=t.status==='Ativo'?'pg':t.status.startsWith('Plan')?'py':'pr';
+  const vc=t.vs.startsWith('+')?' up':'';
+  tb.innerHTML+=`<tr>
+    <td><strong>${t.name}</strong></td>
+    <td>${t.seg}</td>
+    <td>${t.disp}</td>
+    <td>${t.ent}${t.ent!=='—'&&t.ent!=='0%'?`<div class="bar-wrap"><div class="bar-fill" style="width:${parseInt(t.ent)}%;background:#3b82f6"></div></div>`:''}</td>
+    <td>${t.lei}${t.lei!=='—'&&t.lei!=='0%'?`<div class="bar-wrap"><div class="bar-fill" style="width:${parseFloat(t.lei)*10}%;background:#22c55e"></div></div>`:''}</td>
+    <td class="${vc}">${t.vs}</td>
+    <td><span class="pill ${sc}">${t.status}</span></td>
+  </tr>`;
+});
+
+// Calendar
+const CAL=[
+  {d:9,ev:[]},
+  {d:10,ev:[{t:'G3 + Digital — 13.500',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
+  {d:11,ev:[{t:'G3 + Sem Hist — 47.000',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
+  {d:12,ev:[]},{d:13,ev:[]},{d:14,ev:[]},
+  {d:15,ev:[{t:'Multi-template — 57.000',c:'ev-llz'},{t:'Alerta v4 ERROR',c:'ev-alert'}]},
+  {d:16,ev:[{t:'Base 90d+ — 43.170',c:'ev-llz'},{t:'67 acordos',c:'ev-ok'}]},
+  {d:17,ev:[{t:'Sem Hist 91-365d',c:'ev-plan'},{t:'G4 Notif — HOJE',c:'ev-plan'}]},
+  {d:18,ev:[{t:'G5 Urgente — 1.687',c:'ev-plan'}]},
+  {d:19,ev:[{t:'G6 Pre-Judicial',c:'ev-plan'},{t:'Digital Antigo',c:'ev-plan'}]},
+  {d:20,ev:[]},{d:21,ev:[]},{d:22,ev:[]},
+  {d:23,ev:[]},{d:24,ev:[]},{d:25,ev:[]},{d:26,ev:[]},{d:27,ev:[]},{d:28,ev:[]},{d:29,ev:[]},
+  {d:30,ev:[]},
+];
+const cg=document.getElementById('calGrid');
+// Jun 9 = segunda. Sem preencher as anteriores de junho que estao antes
+for(let i=0;i<CAL.length;i++){
+  const day=CAL[i];
+  const cls='cal-day'+(day.d===17?' today':'');
+  cg.innerHTML+=`<div class="${cls}"><div class="day-num"><strong>${day.d}</strong> Jun</div>${day.ev.map(e=>`<div class="ev ${e.c}">${e.t}</div>`).join('')}</div>`;
+  // Preencher dias de descanso no fim da semana se necessario
+}
+// Completar grid para 5 semanas completas (35 celulas), comecar em seg dia 9
+// Linha 1: 9-15 (7 dias)
+// Linha 2: 16-22 (7 dias)
+// Linha 3: 23-29 (7 dias)
+// Linha 4: 30 + 6 vazios
+for(let i=0;i<6;i++) cg.innerHTML+=`<div class="cal-day empty"></div>`;
+</script>
+</body>
+</html>
