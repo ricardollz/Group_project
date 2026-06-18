@@ -986,6 +986,7 @@ templates.forEach(t=>{
 
 // Calendar
 const CAL=[
+  {d:8,ev:[]},
   {d:9,ev:[]},
   {d:10,ev:[{t:'09h — G3 + Digital',c:'ev-llz'},{t:'13.500 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
   {d:11,ev:[{t:'09h — G3 + Sem Hist',c:'ev-llz'},{t:'47.000 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
@@ -1004,7 +1005,7 @@ const CAL=[
   {d:30,ev:[]},
 ];
 const cg=document.getElementById('calGrid');
-// Jun 9 = segunda. Sem preencher as anteriores de junho que estao antes
+// Jun 8 = segunda. Grid alinhado: Jun 8 SEG, Jun 9 TER, Jun 10 QUA...
 for(let i=0;i<CAL.length;i++){
   const day=CAL[i];
   const cls='cal-day'+(day.d===18?' today':'');
