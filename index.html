@@ -292,7 +292,7 @@ tbody td{padding:8px 10px;vertical-align:top}
   </div>
   <div class="stitle" style="margin-top:20px">Regras de Compliance</div>
   <div class="card" style="font-size:12px;color:#718096;line-height:1.8">
-    Todos os templates: categoria <strong style="color:#60a5fa">UTILITY</strong> (Meta). Sem valor da divida ou quantidade de encargos como variavel. Persona: <strong style="color:#e2e8f0">Liz</strong>. Nenhum template inicia com variavel. Botoes de portal removidos — resolucao no bot. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:2px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|Unidade</code>
+    Todos os templates: categoria <strong style="color:#60a5fa">UTILITY</strong> (Meta). Sem valor da divida ou quantidade de encargos como variavel. Persona: <strong style="color:#e2e8f0">Liz</strong>. Nenhum template inicia com variavel. Botoes de portal removidos — resolucao no bot. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:2px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|BlocoUnidade</code>
   </div>
 </div>
 
@@ -660,7 +660,7 @@ tbody td{padding:8px 10px;vertical-align:top}
 <div id="panel-bancohsm" class="panel">
 
   <div class="insight">
-    <p><span class="icon">📋</span><strong>Banco HSM LLZ v1</strong> — Repositorio oficial de todos os templates WhatsApp aprovados pelo Meta. Categoria UTILITY. Persona: <strong>Liz</strong>. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:1px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|Unidade</code>. Nenhum template inicia com variavel. Sem valor de divida ou encargos.</p>
+    <p><span class="icon">📋</span><strong>Banco HSM LLZ v1</strong> — Repositorio oficial de todos os templates WhatsApp aprovados pelo Meta. Categoria UTILITY. Persona: <strong>Liz</strong>. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:1px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|BlocoUnidade</code>. Nenhum template inicia com variavel. Sem valor de divida ou encargos.</p>
   </div>
 
   <div class="stitle">Templates Ativos — Em producao</div>
@@ -689,7 +689,7 @@ const HSM_DATA = [
     perfil: 'SO_DIGITAL / MISTO com acordo anterior',
     objetivo: 'Resgatar cliente que ja negociou antes — ja conhece o bot, propenso a fechar novo acordo',
     texto: 'Oi! Aqui é a Liz do {{2}}. Vi que a unidade {{3}} tem um débito em aberto, {{1}}. Você já negociou com a gente antes e foi rápido — posso te ajudar a resolver da mesma forma. É só responder esta mensagem.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade',
     entrega: '79%', leitura: '4,3%', disparos: '61.200'
   },
   {
@@ -699,7 +699,7 @@ const HSM_DATA = [
     perfil: 'SO_DIGITAL — 90 a 365 dias em atraso',
     objetivo: 'Alcançar cliente digital em atraso recente — já usa o canal, só precisa de um lembrete',
     texto: 'Oi, {{1}}! Aqui é a Liz do condomínio {{2}}. A unidade {{3}} está com um débito em aberto. Posso te ajudar a regularizar aqui mesmo, é rápido. É só responder esta mensagem.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade',
     entrega: '72%', leitura: '6,1%', disparos: '14.200'
   },
   {
@@ -709,7 +709,7 @@ const HSM_DATA = [
     perfil: 'SO_DIGITAL — acima de 365 dias em atraso',
     objetivo: 'Reativar cliente digital com divida muito antiga — tom mais direto sobre consequências',
     texto: 'Oi, {{1}}. Aqui é a Liz do {{2}}. A unidade {{3}} tem um débito antigo em aberto. Vamos resolver isso antes que chegue a uma etapa mais formal? Responda esta mensagem e te explico as opções.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade',
     entrega: '68%', leitura: '3,8%', disparos: '464'
   },
   {
@@ -719,7 +719,7 @@ const HSM_DATA = [
     perfil: 'SEM_HISTORICO — 91 a 365 dias em atraso',
     objetivo: 'Primeiro contato real com cliente que nunca pagou — abordagem neutra sem historico de cobranca',
     texto: 'Oi! Aqui é a Liz, assistente do condomínio {{2}}. A unidade {{3}} está com um valor em aberto, {{1}}. Posso te ajudar a entender e resolver isso de forma simples. É só responder esta mensagem.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade',
     entrega: '83%', leitura: '17,9%', disparos: '11.884'
   },
   {
@@ -729,7 +729,7 @@ const HSM_DATA = [
     perfil: '1 a 30 dias em atraso — recebeu disparo esta semana mas nao abriu',
     objetivo: 'Reengajar cliente com divida fresca antes de gerar encargos — tom leve, foco em conveniencia',
     texto: 'Oi! Aqui é a Liz do {{2}}. A unidade {{3}} tem um boleto que ainda nao foi pago, {{1}}. Ainda dá tempo de resolver sem encargos. Responde essa mensagem que te ajudo rapidinho.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade',
     entrega: '—', leitura: '—', disparos: '6.721'
   },
 ];
@@ -742,7 +742,7 @@ const HSM_PLANNED = [
     perfil: 'SO_HUMANO — 90 a 180 dias em atraso',
     objetivo: 'Trazer cliente que so paga com humano para o canal digital — abertura para negociacao',
     texto: 'Oi, {{1}}. Aqui é a Liz do {{2}}. A unidade {{3}} tem um débito em aberto e eu gostaria de te ajudar a resolver isso de um jeito simples. Me responde aqui que a gente conversa.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade',
     entrega: '83%', leitura: '—', disparos: '1.012'
   },
   {
@@ -751,8 +751,8 @@ const HSM_PLANNED = [
     status: 'planejado',
     perfil: 'SO_HUMANO — acima de 180 dias em atraso',
     objetivo: 'Urgencia para cliente humano com divida pesada — sinalizar consequencias sem ser agressivo',
-    texto: 'Oi, {{1}}. Aqui é a Liz do condomínio {{2}}. A unidade {{3}} tem um débito que já acumula encargos. Quanto antes a gente resolver, menos você paga. Me responde aqui que te explico as opções.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    texto: 'Oi, {{1}}. Aqui e a Liz do {{2}}, unidade {{3}}. Seu debito esta ha {{4}} dias em aberto e o valor atualizado e R$ {{5}}. Quanto antes a gente resolver, menos voce paga. Me responde aqui que te explico as opcoes.',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade | {{4}} Dias em atraso | {{5}} Valor atualizado ⚠️ REVISAR JURIDICO',
     entrega: '—', leitura: '—', disparos: '1.687'
   },
   {
@@ -761,8 +761,8 @@ const HSM_PLANNED = [
     status: 'planejado',
     perfil: 'SEM_HISTORICO — acima de 365 dias em atraso',
     objetivo: 'Ultima abordagem digital antes de via juridica — tom serio mas ainda oferece saida',
-    texto: 'Oi, {{1}}. Aqui é a Liz do {{2}}. A unidade {{3}} tem um débito antigo que ainda não foi resolvido. Preciso falar com você antes que isso avance para uma etapa mais formal. Me responde aqui.',
-    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    texto: 'Oi, {{1}}. Aqui e a Liz do {{2}}, unidade {{3}}. Ha {{4}} dias esse debito esta em aberto com valor atualizado de R$ {{5}}. Preciso falar com voce antes que isso avance para uma etapa mais formal. Me responde aqui.',
+    variaveis: '{{1}} Nome | {{2}} Condominio | {{3}} Bloco+Unidade | {{4}} Dias em atraso | {{5}} Valor atualizado ⚠️ REVISAR JURIDICO',
     entrega: '—', leitura: '—', disparos: '24.730'
   },
 ];
