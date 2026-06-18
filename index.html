@@ -141,6 +141,7 @@ tbody td{padding:8px 10px;vertical-align:top}
   <div class="tab"         onclick="tab(this,'piloto')">Piloto Voz</div>
   <div class="tab"         onclick="tab(this,'diario')">Diario de Bordo</div>
   <div class="tab"         onclick="tab(this,'perfis')">Perfis de Cliente</div>
+  <div class="tab"         onclick="tab(this,'bancohsm')">Banco HSM</div>
 </div>
 
 <div class="content">
@@ -148,12 +149,12 @@ tbody td{padding:8px 10px;vertical-align:top}
 <!-- ==================== PERFORMANCE GERAL ==================== -->
 <div id="panel-performance" class="panel active">
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Total Disparados</div><div class="value">122.689</div><div class="sub">Jun/10 a 16</div></div>
-    <div class="kpi"><div class="label">LLZ Acoes</div><div class="value">117.589</div><div class="sub">96% do volume total</div></div>
+    <div class="kpi"><div class="label">Total Disparados</div><div class="value">233.067</div><div class="sub">Jun/10 a 17</div></div>
+    <div class="kpi"><div class="label">LLZ Acoes</div><div class="value">130.485</div><div class="sub">Jun/10 a 17 (56%)</div></div>
     <div class="kpi"><div class="label">Taxa Entrega LLZ</div><div class="value">74,8%</div><div class="sub">+3,8pp vs controle</div></div>
     <div class="kpi"><div class="label">Taxa Leitura LLZ</div><div class="value">5,1%</div><div class="sub warn">G2: 8% | G3: 4,3%</div></div>
     <div class="kpi"><div class="label">Acordos Gerados</div><div class="value">67</div><div class="sub">Base 90d+ jun/16</div></div>
-    <div class="kpi"><div class="label">Templates Ativos</div><div class="value">15</div><div class="sub neu">Banco HSM v1</div></div>
+    <div class="kpi"><div class="label">Templates Ativos</div><div class="value">16</div><div class="sub neu">Banco HSM v1 — +1 hoje</div></div>
     <div class="kpi"><div class="label">Piloto Voz</div><div class="value">10.000</div><div class="sub">Moveo.ai selecionados</div></div>
     <div class="kpi"><div class="label">Alerta v4</div><div class="value">5.325</div><div class="sub err">Reprocessar com v5</div></div>
   </div>
@@ -408,20 +409,39 @@ tbody td{padding:8px 10px;vertical-align:top}
     </div>
   </div>
 
-  <div class="diary-day alert">
-    <div class="diary-date">17 de junho de 2026 — HOJE</div>
-    <div class="diary-title">Disparo planejado — SEM_HISTORICO 91-365d e G4 Notificacao</div>
+  <div class="diary-day success">
+    <div class="diary-date">17 de junho de 2026</div>
+    <div class="diary-title">SEM_HISTORICO 91-365d e G4 Notificacao — maior taxa de leitura da campanha</div>
     <div class="diary-tags">
-      <span class="pill py">Em execucao</span>
-      <span class="pill pb">11.883 — Sem Hist. Recente</span>
-      <span class="pill pb">1.011 — G4 Notificacao</span>
+      <span class="pill pg">Realizado</span>
+      <span class="pill pb">12.896 disparos LLZ</span>
+      <span class="pill pb">llz_sem_hist_rct_v2</span>
+      <span class="pill pb">llz_g4_ntf_debito_v2</span>
     </div>
     <div class="diary-body">
-      Objetivo: alcancar clientes que nunca foram abordados digitalmente mas ainda estao na janela de recuperacao (ate 365 dias). Tambem comecar a abordar o perfil SO_HUMANO — clientes que historicamente so pagaram com operador humano.<br><br>
-      Hipotese a validar: clientes SO_HUMANO que recebem mensagem digital bem segmentada podem redirecionar para o bot. Se nao, vao para o piloto de voz da Moveo.ai.
+      Objetivo: primeiro contato real com clientes SEM_HISTORICO (91-365d) e inicio da abordagem do perfil SO_HUMANO via digital.<br><br>
+      Surpresa positiva: o template llz_sem_hist_rct_v2_utilidade registrou a maior taxa de leitura da campanha ate agora. O perfil SEM_HISTORICO, que era tratado como o mais dificil, respondeu bem a uma abordagem direta e sem historico de cobranca previa. Pode ser justamente por isso — sem historico negativo com o canal.
     </div>
     <div class="diary-result">
-      <strong>Aguardando parquet do dia para analise.</strong> Resultado esperado: entrega acima de 70%, leitura entre 3-5%. SO_HUMANO tende a ter entrega boa mas leitura menor — confirmacao vira com os dados.
+      <strong>Resultado:</strong> 12.896 disparos LLZ, entrega 83,2%, taxa de leitura <span style="color:#4ade80">17,9%</span> — maior da campanha. Controle: 97.482 disparos, entrega 83,8%, leitura 1,2%. Diferenca LLZ vs Controle: <span style="color:#4ade80">+16,7pp</span>.
+    </div>
+  </div>
+
+  <div class="diary-day alert">
+    <div class="diary-date">18 de junho de 2026 — HOJE</div>
+    <div class="diary-title">Nova acao — clientes 1-30 dias que nao engajaram essa semana</div>
+    <div class="diary-tags">
+      <span class="pill py">Em execucao — 10h</span>
+      <span class="pill pb">6.721 selecionados</span>
+      <span class="pill pg">Novo HSM: llz_reengajamento_rapido_v1</span>
+    </div>
+    <div class="diary-body">
+      Objetivo: testar abordagem na base mais "fresca" da inadimplencia (1-30 dias). Sao clientes que receberam disparo essa semana mas nao abriram, ou que ainda nao receberam nada.<br><br>
+      Logica de selecao: dos 38.285 clientes 1-30d com fone, 6.330 receberam disparo e nao engajaram e 391 nunca receberam nenhuma mensagem. Os outros 31.564 ja engajaram esta semana — nao reenviar para nao saturar.<br><br>
+      Hipotese: divida recente (ate 30 dias) ainda nao gerou encargo significativo. Tom mais leve e focado em conveniencia pode funcionar melhor do que tom de cobranca. Primeiro teste com esse perfil.
+    </div>
+    <div class="diary-result">
+      <strong>Aguardando parquet de 18/Jun.</strong> Referencia: se taxa de leitura ficar acima de 10%, confirma que cliente 1-30d e mais receptivo. Abaixo de 5%, revisar abordagem.
     </div>
   </div>
 
@@ -636,6 +656,141 @@ tbody td{padding:8px 10px;vertical-align:top}
 
 </div><!-- /diario -->
 
+<!-- ==================== BANCO HSM ==================== -->
+<div id="panel-bancohsm" class="panel">
+
+  <div class="insight">
+    <p><span class="icon">📋</span><strong>Banco HSM LLZ v1</strong> — Repositorio oficial de todos os templates WhatsApp aprovados pelo Meta. Categoria UTILITY. Persona: <strong>Liz</strong>. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:1px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|Unidade</code>. Nenhum template inicia com variavel. Sem valor de divida ou encargos.</p>
+  </div>
+
+  <div class="stitle">Templates Ativos — Em producao</div>
+  <div id="hsmCards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;margin-bottom:24px"></div>
+
+  <div class="stitle">Templates Planejados — Aguardando resultado</div>
+  <div id="hsmCardsPlanned" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;margin-bottom:24px"></div>
+
+  <div class="stitle">Alertas</div>
+  <div class="card">
+    <table>
+      <thead><tr><th>Template</th><th>Problema</th><th>Acao</th></tr></thead>
+      <tbody>
+        <tr><td><strong>llz_apoio_medio_v4</strong></td><td style="color:#718096">Sem traducao pt_BR no Meta. 5.325 disparos com 100% ERROR.</td><td><span class="pill pr">Reprocessar com v5</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div><!-- /bancohsm -->
+
+<script>
+const HSM_DATA = [
+  {
+    nome: 'llz_g3_reengajamento_historico_v1',
+    data: '10/Jun/2026',
+    status: 'ativo',
+    perfil: 'SO_DIGITAL / MISTO com acordo anterior',
+    objetivo: 'Resgatar cliente que ja negociou antes — ja conhece o bot, propenso a fechar novo acordo',
+    texto: 'Oi! Aqui é a Liz do {{2}}. Vi que a unidade {{3}} tem um débito em aberto, {{1}}. Você já negociou com a gente antes e foi rápido — posso te ajudar a resolver da mesma forma. É só responder esta mensagem.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '79%', leitura: '4,3%', disparos: '61.200'
+  },
+  {
+    nome: 'llz_digital_recente_v1_utilidade',
+    data: '10/Jun/2026',
+    status: 'ativo',
+    perfil: 'SO_DIGITAL — 90 a 365 dias em atraso',
+    objetivo: 'Alcançar cliente digital em atraso recente — já usa o canal, só precisa de um lembrete',
+    texto: 'Oi, {{1}}! Aqui é a Liz do condomínio {{2}}. A unidade {{3}} está com um débito em aberto. Posso te ajudar a regularizar aqui mesmo, é rápido. É só responder esta mensagem.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '72%', leitura: '6,1%', disparos: '14.200'
+  },
+  {
+    nome: 'llz_digital_antigo_v1_utilidade',
+    data: '15/Jun/2026',
+    status: 'ativo',
+    perfil: 'SO_DIGITAL — acima de 365 dias em atraso',
+    objetivo: 'Reativar cliente digital com divida muito antiga — tom mais direto sobre consequências',
+    texto: 'Oi, {{1}}. Aqui é a Liz do {{2}}. A unidade {{3}} tem um débito antigo em aberto. Vamos resolver isso antes que chegue a uma etapa mais formal? Responda esta mensagem e te explico as opções.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '68%', leitura: '3,8%', disparos: '464'
+  },
+  {
+    nome: 'llz_sem_hist_rct_v2_utilidade',
+    data: '17/Jun/2026',
+    status: 'ativo',
+    perfil: 'SEM_HISTORICO — 91 a 365 dias em atraso',
+    objetivo: 'Primeiro contato real com cliente que nunca pagou — abordagem neutra sem historico de cobranca',
+    texto: 'Oi! Aqui é a Liz, assistente do condomínio {{2}}. A unidade {{3}} está com um valor em aberto, {{1}}. Posso te ajudar a entender e resolver isso de forma simples. É só responder esta mensagem.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '83%', leitura: '17,9%', disparos: '11.884'
+  },
+  {
+    nome: 'llz_reengajamento_rapido_v1',
+    data: '18/Jun/2026',
+    status: 'ativo',
+    perfil: '1 a 30 dias em atraso — recebeu disparo esta semana mas nao abriu',
+    objetivo: 'Reengajar cliente com divida fresca antes de gerar encargos — tom leve, foco em conveniencia',
+    texto: 'Oi! Aqui é a Liz do {{2}}. A unidade {{3}} tem um boleto que ainda nao foi pago, {{1}}. Ainda dá tempo de resolver sem encargos. Responde essa mensagem que te ajudo rapidinho.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '—', leitura: '—', disparos: '6.721'
+  },
+];
+
+const HSM_PLANNED = [
+  {
+    nome: 'llz_g4_ntf_debito_v2_utilidade',
+    data: '17/Jun/2026',
+    status: 'planejado',
+    perfil: 'SO_HUMANO — 90 a 180 dias em atraso',
+    objetivo: 'Trazer cliente que so paga com humano para o canal digital — abertura para negociacao',
+    texto: 'Oi, {{1}}. Aqui é a Liz do {{2}}. A unidade {{3}} tem um débito em aberto e eu gostaria de te ajudar a resolver isso de um jeito simples. Me responde aqui que a gente conversa.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '83%', leitura: '—', disparos: '1.012'
+  },
+  {
+    nome: 'llz_g5_debito_encargos_urgente_v1',
+    data: '18/Jun/2026 — Plan.',
+    status: 'planejado',
+    perfil: 'SO_HUMANO — acima de 180 dias em atraso',
+    objetivo: 'Urgencia para cliente humano com divida pesada — sinalizar consequencias sem ser agressivo',
+    texto: 'Oi, {{1}}. Aqui é a Liz do condomínio {{2}}. A unidade {{3}} tem um débito que já acumula encargos. Quanto antes a gente resolver, menos você paga. Me responde aqui que te explico as opções.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '—', leitura: '—', disparos: '1.687'
+  },
+  {
+    nome: 'llz_g6_aviso_pre_judicial_v1',
+    data: '19/Jun/2026 — Plan.',
+    status: 'planejado',
+    perfil: 'SEM_HISTORICO — acima de 365 dias em atraso',
+    objetivo: 'Ultima abordagem digital antes de via juridica — tom serio mas ainda oferece saida',
+    texto: 'Oi, {{1}}. Aqui é a Liz do {{2}}. A unidade {{3}} tem um débito antigo que ainda não foi resolvido. Preciso falar com você antes que isso avance para uma etapa mais formal. Me responde aqui.',
+    variaveis: '{{1}} = PrimeiroNome | {{2}} = Condominio | {{3}} = Unidade',
+    entrega: '—', leitura: '—', disparos: '24.730'
+  },
+];
+
+function hsmCard(h) {
+  const sc = h.status==='ativo'?'pg':'py';
+  const statusLabel = h.status==='ativo'?'Ativo':'Planejado';
+  return `<div style="background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+      <div style="font-size:11px;font-weight:700;color:#60a5fa;word-break:break-all">${h.nome}</div>
+      <span class="pill ${sc}" style="margin-left:8px;flex-shrink:0">${statusLabel}</span>
+    </div>
+    <div style="font-size:10px;color:#718096;margin-bottom:8px">📅 ${h.data} &nbsp;|&nbsp; 👤 ${h.perfil}</div>
+    <div style="background:#0f1117;border-radius:6px;padding:10px;margin-bottom:10px;font-size:12px;color:#a0aec0;line-height:1.6;font-style:italic">"${h.texto}"</div>
+    <div style="font-size:10px;color:#718096;margin-bottom:8px">🎯 ${h.objetivo}</div>
+    <div style="font-size:10px;color:#4b5563;margin-bottom:10px">Variaveis: <code style="color:#86efac">${h.variaveis}</code></div>
+    <div style="display:flex;gap:12px;padding-top:8px;border-top:1px solid #2d3748">
+      <div style="text-align:center"><div style="font-size:10px;color:#718096">Disparos</div><div style="font-size:14px;font-weight:700;color:#fff">${h.disparos}</div></div>
+      <div style="text-align:center"><div style="font-size:10px;color:#718096">Entrega</div><div style="font-size:14px;font-weight:700;color:#3b82f6">${h.entrega}</div></div>
+      <div style="text-align:center"><div style="font-size:10px;color:#718096">Leitura</div><div style="font-size:14px;font-weight:700;color:#22c55e">${h.leitura}</div></div>
+    </div>
+  </div>`;
+}
+
+document.getElementById('hsmCards').innerHTML = HSM_DATA.map(hsmCard).join('');
+document.getElementById('hsmCardsPlanned').innerHTML = HSM_PLANNED.map(hsmCard).join('');
+</script>
+
 </div><!-- /content -->
 
 <script>
@@ -660,10 +815,10 @@ const F={family:'Segoe UI',size:11};
 new Chart(document.getElementById('cLeitura'),{
   type:'bar',
   data:{
-    labels:['Jun/10','Jun/11','Jun/15','Jun/16'],
+    labels:['Jun/10','Jun/11','Jun/15','Jun/16','Jun/17'],
     datasets:[
-      {label:'LLZ Acoes',data:[6.2,5.8,4.9,4.3],backgroundColor:'#3b82f6',borderRadius:4},
-      {label:'Controle',data:[3.1,2.9,3.4,1.8],backgroundColor:'#374151',borderRadius:4}
+      {label:'LLZ Acoes',data:[6.2,5.8,4.9,4.3,17.9],backgroundColor:'#3b82f6',borderRadius:4},
+      {label:'Controle',data:[3.1,2.9,3.4,1.8,1.2],backgroundColor:'#374151',borderRadius:4}
     ]
   },
   options:{responsive:true,maintainAspectRatio:false,
@@ -689,8 +844,8 @@ new Chart(document.getElementById('cFunil'),{
 new Chart(document.getElementById('cDiario'),{
   type:'line',
   data:{
-    labels:['Jun/10','Jun/11','Jun/15','Jun/16'],
-    datasets:[{label:'Disparos LLZ',data:[13500,47000,57000,43170],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.3,pointBackgroundColor:'#3b82f6'}]
+    labels:['Jun/10','Jun/11','Jun/15','Jun/16','Jun/17'],
+    datasets:[{label:'Disparos LLZ',data:[13500,47000,57000,43170,12896],borderColor:'#3b82f6',backgroundColor:'rgba(59,130,246,.1)',fill:true,tension:.3,pointBackgroundColor:'#3b82f6'}]
   },
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{labels:{font:F,color:'#a0aec0'}}},
@@ -776,14 +931,14 @@ templates.forEach(t=>{
 // Calendar
 const CAL=[
   {d:9,ev:[]},
-  {d:10,ev:[{t:'G3 + Digital — 13.500',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
-  {d:11,ev:[{t:'G3 + Sem Hist — 47.000',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
+  {d:10,ev:[{t:'09h — G3 + Digital',c:'ev-llz'},{t:'13.500 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
+  {d:11,ev:[{t:'09h — G3 + Sem Hist',c:'ev-llz'},{t:'47.000 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
   {d:12,ev:[]},{d:13,ev:[]},{d:14,ev:[]},
-  {d:15,ev:[{t:'Multi-template — 57.000',c:'ev-llz'},{t:'Alerta v4 ERROR',c:'ev-alert'}]},
-  {d:16,ev:[{t:'Base 90d+ — 43.170',c:'ev-llz'},{t:'67 acordos',c:'ev-ok'}]},
-  {d:17,ev:[{t:'Sem Hist 91-365d',c:'ev-plan'},{t:'G4 Notif — HOJE',c:'ev-plan'}]},
-  {d:18,ev:[{t:'G5 Urgente — 1.687',c:'ev-plan'}]},
-  {d:19,ev:[{t:'G6 Pre-Judicial',c:'ev-plan'},{t:'Digital Antigo',c:'ev-plan'}]},
+  {d:15,ev:[{t:'09h — Multi-template',c:'ev-llz'},{t:'57.000 disparos',c:'ev-llz'},{t:'Alerta v4 ERROR',c:'ev-alert'}]},
+  {d:16,ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'43.170 disparos',c:'ev-llz'},{t:'67 acordos',c:'ev-ok'}]},
+  {d:17,ev:[{t:'10h — Sem Hist 91-365d',c:'ev-llz'},{t:'12.896 disparos LLZ',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
+  {d:18,ev:[{t:'10h — 1-30d Reengaj.',c:'ev-plan'},{t:'6.721 selecionados',c:'ev-plan'},{t:'14h — G5 Urgente',c:'ev-plan'}]},
+  {d:19,ev:[{t:'09h — G6 Pre-Judicial',c:'ev-plan'},{t:'25.194 unidades',c:'ev-plan'}]},
   {d:20,ev:[]},{d:21,ev:[]},{d:22,ev:[]},
   {d:23,ev:[]},{d:24,ev:[]},{d:25,ev:[]},{d:26,ev:[]},{d:27,ev:[]},{d:28,ev:[]},{d:29,ev:[]},
   {d:30,ev:[]},
@@ -792,7 +947,7 @@ const cg=document.getElementById('calGrid');
 // Jun 9 = segunda. Sem preencher as anteriores de junho que estao antes
 for(let i=0;i<CAL.length;i++){
   const day=CAL[i];
-  const cls='cal-day'+(day.d===17?' today':'');
+  const cls='cal-day'+(day.d===18?' today':'');
   cg.innerHTML+=`<div class="${cls}"><div class="day-num"><strong>${day.d}</strong> Jun</div>${day.ev.map(e=>`<div class="ev ${e.c}">${e.t}</div>`).join('')}</div>`;
   // Preencher dias de descanso no fim da semana se necessario
 }
