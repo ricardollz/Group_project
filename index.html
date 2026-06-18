@@ -428,6 +428,36 @@ tbody td{padding:8px 10px;vertical-align:top}
   </div>
 
   <div class="diary-day success">
+    <div class="diary-date">18 de junho de 2026 — Padronizacao</div>
+    <div class="diary-title">Regras definitivas do projeto — validas para todas as proximas execucoes</div>
+    <div class="diary-tags">
+      <span class="pill pg">Permanente</span>
+      <span class="pill pb">8 grupos</span>
+      <span class="pill pb">Padroes definidos</span>
+    </div>
+    <div class="diary-body">
+      A partir de hoje, todas as execucoes seguem as regras abaixo sem excecao:<br><br>
+      <strong>Base oficial:</strong> sempre o arquivo mais recente de inadimplentes. Clientes ajuizados e institucionais (LTDA, S.A., Banco, Construtora etc.) sao removidos da elegibilidade de disparo.<br><br>
+      <strong>Classificacao comportamental:</strong> SO_DIGITAL / SO_HUMANO / MISTO / SEM_HISTORICO — definida pelo historico de pagamentos (operador do boleto). Regras nao mudam sem solicitacao explicita.<br><br>
+      <strong>8 grupos e templates fixos:</strong><br>
+      — Digital Recente (SO_DIGITAL 1-180d) → llz_digital_recente_v1_utilidade<br>
+      — Digital Antigo (SO_DIGITAL 181d+) → llz_digital_antigo_v1_utilidade<br>
+      — G3 (MISTO) → llz_g3_reengajamento_historico_v1<br>
+      — G4 (SO_HUMANO 90-180d) → llz_g4_notificacao_debito_v1<br>
+      — G5 (SO_HUMANO 181d+) → llz_g5_debito_encargos_urgente_v1<br>
+      — G6 (SEM_HISTORICO 365d+) → llz_g6_aviso_pre_judicial_v1<br>
+      — Sem Hist Recente (SEM_HISTORICO 1-364d) → llz_sem_hist_recente_v1_utilidade<br>
+      — Apoio (SO_HUMANO menos de 90d) → llz_apoio_medio_v4<br><br>
+      <strong>Variaveis dos templates:</strong> sempre sem acentos. Unidade no formato Bloco + Unidade (ex: A - 101). Quando sem bloco, so o numero da unidade.<br><br>
+      <strong>Cronograma:</strong> nunca programar disparo para domingo. Redistribuir automaticamente para o proximo dia util.<br><br>
+      <strong>Coluna Elegivel_Disparo:</strong> obrigatoria em todos os arquivos, com variaveis ja prontas para importacao.
+    </div>
+    <div class="diary-result">
+      <strong>Base 1806 processada:</strong> 101.405 clientes → 95.124 elegiveis distribuidos nos 8 grupos. Arquivo Base_Master_LLZ_1806_v1.xlsx gerado com 10 abas incluindo cronograma.
+    </div>
+  </div>
+
+  <div class="diary-day success">
     <div class="diary-date">18 de junho de 2026 — Analise Comparativa</div>
     <div class="diary-title">Cruzamento base 16/06 vs 18/06 — novos inadimplentes e divida que subiu</div>
     <div class="diary-tags">
