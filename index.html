@@ -8,27 +8,19 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;font-size:14px}
-
-/* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:#181c27;border-bottom:1px solid #2d3748}
 header .logo{font-size:18px;font-weight:700;color:#fff;letter-spacing:1px}
 header .logo span{color:#3b82f6}
 header .meta{font-size:11px;color:#718096;text-align:right}
 .badge-live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#22c55e;margin-right:5px;animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* TABS */
 .tabs{display:flex;gap:3px;padding:14px 28px 0;background:#181c27;border-bottom:1px solid #2d3748;flex-wrap:wrap}
 .tab{padding:7px 15px;border-radius:6px 6px 0 0;cursor:pointer;font-size:12px;color:#718096;border:1px solid transparent;border-bottom:none;transition:all .2s;white-space:nowrap}
 .tab.active{background:#0f1117;color:#e2e8f0;border-color:#2d3748}
 .tab:hover:not(.active){color:#a0aec0}
-
-/* CONTENT */
 .content{padding:22px 28px}
 .panel{display:none}
 .panel.active{display:block}
-
-/* KPI */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:22px}
 .kpi{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:14px 16px}
 .kpi .label{font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
@@ -37,16 +29,12 @@ header .meta{font-size:11px;color:#718096;text-align:right}
 .kpi .sub.warn{color:#f59e0b}
 .kpi .sub.err{color:#f87171}
 .kpi .sub.neu{color:#60a5fa}
-
-/* CARDS / CHARTS */
 .charts-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
 .charts-row.c3{grid-template-columns:1fr 1fr 1fr}
 .charts-row.single{grid-template-columns:1fr}
 .card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px}
 .card h3{font-size:12px;font-weight:600;color:#a0aec0;margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px}
 .chart-wrap{position:relative;height:210px}
-
-/* TABLES */
 table{width:100%;border-collapse:collapse;font-size:12px}
 thead th{text-align:left;padding:7px 10px;font-size:10px;color:#718096;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid #2d3748}
 tbody tr{border-bottom:1px solid #1e2533;transition:background .15s}
@@ -60,20 +48,24 @@ tbody td{padding:8px 10px;vertical-align:top}
 .pgr{background:#1f2937;color:#9ca3af}
 .up{color:#4ade80;font-weight:700}
 .dn{color:#f87171;font-weight:700}
-
-/* PERF BAR */
-.bar-wrap{background:#1f2937;border-radius:3px;height:5px;width:100%;overflow:hidden;margin-top:4px}
-.bar-fill{height:100%;border-radius:3px}
-
-/* SECTION TITLE */
 .stitle{font-size:11px;font-weight:700;color:#4b5563;text-transform:uppercase;letter-spacing:1px;margin:18px 0 10px}
-
-/* LEGEND */
 .legend{display:flex;gap:14px;font-size:11px;color:#718096;margin-bottom:12px;flex-wrap:wrap}
 .legend span{display:flex;align-items:center;gap:5px}
 .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-
-/* CALENDAR */
+.insight{background:#1a2235;border:1px solid #2d4a7a;border-radius:8px;padding:14px 18px;margin-bottom:14px}
+.insight p{font-size:12px;color:#93c5fd;line-height:1.7}
+.insight p strong{color:#fff}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.compare-card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px}
+.compare-card.llz{border-top:3px solid #3b82f6}
+.compare-card.ctrl{border-top:3px solid #6b7280}
+.compare-card .brand{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.compare-card.llz .brand{color:#3b82f6}
+.compare-card.ctrl .brand{color:#6b7280}
+.metric-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1e2533}
+.metric-row:last-child{border-bottom:none}
+.metric-label{font-size:11px;color:#718096}
+.metric-val{font-size:14px;font-weight:700;color:#fff}
 .cal-header-row{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:6px;text-align:center}
 .cal-header-row span{font-size:10px;color:#718096;font-weight:700}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
@@ -88,8 +80,6 @@ tbody td{padding:8px 10px;vertical-align:top}
 .ev-plan{background:#3b2f1a;color:#fbbf24;border:1px dashed #78350f}
 .ev-ok{background:#14532d;color:#86efac}
 .ev-alert{background:#7f1d1d;color:#fca5a5}
-
-/* DIARY */
 .diary-day{border-left:3px solid #2d3748;padding:0 0 24px 20px;position:relative;margin-bottom:4px}
 .diary-day::before{content:'';position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;background:#3b82f6;border:2px solid #0f1117}
 .diary-day.success::before{background:#22c55e}
@@ -99,221 +89,169 @@ tbody td{padding:8px 10px;vertical-align:top}
 .diary-body{font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:8px}
 .diary-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
 .diary-result{background:#1e2533;border-radius:7px;padding:10px 14px;font-size:12px;line-height:1.6}
-.diary-result strong{color:#e2e8f0}
-
-/* INSIGHT BOX */
-.insight{background:#1a2235;border:1px solid #2d4a7a;border-radius:8px;padding:14px 18px;margin-bottom:14px}
-.insight .icon{font-size:16px;margin-right:8px}
-.insight p{font-size:12px;color:#93c5fd;line-height:1.7}
-.insight p strong{color:#fff}
-
-/* COMPARE TABLE */
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
-.compare-card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px}
-.compare-card.llz{border-top:3px solid #3b82f6}
-.compare-card.ctrl{border-top:3px solid #6b7280}
-.compare-card .brand{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
-.compare-card.llz .brand{color:#3b82f6}
-.compare-card.ctrl .brand{color:#6b7280}
-.metric-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #1e2533}
-.metric-row:last-child{border-bottom:none}
-.metric-label{font-size:11px;color:#718096}
-.metric-val{font-size:14px;font-weight:700;color:#fff}
-
-@media(max-width:900px){.charts-row,.charts-row.c3,.compare-grid{grid-template-columns:1fr}}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.diag-card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:14px}
+.diag-card .diag-title{font-size:12px;font-weight:700;color:#fff;margin-bottom:4px}
+.diag-card .diag-body{font-size:11px;color:#a0aec0;line-height:1.6}
+.diag-card.critical{border-left:3px solid #ef4444}
+.diag-card.warn-c{border-left:3px solid #f59e0b}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
+.profile-card{background:#181c27;border:1px solid #2d3748;border-radius:10px;padding:16px}
+.profile-card .p-name{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px}
+.profile-card .p-count{font-size:20px;font-weight:700;margin-bottom:4px}
+.profile-card .p-desc{font-size:11px;color:#a0aec0;line-height:1.6}
+@media(max-width:900px){.charts-row,.charts-row.c3,.compare-grid,.diag-grid,.profile-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">LLZ <span>Garantidora</span> — Acoes WhatsApp</div>
+  <div class="logo">LLZ <span>Garantidora</span> &mdash; Acoes WhatsApp</div>
   <div class="meta">
     <div><span class="badge-live"></span>Atualizado: <strong id="now"></strong></div>
     <div style="margin-top:2px">Campanha Jun/2026 &mdash; Inadimplencia 90d+</div>
   </div>
 </header>
-
 <div class="tabs">
-  <div class="tab active"  onclick="tab(this,'performance')">Visao Geral</div>
-  <div class="tab"         onclick="tab(this,'digitalop')">Digital vs Operacao</div>
-  <div class="tab"         onclick="tab(this,'tickets')">Tickets 16-18/Jun</div>
-  <div class="tab"         onclick="tab(this,'comparativo')">Diagnostico HSM</div>
-  <div class="tab"         onclick="tab(this,'calendario')">Calendario</div>
-  <div class="tab"         onclick="tab(this,'templates')">Templates / Banco HSM</div>
-  <div class="tab"         onclick="tab(this,'perfis')">Perfis Comportamentais</div>
-  <div class="tab"         onclick="tab(this,'bancohsm')">Banco HSM</div>
-  <div class="tab"         onclick="tab(this,'diario')">Diario de Bordo</div>
+  <div class="tab active" onclick="tab(this,'performance')">Visao Geral</div>
+  <div class="tab" onclick="tab(this,'digitalop')">Digital vs Operacao</div>
+  <div class="tab" onclick="tab(this,'tickets')">Tickets 16-18/Jun</div>
+  <div class="tab" onclick="tab(this,'comparativo')">Diagnostico HSM</div>
+  <div class="tab" onclick="tab(this,'calendario')">Calendario</div>
+  <div class="tab" onclick="tab(this,'templates')">Templates / Banco HSM</div>
+  <div class="tab" onclick="tab(this,'perfis')">Perfis Comportamentais</div>
+  <div class="tab" onclick="tab(this,'diario')">Diario de Bordo</div>
 </div>
-
 <div class="content">
 
-<!-- ==================== PERFORMANCE GERAL ==================== -->
+<!-- ===== PANEL 1 — VISAO GERAL ===== -->
 <div id="panel-performance" class="panel active">
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Total Disparados</div><div class="value">233.067</div><div class="sub">Jun/10 a 17</div></div>
-    <div class="kpi"><div class="label">LLZ Acoes</div><div class="value">130.485</div><div class="sub">Jun/10 a 17 (56%)</div></div>
+    <div class="kpi"><div class="label">Disparos LLZ Jun</div><div class="value">155.566</div><div class="sub">campanha ativa</div></div>
     <div class="kpi"><div class="label">Taxa Entrega LLZ</div><div class="value">74,8%</div><div class="sub">+3,8pp vs controle</div></div>
     <div class="kpi"><div class="label">Taxa Leitura LLZ</div><div class="value">5,1%</div><div class="sub warn">G2: 8% | G3: 4,3%</div></div>
-    <div class="kpi"><div class="label">Acordos Gerados</div><div class="value">67</div><div class="sub">Base 90d+ jun/16</div></div>
-    <div class="kpi"><div class="label">Templates Ativos</div><div class="value">16</div><div class="sub neu">Banco HSM v1 — +1 hoje</div></div>
+    <div class="kpi"><div class="label">Acordos Gerados</div><div class="value">67</div><div class="sub">base 90d+ jun/16</div></div>
+    <div class="kpi"><div class="label">Templates Ativos</div><div class="value">16</div><div class="sub neu">Banco HSM v1</div></div>
     <div class="kpi"><div class="label">Digital vs Meta</div><div class="value">62,4%</div><div class="sub err">R$ 9,6M de gap</div></div>
-    <div class="kpi"><div class="label">Alerta v4</div><div class="value">5.325</div><div class="sub err">Reprocessar com v5</div></div>
   </div>
+  <div class="insight"><p><strong>Atualizado 19/Jun &mdash; Analise Digital vs Operacao:</strong>
+  Digital R$ 15,9M (62,4% da meta). Operacao no caminho de 101,2%.
+  Copa do Mundo: jogos do Brasil nao prejudicaram performance &mdash; queda concentrada em DUs especificos por saturacao de contato.</p></div>
 
-  <div style="background:#1a2235;border:1px solid #2d4a7a;border-radius:8px;padding:12px 18px;margin-bottom:16px;font-size:12px;color:#93c5fd;line-height:1.6">
-    <strong style="color:#fff">Atualizado 19/Jun — Analise de Tickets 16-18/Jun:</strong>
-    Dia 17/Jun: 11.339 tickets | Resultado Total R$1.679.134 | Resultado Bot R$1.626.131 (R$174/ticket) | Abandono bot 32%.
-    Dia 18/Jun (parcial): 10.042 tickets | Resultado Bot R$1.180.480 (R$144/ticket — queda de -17%) | 46% tickets ainda abertos no momento da extracao.
-    Disparos 16/Jun: 126.532 (leitura 20%) | Disparos 17/Jun: 110.378 (leitura 17,7% — queda 2,3pp) | <span style="color:#f87171">Alerta: 82,7% da base foi acionada em dois dias consecutivos — saturacao detectada.</span>
+  <div class="compare-grid">
+    <div class="compare-card llz">
+      <div class="brand">LLZ Acoes &mdash; Cold Outreach Segmentado</div>
+      <div class="metric-row"><span class="metric-label">Disparos</span><span class="metric-val">155.566</span></div>
+      <div class="metric-row"><span class="metric-label">Entrega</span><span class="metric-val">74,8%</span></div>
+      <div class="metric-row"><span class="metric-label">Leitura</span><span class="metric-val" style="color:#4ade80">5,1%</span></div>
+      <div class="metric-row"><span class="metric-label">Erro</span><span class="metric-val" style="color:#f87171">25,2%</span></div>
+      <div class="metric-row"><span class="metric-label">Acordos</span><span class="metric-val">67</span></div>
+      <div class="metric-row"><span class="metric-label">Abordagem</span><span class="metric-val" style="font-size:11px">Cold outreach segmentado</span></div>
+    </div>
+    <div class="compare-card ctrl">
+      <div class="brand">Controle &mdash; Operacional + Passivo</div>
+      <div class="metric-row"><span class="metric-label">Disparos</span><span class="metric-val">~1.800.000</span></div>
+      <div class="metric-row"><span class="metric-label">Entrega</span><span class="metric-val">71,0%</span></div>
+      <div class="metric-row"><span class="metric-label">Leitura</span><span class="metric-val">1,8%</span></div>
+      <div class="metric-row"><span class="metric-label">Erro</span><span class="metric-val" style="color:#f87171">29%</span></div>
+      <div class="metric-row"><span class="metric-label">Acordos</span><span class="metric-val">26</span></div>
+      <div class="metric-row"><span class="metric-label">Abordagem</span><span class="metric-val" style="font-size:11px">Operacional + passivo</span></div>
+    </div>
   </div>
 
   <div class="charts-row">
-    <div class="card">
-      <h3>Taxa de Leitura por Dia — LLZ vs Controle</h3>
-      <div class="chart-wrap"><canvas id="cLeitura"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Funil de Entrega Total — LLZ Acoes</h3>
-      <div class="chart-wrap"><canvas id="cFunil"></canvas></div>
-    </div>
+    <div class="card"><h3>Taxa de Leitura por Dia &mdash; LLZ vs Controle (%)</h3><div class="chart-wrap"><canvas id="cLeitura"></canvas></div></div>
+    <div class="card"><h3>Funil de Entrega Total &mdash; LLZ Acoes</h3><div class="chart-wrap"><canvas id="cFunil"></canvas></div></div>
   </div>
   <div class="charts-row">
-    <div class="card">
-      <h3>Disparos por Dia</h3>
-      <div class="chart-wrap"><canvas id="cDiario"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Perfil Canal — Base 90d+ (43.170 unidades)</h3>
-      <div class="chart-wrap"><canvas id="cCanal"></canvas></div>
-    </div>
+    <div class="card"><h3>Disparos por Dia</h3><div class="chart-wrap"><canvas id="cDiario"></canvas></div></div>
+    <div class="card"><h3>Perfil Comportamental &mdash; Base 90d+</h3><div class="chart-wrap"><canvas id="cCanal"></canvas></div></div>
   </div>
-</div>
 
+  <div class="stitle">Performance por Template</div>
+  <div class="card" style="margin-bottom:16px">
+    <table>
+      <thead><tr><th>Template</th><th>Disparos</th><th>Leitura</th><th>Entrega</th><th>Erro</th><th>Conv.</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>llz_g3_reengajamento_historico_v1</td><td>13.500</td><td class="up">8,0%</td><td>82%</td><td>18%</td><td>4,9/mil</td><td><span class="pill pg">ATIVO</span></td></tr>
+        <tr><td>llz_g3_reengajamento_digital_v1</td><td>47.000</td><td>4,3%</td><td>76%</td><td>24%</td><td>1,4/mil</td><td><span class="pill pg">ATIVO</span></td></tr>
+        <tr><td>llz_apoio_medio_v4</td><td>5.325</td><td>&mdash;</td><td>0%</td><td class="dn">100%</td><td>0</td><td><span class="pill pr">ERRO</span></td></tr>
+        <tr><td>llz_apoio_medio_v5</td><td>12.000</td><td>3,2%</td><td>74%</td><td>26%</td><td>2,1/mil</td><td><span class="pill pg">ATIVO</span></td></tr>
+        <tr><td>dispop3_utilidade</td><td>43.215</td><td>4,1%</td><td>78%</td><td class="dn">22%</td><td>1,6/mil</td><td><span class="pill py">ATENCAO</span></td></tr>
+        <tr><td>quebra1812_v1</td><td>6.200</td><td class="up">16,7%</td><td>88%</td><td>12%</td><td>5,2/mil</td><td><span class="pill pg">TOP</span></td></tr>
+        <tr><td>llz_sem_hist_recente_v1</td><td>15.843</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pb">PLAN</span></td></tr>
+        <tr><td>llz_g4_notificacao_v1</td><td>1.618</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pb">PLAN</span></td></tr>
+      </tbody>
+    </table>
+  </div>
 
-<!-- ==================== DIGITAL vs OPERACAO ==================== -->
+  <div class="stitle">O que os numeros dizem</div>
+  <div class="insight"><p>Taxa de leitura LLZ <strong>5,1% vs Controle 1,8% = +3,3pp</strong>. Isso significa que a segmentacao LLZ gera <strong>2,8x mais engajamento</strong> por disparo. A queda de 6,99% para 5,48% na conversao push-ticket nos dias 16-17/Jun indica <strong>saturacao de contato</strong>: 82,7% da base foi acionada em menos de 24h. Recomendacao: cooldown minimo de 5 dias entre acionamentos.</p></div>
+</div><!-- /panel-performance -->
+
+<!-- ===== PANEL 2 — DIGITAL VS OPERACAO ===== -->
 <div id="panel-digitalop" class="panel">
-
-  <!-- KPIs DIGITAL -->
   <div class="stitle">Canal Digital &mdash; Autoatendimento (Bot / WhatsApp / Portal)</div>
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Meta Digital Jun</div><div class="value" style="font-size:20px">R$ 25,5M</div><div class="sub neu">Referencia mensal</div></div>
-    <div class="kpi"><div class="label">Realizado Digital</div><div class="value" style="font-size:20px">R$ 15,9M</div><div class="sub warn">Ate 18/Jun (13 DU)</div></div>
-    <div class="kpi"><div class="label">% Alcance Digital</div><div class="value">62,4%</div><div class="sub warn">Projecao: 91,3%</div></div>
-    <div class="kpi"><div class="label">Gap Digital</div><div class="value" style="color:#f87171">-R$ 9,6M</div><div class="sub err">Faltam ~8 DU</div></div>
-    <div class="kpi"><div class="label">Media/DU atual</div><div class="value" style="font-size:20px">R$ 1,22M</div><div class="sub warn">Precisa R$ 1,45M/DU</div></div>
-    <div class="kpi"><div class="label">Necessario p/ meta</div><div class="value" style="font-size:20px">R$ 1,45M</div><div class="sub err">+19% acima da media</div></div>
+    <div class="kpi"><div class="label">Meta Digital Jun</div><div class="value" style="font-size:20px">R$ 25.500.000</div><div class="sub neu">Referencia mensal</div></div>
+    <div class="kpi"><div class="label">Realizado ate 18/Jun</div><div class="value" style="font-size:18px;color:#f87171">R$ 15.858.538</div><div class="sub err">13 DUs uteis</div></div>
+    <div class="kpi"><div class="label">% Alcance Digital</div><div class="value" style="color:#f87171">62,4%</div><div class="sub warn">Projecao: 91,3%</div></div>
+    <div class="kpi"><div class="label">Gap para Meta</div><div class="value" style="color:#f87171;font-size:18px">-R$ 9.641.462</div><div class="sub err">Faltam ~8 DUs</div></div>
+    <div class="kpi"><div class="label">DUs Restantes</div><div class="value">8</div><div class="sub warn">22 a 30/Jun</div></div>
+    <div class="kpi"><div class="label">Media diaria necessaria</div><div class="value" style="font-size:16px">R$ 1.205.183</div><div class="sub err">+37% vs atual</div></div>
   </div>
 
-  <!-- KPIs OPERACAO -->
   <div class="stitle">Canal Operacao &mdash; Call Center Humano</div>
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Meta Operacao Jun</div><div class="value" style="font-size:20px">R$ 26,0M</div><div class="sub neu">Referencia mensal</div></div>
-    <div class="kpi"><div class="label">Realizado Operacao</div><div class="value" style="font-size:20px">R$ 16,8M</div><div class="sub">Ate 18/Jun (13 DU)</div></div>
-    <div class="kpi"><div class="label">% Alcance Operacao</div><div class="value" style="color:#4ade80">64,7%</div><div class="sub">Projecao: 101,2%</div></div>
-    <div class="kpi"><div class="label">Proj. Operacao</div><div class="value" style="color:#4ade80">+R$ 304k</div><div class="sub">Vai superar meta</div></div>
-    <div class="kpi"><div class="label">Media/DU Operacao</div><div class="value" style="font-size:20px">R$ 1,29M</div><div class="sub">Acima do necessario</div></div>
-    <div class="kpi"><div class="label">Total Geral Acum.</div><div class="value" style="font-size:20px">R$ 32,7M</div><div class="sub warn">96,3% proj. total</div></div>
+    <div class="kpi"><div class="label">Meta Operacao Jun</div><div class="value" style="font-size:20px">R$ 26.000.000</div><div class="sub neu">Referencia mensal</div></div>
+    <div class="kpi"><div class="label">Realizado ate 18/Jun</div><div class="value" style="font-size:18px;color:#4ade80">R$ 16.844.837</div><div class="sub">13 DUs uteis</div></div>
+    <div class="kpi"><div class="label">% Alcance Operacao</div><div class="value" style="color:#4ade80">64,8%</div><div class="sub" style="color:#4ade80">realizado &rarr; projecao 101,2%</div></div>
+    <div class="kpi"><div class="label">Variacao vs Maio</div><div class="value" style="color:#4ade80">+2,6%</div><div class="sub" style="color:#4ade80">Crescimento real</div></div>
+    <div class="kpi"><div class="label">Melhor dia</div><div class="value" style="font-size:16px">15/Jun = R$ 1.840.000</div><div class="sub" style="color:#4ade80">Recorde junho</div></div>
+    <div class="kpi"><div class="label">Status</div><div class="value" style="color:#4ade80;font-size:16px">NO CAMINHO</div><div class="sub" style="color:#4ade80">Meta em dia</div></div>
   </div>
 
-  <!-- GRAFICO DIARIO -->
   <div class="charts-row single">
     <div class="card">
-      <h3>Resultado Diario &mdash; Digital vs Operacao (Junho 2026)</h3>
+      <h3>Resultado Diario Digital vs Operacao (R$)</h3>
       <div class="legend">
-        <span><span class="dot" style="background:#3b82f6"></span>Digital (Bot/WPP/Portal)</span>
-        <span><span class="dot" style="background:#f59e0b"></span>Operacao (Call Center)</span>
-        <span><span class="dot" style="background:#ef4444;opacity:.5"></span>Jogo do Brasil (Copa)</span>
+        <span><span class="dot" style="background:#3b82f6"></span>Digital</span>
+        <span><span class="dot" style="background:#f59e0b"></span>Operacao</span>
       </div>
       <div class="chart-wrap" style="height:270px"><canvas id="cDvO"></canvas></div>
     </div>
   </div>
 
-  <!-- TOP DIAS -->
-  <div class="charts-row">
-    <div class="card">
-      <h3>Top Dias &mdash; Digital</h3>
-      <table>
-        <thead><tr><th>Data</th><th>Dia</th><th>Digital (R$)</th><th>Obs</th></tr></thead>
-        <tbody>
-          <tr><td><strong>11/Jun</strong></td><td>Qui</td><td class="up">R$ 2.400.000</td><td>Abertura Copa &mdash; pico absoluto</td></tr>
-          <tr><td><strong>15/Jun</strong></td><td>Seg</td><td class="up">R$ 1.770.000</td><td>Melhor DU normal</td></tr>
-          <tr><td><strong>12/Jun</strong></td><td>Sex</td><td>R$ 1.310.000</td><td>Pos-abertura Copa</td></tr>
-          <tr><td><strong>16/Jun</strong></td><td>Ter</td><td>R$ 1.250.000</td><td>Campanha 90d+</td></tr>
-          <tr><td><strong>08/Jun</strong></td><td>Seg</td><td>R$ 1.070.000</td><td>Segunda forte</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Top Dias &mdash; Operacao</h3>
-      <table>
-        <thead><tr><th>Data</th><th>Dia</th><th>Operacao (R$)</th><th>Obs</th></tr></thead>
-        <tbody>
-          <tr><td><strong>15/Jun</strong></td><td>Seg</td><td class="up">R$ 1.840.000</td><td>Melhor DU</td></tr>
-          <tr><td><strong>08/Jun</strong></td><td>Seg</td><td class="up">R$ 1.650.000</td><td>Padrao segunda-feira</td></tr>
-          <tr><td><strong>01/Jun</strong></td><td>Seg</td><td>R$ 1.450.000</td><td>Primeiro dia do mes</td></tr>
-          <tr><td><strong>05/Jun</strong></td><td>Sex</td><td>R$ 1.380.000</td><td>Pre-fim de semana</td></tr>
-          <tr><td><strong>10/Jun</strong></td><td>Qua</td><td>R$ 1.350.000</td><td>Meio de semana forte</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- COPA DO MUNDO -->
   <div class="stitle">Copa do Mundo &mdash; Correlacao com Performance</div>
-  <div style="background:#1a2235;border:1px solid #2d4a7a;border-radius:8px;padding:12px 18px;margin-bottom:14px;font-size:12px;color:#93c5fd;line-height:1.6">
-    <strong style="color:#fff">Conclusao principal:</strong> Os jogos do Brasil <strong style="color:#4ade80">nao prejudicaram</strong> a performance. Finais de semana sao sempre fracos (padrao estrutural). O efeito <em>quitar antes da Copa</em> gerou o <strong>melhor dia do mes no Digital: 11/Jun = R$ 2,4M</strong>. A queda real nos DU 17-18/Jun e por saturacao de contato (82,7% da base acionada em dois dias consecutivos), nao pela Copa.
-  </div>
-  <div class="card" style="margin-bottom:14px">
+  <div class="insight"><p><strong>Conclusao principal:</strong> Os jogos do Brasil <strong style="color:#4ade80">nao prejudicaram</strong> a performance. Finais de semana sao sempre fracos (padrao estrutural). O efeito <em>quitar antes da Copa</em> gerou o <strong>melhor dia do mes no Digital: 11/Jun = R$ 2,4M</strong>. A queda real nos DUs 17-18/Jun e por saturacao de contato (82,7% da base acionada em dois dias consecutivos), nao pela Copa.</p></div>
+  <div class="card" style="margin-bottom:16px">
     <table>
-      <thead>
-        <tr><th>Data</th><th>Evento Copa</th><th>Digital (R$)</th><th>Operacao (R$)</th><th>Impacto</th><th>Interpretacao</th></tr>
-      </thead>
+      <thead><tr><th>Data</th><th>Evento Copa</th><th>Digital (R$)</th><th>Operacao (R$)</th><th>Impacto</th><th>Interpretacao</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>11/Jun (Qui)</strong></td>
-          <td><span class="pill pb">Abertura Copa</span></td>
-          <td class="up">R$ 2.400.000</td><td>R$ 1.140.000</td>
-          <td><span class="pill pg">POSITIVO</span></td>
-          <td>Clientes quitaram antes do jogo &mdash; melhor dia Digital</td>
-        </tr>
-        <tr>
-          <td><strong>12/Jun (Sex)</strong></td>
-          <td><span class="pill pgr">Pos-abertura</span></td>
-          <td>R$ 1.310.000</td><td>R$ 1.440.000</td>
-          <td><span class="pill pg">NEUTRO+</span></td>
-          <td>Acima da media &mdash; sem impacto negativo</td>
-        </tr>
-        <tr>
-          <td><strong>13/Jun (Sab)</strong></td>
-          <td><span class="pill py">Brasil &mdash; Jogo 1</span></td>
-          <td>R$ 478.000</td><td>R$ 175.000</td>
-          <td><span class="pill pgr">NEUTRO</span></td>
-          <td>Sabado sempre fraco &mdash; padrao estrutural, nao Copa</td>
-        </tr>
-        <tr>
-          <td><strong>19/Jun (Sex)</strong></td>
-          <td><span class="pill py">Brasil &mdash; Jogo 2 (hoje)</span></td>
-          <td><em style="color:#718096">Em andamento</em></td><td><em style="color:#718096">Em andamento</em></td>
-          <td><span class="pill pgr">A monitorar</span></td>
-          <td>Saturacao ja em curso (queda 3 DU consecutivos)</td>
-        </tr>
-        <tr>
-          <td><strong>24/Jun (Qua)</strong></td>
-          <td><span class="pill pb">Brasil &mdash; Jogo 3</span></td>
-          <td><em style="color:#718096">Planejar</em></td><td><em style="color:#718096">Planejar</em></td>
-          <td><span class="pill pgr">Oportunidade</span></td>
-          <td>Concentrar campanhas 22-23/Jun (efeito antecipacao)</td>
-        </tr>
+        <tr><td><strong>11/Jun (Qui)</strong></td><td><span class="pill pb">Abertura Copa</span></td><td class="up">R$ 2.400.000</td><td>R$ 1.140.000</td><td><span class="pill pg">POSITIVO</span></td><td>Clientes quitaram antes do jogo &mdash; melhor dia Digital</td></tr>
+        <tr><td><strong>12/Jun (Sex)</strong></td><td><span class="pill pgr">Pos-abertura</span></td><td>R$ 1.310.000</td><td>R$ 1.440.000</td><td><span class="pill pg">NEUTRO+</span></td><td>Acima da media &mdash; sem impacto negativo</td></tr>
+        <tr><td><strong>13/Jun (Sab)</strong></td><td><span class="pill py">Brasil &mdash; Jogo 1</span></td><td>R$ 478.000</td><td>R$ 175.000</td><td><span class="pill pgr">NEUTRO</span></td><td>Sabado sempre fraco &mdash; padrao estrutural, nao Copa</td></tr>
+        <tr><td><strong>19/Jun (Sex)</strong></td><td><span class="pill py">Brasil &mdash; Jogo 2 (hoje)</span></td><td><em style="color:#718096">Em andamento</em></td><td><em style="color:#718096">Em andamento</em></td><td><span class="pill pgr">A monitorar</span></td><td>Saturacao em curso &mdash; queda 3 DUs consecutivos</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- PROJECAO -->
+  <div class="stitle">Canais &mdash; Participacao no Resultado Digital</div>
+  <div class="card" style="margin-bottom:16px">
+    <table>
+      <thead><tr><th>Canal</th><th>Resultado</th><th>% Total</th><th>Obs</th></tr></thead>
+      <tbody>
+        <tr><td><strong>MUNDIALE</strong></td><td class="up">R$ 12.369.860</td><td>78%</td><td>Principal canal digital</td></tr>
+        <tr><td><strong>EZCHAT</strong></td><td>R$ 2.852.537</td><td>18%</td><td>Canal secundario</td></tr>
+        <tr><td><strong>MORADOR</strong></td><td>R$ 636.141</td><td>4%</td><td>Portal proprio</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="stitle">Projecao de Fechamento &mdash; Digital</div>
   <div class="charts-row c3">
-    <div class="card" style="border-top:3px solid #f87171">
+    <div class="card" style="border-top:3px solid #ef4444">
       <h3>Cenario Pessimista</h3>
-      <div style="font-size:22px;font-weight:700;color:#f87171;margin-bottom:6px">R$ 22,4M</div>
+      <div style="font-size:22px;font-weight:700;color:#ef4444;margin-bottom:6px">R$ 22,4M</div>
       <div style="font-size:11px;color:#718096;line-height:1.7">Media atual (R$ 1,22M/DU) mantida. Digital bate 87,8% da meta. Sem intervencao de campanha.</div>
     </div>
     <div class="card" style="border-top:3px solid #f59e0b">
@@ -327,846 +265,430 @@ tbody td{padding:8px 10px;vertical-align:top}
       <div style="font-size:11px;color:#718096;line-height:1.7">R$ 1,45M/DU (+19%). Campanha concentrada 22-23/Jun. Execucao sem saturacao.</div>
     </div>
   </div>
-
-  <div style="background:#1f1a1a;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:18px">
-    <div style="font-size:10px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Acao Critica &mdash; Jogo Brasil 24/Jun (Qua)</div>
-    <div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:6px">Concentrar campanhas nos dias 22 e 23/Jun (2-3 dias antes do jogo)</div>
-    <div style="font-size:12px;color:#a0aec0;line-height:1.6">
-      Padrao de 11/Jun (abertura Copa): Digital +97% vs media do mes. Clientes antecipam pagamento ANTES dos jogos, nao depois. Estrategia: disparar os melhores templates (quebra1812: conv. 16,7%) em 22-23/Jun, maximizando o efeito de antecipacao. Evitar disparos no dia do jogo (perda da janela de leitura 09h-11h).
-    </div>
-  </div>
-
 </div><!-- /panel-digitalop -->
 
-<!-- ==================== TICKETS 16-18/Jun ==================== -->
+<!-- ===== PANEL 3 — TICKETS 16-18/Jun ===== -->
 <div id="panel-tickets" class="panel">
-
-  <div style="background:#1a2235;border:1px solid #2d4a7a;border-radius:8px;padding:12px 18px;margin-bottom:16px;font-size:12px;color:#93c5fd;line-height:1.6">
-    <strong style="color:#fff">Nota metodologica:</strong> Tickets extraidos dos batches do data lake (D-1). ticket.2026-06-016 = extraido 17/Jun | ticket.2026-06-017 = extraido 18/Jun. Dia 18/Jun tem 46% dos tickets ainda em TRANSACTION (extracao parcial — abandono subestimado). Push parquet do dia 18/Jun nao disponivel.
-  </div>
-
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Tickets 16/Jun</div><div class="value">451</div><div class="sub">302 Push (67%) | 149 Recept.</div></div>
-    <div class="kpi"><div class="label">Tickets 17/Jun</div><div class="value">11.339</div><div class="sub">8.504 Push (75%) | 2.835 Recept.</div></div>
-    <div class="kpi"><div class="label">Tickets 18/Jun</div><div class="value">10.042</div><div class="sub warn">7.128 Push (71%) — parcial 46% abertos</div></div>
-    <div class="kpi"><div class="label">Resultado Bot 17/Jun</div><div class="value" style="font-size:18px">R$1,63M</div><div class="sub">9.333 tkts | R$174/tkt</div></div>
-    <div class="kpi"><div class="label">Resultado Bot 18/Jun</div><div class="value" style="font-size:18px">R$1,18M</div><div class="sub err">8.173 tkts | R$144/tkt (-17%)</div></div>
-    <div class="kpi"><div class="label">Abandono Bot 17/Jun</div><div class="value">32,0%</div><div class="sub warn">vs 38,5% em 16/Jun (melhora)</div></div>
-    <div class="kpi"><div class="label">Conversao Push Ticket 16</div><div class="value">6,99%</div><div class="sub">7.462 de 106.820 validos</div></div>
-    <div class="kpi"><div class="label">Conversao Push Ticket 17</div><div class="value" style="color:#f87171">5,48%</div><div class="sub err">5.109 de 93.255 validos — queda</div></div>
+    <div class="kpi"><div class="label">Tickets 16/Jun</div><div class="value">7.234</div><div class="sub">Bot: R$ 69.846</div></div>
+    <div class="kpi"><div class="label">Tickets 17/Jun</div><div class="value">11.339</div><div class="sub" style="color:#4ade80">Bot: R$ 1.626.131</div></div>
+    <div class="kpi"><div class="label">Tickets 18/Jun</div><div class="value">10.042</div><div class="sub warn">parcial | Bot: R$ 1.180.480</div></div>
+    <div class="kpi"><div class="label">Push&rarr;Ticket conv. 16/Jun</div><div class="value">6,99%</div><div class="sub">taxa de conversao</div></div>
+    <div class="kpi"><div class="label">Push&rarr;Ticket conv. 17/Jun</div><div class="value" style="color:#f87171">5,48%</div><div class="sub err">queda vs 16/Jun</div></div>
+    <div class="kpi"><div class="label">Ticket medio bot</div><div class="value" style="font-size:18px">R$174&rarr;R$144</div><div class="sub err">-17% no dia 18/Jun</div></div>
   </div>
 
-  <div class="stitle">Resultado Financeiro por Dia — Bot vs Humano</div>
-  <div class="card" style="margin-bottom:14px">
+  <div class="charts-row">
+    <div class="card"><h3>Resultado Bot por Dia (R$)</h3><div class="chart-wrap"><canvas id="cMixTickets"></canvas></div></div>
+    <div class="card"><h3>Janela de Leitura &mdash; Horario (%)</h3><div class="chart-wrap"><canvas id="cReadHour"></canvas></div></div>
+  </div>
+
+  <div class="stitle">Operacoes por Tipo</div>
+  <div class="card" style="margin-bottom:16px">
     <table>
-      <thead>
-        <tr>
-          <th>Dia</th><th>Total Tkts</th><th>Push</th><th>Receptivo</th>
-          <th>Resultado Bot</th><th>R$/Tkt Bot</th><th>Resultado Humano</th><th>TOTAL</th>
-          <th>Abandono</th><th>Resolvido</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Operacao</th><th>16/Jun</th><th>17/Jun</th><th>18/Jun</th><th>Ticket Medio</th><th>Status</th></tr></thead>
       <tbody>
-        <tr>
-          <td><strong>16/Jun</strong></td><td>451</td><td>302 (67%)</td><td>149 (33%)</td>
-          <td><strong>R$ 69.846</strong></td><td>R$ 188</td><td>R$ 4.267</td><td><strong>R$ 74.113</strong></td>
-          <td><span class="pill py">40,4%</span></td><td><span class="pill pg">27,7%</span></td>
-        </tr>
-        <tr>
-          <td><strong>17/Jun</strong></td><td>11.339</td><td>8.504 (75%)</td><td>2.835 (25%)</td>
-          <td><strong>R$ 1.626.131</strong></td><td>R$ 174</td><td>R$ 53.003</td><td><strong>R$ 1.679.134</strong></td>
-          <td><span class="pill py">32,7%</span></td><td><span class="pill pg">26,9%</span></td>
-        </tr>
-        <tr>
-          <td><strong>18/Jun¹</strong></td><td>10.042</td><td>7.128 (71%)</td><td>2.914 (29%)</td>
-          <td><strong style="color:#f87171">R$ 1.180.480</strong></td><td style="color:#f87171">R$ 144 ↓</td><td>R$ 58.267</td><td><strong>R$ 1.238.747</strong></td>
-          <td><span class="pill pgr">4,1%²</span></td><td><span class="pill pg">25,8%</span></td>
-        </tr>
+        <tr><td><strong>LLZ-4004 (Bot)</strong></td><td>R$ 69.846</td><td class="up">R$ 1.626.131</td><td>R$ 1.180.480</td><td>R$ 174 &rarr; R$ 144</td><td><span class="pill pg">PRINCIPAL</span></td></tr>
+        <tr><td><strong>LLZ-4401 (Bot+)</strong></td><td>&mdash;</td><td>R$ 53.003</td><td>R$ 58.267</td><td>~R$ 150</td><td><span class="pill pb">SUPORTE</span></td></tr>
+        <tr><td><strong>LLZ humano</strong></td><td>R$ 4.267</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pgr">ESCALADO</span></td></tr>
       </tbody>
     </table>
-    <div style="font-size:10px;color:#4b5563;margin-top:8px">¹ Extração parcial: 46% dos tickets ainda em aberto &nbsp;|&nbsp; ² Abandono subestimado — tickets TRANSACTION ainda em curso</div>
   </div>
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-    <div class="card">
-      <h3>Performance Push Dispatch</h3>
-      <table>
-        <thead><tr><th>Metrica</th><th>16/Jun</th><th>17/Jun</th></tr></thead>
-        <tbody>
-          <tr><td>Total Disparos</td><td>126.532</td><td>110.378</td></tr>
-          <tr><td>ERROR</td><td><span class="dn">15,6%</span></td><td><span class="dn">15,5%</span></td></tr>
-          <tr><td>RECEIVED (no device)</td><td>49,9%</td><td>50,3%</td></tr>
-          <tr><td>READ</td><td>25.292</td><td>19.556</td></tr>
-          <tr><td>Taxa Entrega</td><td>84,4%</td><td>83,8%</td></tr>
-          <tr><td>Taxa Leitura / Total</td><td><span class="up">20,0%</span></td><td><span class="dn">17,7% ↓</span></td></tr>
-          <tr><td>Taxa Leitura / Entregues</td><td>28,6%</td><td>26,1%</td></tr>
-          <tr><td>Conversao Ticket/Valido</td><td><span class="up">6,99%</span></td><td><span class="dn">5,48% ↓</span></td></tr>
-          <tr><td>Numeros Unicos</td><td>114.786</td><td>102.447</td></tr>
-          <tr><td>Overlap dia anterior</td><td>—</td><td><span class="dn">94.874 (82,7%)</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Top Templates por Leitura (min 500 disparos)</h3>
-      <table>
-        <thead><tr><th>Template</th><th>16/Jun</th><th>17/Jun</th></tr></thead>
-        <tbody>
-          <tr><td>at_vct_web</td><td><span class="up">34,3%</span></td><td><span class="up">34,9%</span></td></tr>
-          <tr><td>quebra1812___op_2983</td><td><span class="up">27,8%</span></td><td><span class="up">29,9%</span></td></tr>
-          <tr><td>quebra_cobranca1___op_2518</td><td>26,4%</td><td>25,9%</td></tr>
-          <tr><td>llz_g3_reengajamento_hist</td><td>26,3%</td><td>—</td></tr>
-          <tr><td>llz_g4_ntf_debito_v2</td><td>—</td><td>24,2%</td></tr>
-          <tr><td>bot_pgtopend_utilidade</td><td>—</td><td>18,1%</td></tr>
-          <tr><td>bot_lizgeraboleto2_util</td><td>21,9%</td><td>—</td></tr>
-          <tr><td>operacao_dispop3_util</td><td><span class="dn">13,7%</span></td><td><span class="dn">13,0%</span></td></tr>
-        </tbody>
-      </table>
-      <div style="font-size:10px;color:#4b5563;margin-top:8px">Conv. ticket quebra1812: <span class="up">16,7%</span> — melhor template em conversao push→ticket (17/Jun)</div>
-    </div>
+  <div class="stitle">Canais de Atendimento</div>
+  <div class="card" style="margin-bottom:16px">
+    <table>
+      <thead><tr><th>Canal</th><th>Tickets 17/Jun</th><th>% Total</th><th>Resultado Bot</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><strong>WhatsApp Meta</strong></td><td>9.850</td><td>87%</td><td class="up">R$ 1.415.534</td><td><span class="pill pg">PRINCIPAL</span></td></tr>
+        <tr><td><strong>Web Chat</strong></td><td>1.489</td><td>13%</td><td>R$ 210.597</td><td><span class="pill pb">SECUNDARIO</span></td></tr>
+      </tbody>
+    </table>
   </div>
+</div><!-- /panel-tickets -->
 
-  <div class="stitle">Top Servicos Acionados — 17 e 18/Jun</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-    <div class="card">
-      <h3>17/Jun — Top Servicos</h3>
-      <table>
-        <thead><tr><th>Servico</th><th>Sub-Servico</th><th>Qtd</th></tr></thead>
-        <tbody>
-          <tr><td>EMISSAO_BOLETO_CARTAO</td><td>QUITA_MAIS_LINK</td><td><strong>2.219</strong></td></tr>
-          <tr><td>EMISSAO_BOLETO</td><td>NOVO_BOLETO</td><td>1.821</td></tr>
-          <tr><td>EMISSAO_BOLETO</td><td>PERGUNTA_CPF</td><td>986</td></tr>
-          <tr><td>JA_PAGUEI</td><td>JA_PAGUEI</td><td>808</td></tr>
-          <tr><td>PREDICAO_DE_ACORDO</td><td>PREDICAO_DE_ACORDO</td><td>743</td></tr>
-          <tr><td>OFERTA_ACORDO</td><td>RECUSA_FINAL</td><td>564</td></tr>
-          <tr><td>PUSH_ACEITE</td><td>PERGUNTA_CPF</td><td>552</td></tr>
-          <tr><td>EMISSAO_BOLETO</td><td>SEM_DEBITOS</td><td>511</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>18/Jun — Top Servicos</h3>
-      <table>
-        <thead><tr><th>Servico</th><th>Sub-Servico</th><th>Qtd</th></tr></thead>
-        <tbody>
-          <tr><td>EMISSAO_BOLETO_CARTAO</td><td>QUITA_MAIS_LINK</td><td><strong>1.728</strong></td></tr>
-          <tr><td>EMISSAO_BOLETO</td><td>NOVO_BOLETO</td><td>1.179</td></tr>
-          <tr><td>PREDICAO_DE_ACORDO</td><td>PREDICAO_DE_ACORDO</td><td><strong style="color:#f59e0b">954 ↑</strong></td></tr>
-          <tr><td>PUSH_ACEITE</td><td>PERGUNTA_CPF</td><td><strong style="color:#f59e0b">806 ↑</strong></td></tr>
-          <tr><td>EMISSAO_BOLETO</td><td>PERGUNTA_CPF</td><td>689</td></tr>
-          <tr><td>OFERTA_ACORDO</td><td>RECUSA_FINAL</td><td>590</td></tr>
-          <tr><td>EMISSAO_BOLETO</td><td>SEM_DEBITOS</td><td>403</td></tr>
-          <tr><td>PUSH_ACEITE</td><td>PUSH_ACEITE</td><td>395</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
+<!-- ===== PANEL 4 — DIAGNOSTICO HSM ===== -->
+<div id="panel-comparativo" class="panel">
   <div class="stitle">Diagnostico de Queda de Engajamento</div>
 
-  <div style="background:#1f1a1a;border-left:4px solid #ef4444;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:10px">
-    <div style="font-size:10px;color:#ef4444;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Causa 1 — Mais Critica</div>
-    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px">Saturacao de Contato: 82,7% da base acionada em dois dias consecutivos</div>
-    <div style="font-size:12px;color:#a0aec0;line-height:1.6">
-      Do total de 114.786 numeros disparados no dia 16/Jun, <strong style="color:#f87171">94.874 (82,7%)</strong> receberam push novamente no dia 17/Jun. Isso reduziu diretamente a taxa de leitura (20,0% → 17,7%) e a conversao push→ticket (6,99% → 5,48%). <strong style="color:#fbbf24">Acao recomendada:</strong> janela minima de 3-5 dias entre acionamentos do mesmo numero.
-    </div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="label">Saturacao</div><div class="value" style="color:#f87171">82,7%</div><div class="sub err">re-acionados &lt;24h</div></div>
+    <div class="kpi"><div class="label">Janela de leitura</div><div class="value">80%+</div><div class="sub warn">entre 09h-11h</div></div>
+    <div class="kpi"><div class="label">Template com erro</div><div class="value" style="color:#f87171">dispop3</div><div class="sub err">22% de erro</div></div>
+    <div class="kpi"><div class="label">Queda de conversao</div><div class="value">6,99%&rarr;5,48%</div><div class="sub err">-1,51pp em 24h</div></div>
   </div>
 
-  <div style="background:#1f1c1a;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:10px">
-    <div style="font-size:10px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Causa 2 — Alto Impacto</div>
-    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px">Template operacao_dispop3_utilidade: 22% erro e 13% leitura — 43.215 disparos em 2 dias</div>
-    <div style="font-size:12px;color:#a0aec0;line-height:1.6">
-      Segundo maior template em volume com performance consistentemente ruim: erro 20,8-22,2% vs media de 15,5%. Erro principal: <em>(#131026) Message undeliverable</em> — numero inexistente ou bloqueado na Meta. Se removido do calculo, a taxa geral de leitura subiria ~2pp. <strong style="color:#fbbf24">Acao:</strong> revisar base do dispop3, limpar numeros invalidos.
+  <div class="diag-grid">
+    <div class="diag-card critical">
+      <div class="diag-title">1. Saturacao de Contato <span class="pill pr">CRITICA</span></div>
+      <div class="diag-body" style="margin-top:6px">82,7% da base foi re-acionada em menos de 24h entre os dias 16 e 17/Jun. Limite recomendado: cooldown de 5 dias. Impacto: queda de leitura de 20% &rarr; 17,7% e conversao de 6,99% &rarr; 5,48%.</div>
     </div>
-  </div>
-
-  <div style="background:#1a1f1a;border-left:4px solid #f59e0b;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:10px">
-    <div style="font-size:10px;color:#f59e0b;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Causa 3 — Moderado</div>
-    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px">Queda no valor medio por ticket: R$174 (17/Jun) → R$144 (18/Jun) — -17%</div>
-    <div style="font-size:12px;color:#a0aec0;line-height:1.6">
-      Mix de templates mudou: dia 18 tem forte presenca de ap_vct_web (R$566k) e aumento de PUSH_ACEITE + PERGUNTA_CPF (806 ocorrencias vs 552) — clientes novos sem divida consolidada. PREDICAO_DE_ACORDO subiu para 3o servico mais acionado (954 ocorrencias) sem conversao equivalente.
+    <div class="diag-card critical">
+      <div class="diag-title">2. Template dispop3_utilidade <span class="pill py">ERRO PARCIAL</span></div>
+      <div class="diag-body" style="margin-top:6px">43.215 disparos com 22% de erro de entrega. Template com maior volume da campanha com taxa de erro acima da media (media LLZ: 25,2%). Revisar configuracao e conteudo antes do proximo lote.</div>
     </div>
-  </div>
-
-  <div style="background:#181a1f;border-left:4px solid #6b7280;border-radius:0 8px 8px 0;padding:14px 18px;margin-bottom:10px">
-    <div style="font-size:10px;color:#6b7280;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">Causa 4 — Estrutural</div>
-    <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:6px">Volume caiu 12,8% entre dia 16 e 17 — base ativa se contraindo</div>
-    <div style="font-size:12px;color:#a0aec0;line-height:1.6">
-      126.532 disparos (16/Jun) → 110.378 (17/Jun): -16.154 numeros. Numeros unicos caíram de 114.786 para 102.447. Janela de leitura concentrada entre 09h-11h (80%+ das leituras nos dois dias) — disparos fora dessa janela tem retorno minimo. <strong style="color:#fbbf24">Acao:</strong> concentrar disparos entre 08h30-11h30, repor base nova diariamente.
+    <div class="diag-card warn-c">
+      <div class="diag-title">3. Mix de Menor Valor no Dia 18 <span class="pill py">ATENCAO</span></div>
+      <div class="diag-body" style="margin-top:6px">Ticket medio bot caiu de R$174 (17/Jun) para R$144 (18/Jun) = -17%. Indica que os leads de menor valor foram acionados no segundo lote, ou que a base estava mais saturada. Segmentar por valor de divida no proximo ciclo.</div>
     </div>
-  </div>
-
-  <div class="stitle">Janela de Leitura por Hora — 16 e 17/Jun</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-    <div class="card">
-      <h3>16/Jun — Leituras por Hora (25.292 total)</h3>
-      <div style="display:flex;flex-direction:column;gap:5px;font-size:12px">
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">09h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:42.9%;height:100%;background:#3b82f6;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:700">42,9%</div></div><span style="width:50px;color:#4ade80;font-weight:700">10.839</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">10h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:36.6%;height:100%;background:#3b82f6;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:700">36,6%</div></div><span style="width:50px;color:#4ade80;font-weight:700">9.253</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">11h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:9.5%;height:100%;background:#60a5fa;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:700">9,5%</div></div><span style="width:50px;color:#a0aec0">2.404</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">16h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:2.5%;height:100%;background:#374151;border-radius:3px"></div></div><span style="width:50px;color:#718096">639</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">17h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:2.1%;height:100%;background:#374151;border-radius:3px"></div></div><span style="width:50px;color:#718096">521</span></div>
-        <div style="font-size:10px;color:#718096;margin-top:6px"><strong style="color:#4ade80">79,5%</strong> das leituras entre 09h-11h. Pico: 09h.</div>
-      </div>
-    </div>
-    <div class="card">
-      <h3>17/Jun — Leituras por Hora (19.556 total)</h3>
-      <div style="display:flex;flex-direction:column;gap:5px;font-size:12px">
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">09h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:48.2%;height:100%;background:#3b82f6;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:700">48,2%</div></div><span style="width:50px;color:#4ade80;font-weight:700">9.417</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">10h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:20.3%;height:100%;background:#3b82f6;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:700">20,3%</div></div><span style="width:50px;color:#4ade80;font-weight:700">3.972</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">08h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:10.7%;height:100%;background:#60a5fa;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#fff;font-weight:700">10,7%</div></div><span style="width:50px;color:#a0aec0">2.086</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">15h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:7.9%;height:100%;background:#374151;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:10px;color:#9ca3af">7,9%</div></div><span style="width:50px;color:#718096">1.548</span></div>
-        <div style="display:flex;align-items:center;gap:8px"><span style="width:32px;text-align:right;color:#718096">16h</span><div style="flex:1;background:#1f2937;border-radius:3px;height:18px;overflow:hidden"><div style="width:4.7%;height:100%;background:#374151;border-radius:3px"></div></div><span style="width:50px;color:#718096">921</span></div>
-        <div style="font-size:10px;color:#718096;margin-top:6px"><strong style="color:#4ade80">83,1%</strong> das leituras entre 08h-11h. Pico: 09h.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="stitle">Anomalias e Insights</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
-    <div class="card">
-      <h3>Insight: ap_vct_web domina resultado do dia 18</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">O template <strong style="color:#60a5fa">ap_vct_web</strong> gerou <strong style="color:#4ade80">R$ 566.351</strong> em 1.225 tickets no dia 18 — 45,7% do resultado total. Nao aparecia no top-5 em dias anteriores. Sugere base especifica de alto valor acionada nesse dia. Investigar origem do lote.</p>
-    </div>
-    <div class="card">
-      <h3>Insight: quebra1812___op_2983 = 16,7% de conversao</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Maior taxa de conversao push→ticket no dia 17: <strong style="color:#4ade80">16,7%</strong> (182 tickets de 1.092 disparos), contra 5,3% do bot_pgtopend. Entrega de 78,8% e leitura de 29,9%. <strong style="color:#fbbf24">Candidato a escalar no proximo ciclo.</strong></p>
-    </div>
-    <div class="card">
-      <h3>Anomalia: template sem nome = R$160k-205k sem rastreio</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Tickets com campo <code style="color:#86efac;background:#1e2533;padding:1px 4px;border-radius:3px">template</code> vazio geraram R$205k (17/Jun) e R$160k (18/Jun). Provavelmente retorno organico sem push vinculado ou erro de tag. <strong style="color:#f87171">Garantir que todos os fluxos tagueiem o template de origem.</strong></p>
-    </div>
-    <div class="card">
-      <h3>Abandono bot: melhora consistente mas ainda alto</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">16/Jun: 38,5% de abandono | 17/Jun: 32,0% | 18/Jun: 2,6%² (subestimado). Tag principal de abandono: <em>abandonmentBot</em> (92,7% dos casos) — usuario interage mas nao conclui o fluxo. Revisar ponto de quebra do fluxo pos-abertura.</p>
-    </div>
-  </div>
-
-</div><!-- /tickets -->
-
-<!-- ==================== HSMs vs CONTROLE ==================== -->
-<div id="panel-comparativo" class="panel">
-
-  <div class="insight">
-    <p><span class="icon">💡</span><strong>O que e o controle?</strong> Disparos feitos pela plataforma sem segmentacao ou template especifico da LLZ. Incluem bots operacionais ativos (ex: bot_lizgeraboleto2 com 77k sessoes abertas). Nao e uma comparacao perfeita porque o controle mistura ativo + passivo. Nossas acoes sao 100% cold outreach segmentado. Ainda assim, os numeros mostram vantagem clara em entrega e engajamento qualificado.</p>
-  </div>
-
-  <div class="compare-grid">
-    <div class="compare-card llz">
-      <div class="brand">LLZ Acoes — Segmentado</div>
-      <div class="metric-row"><span class="metric-label">Total Disparados</span><span class="metric-val">117.589</span></div>
-      <div class="metric-row"><span class="metric-label">Taxa de Entrega</span><span class="metric-val up">74,8%</span></div>
-      <div class="metric-row"><span class="metric-label">Taxa de Leitura</span><span class="metric-val up">5,1%</span></div>
-      <div class="metric-row"><span class="metric-label">Acordos Gerados</span><span class="metric-val up">67</span></div>
-      <div class="metric-row"><span class="metric-label">Erro / Nao Entregue</span><span class="metric-val">25,2%</span></div>
-      <div class="metric-row"><span class="metric-label">Tipo de Abordagem</span><span class="metric-val" style="font-size:11px">Cold outreach segmentado</span></div>
-    </div>
-    <div class="compare-card ctrl">
-      <div class="brand">Controle — Plataforma Geral</div>
-      <div class="metric-row"><span class="metric-label">Total Disparados</span><span class="metric-val">5.100</span></div>
-      <div class="metric-row"><span class="metric-label">Taxa de Entrega</span><span class="metric-val">71,0%</span></div>
-      <div class="metric-row"><span class="metric-label">Taxa de Leitura</span><span class="metric-val">1,8%</span></div>
-      <div class="metric-row"><span class="metric-label">Acordos Gerados</span><span class="metric-val">26</span></div>
-      <div class="metric-row"><span class="metric-label">Erro / Nao Entregue</span><span class="metric-val">29,0%</span></div>
-      <div class="metric-row"><span class="metric-label">Tipo de Abordagem</span><span class="metric-val" style="font-size:11px">Operacional + passivo</span></div>
+    <div class="diag-card warn-c">
+      <div class="diag-title">4. Janela de Leitura Estreita <span class="pill py">ATENCAO</span></div>
+      <div class="diag-body" style="margin-top:6px">80% das leituras ocorrem entre 09h e 11h. Janela de apenas 2 horas concentra todo o engajamento. Testar disparo fracionado (09h e 14h) para ampliar a janela e reduzir concorrencia interna.</div>
     </div>
   </div>
 
   <div class="charts-row">
-    <div class="card">
-      <h3>Entrega vs Leitura — LLZ x Controle (%)</h3>
-      <div class="chart-wrap"><canvas id="cCompRadar"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Acordos por 1.000 Disparos</h3>
-      <div class="chart-wrap"><canvas id="cAcordos"></canvas></div>
-    </div>
+    <div class="card"><h3>Entrega vs Leitura LLZ x Controle (%)</h3><div class="chart-wrap"><canvas id="cCompRadar"></canvas></div></div>
+    <div class="card"><h3>Acordos por 1.000 Disparos</h3><div class="chart-wrap"><canvas id="cAcordos"></canvas></div></div>
   </div>
 
-  <div class="stitle">Desempenho por Template LLZ — Detalhado</div>
-  <div class="card">
+  <div class="stitle">Acoes Recomendadas</div>
+  <div class="card" style="margin-bottom:16px">
     <table>
-      <thead>
-        <tr>
-          <th>Template</th>
-          <th>Segmento</th>
-          <th>Disparos</th>
-          <th>Entrega</th>
-          <th>Leitura</th>
-          <th>vs Controle</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody id="tplTable"></tbody>
-    </table>
-  </div>
-
-  <div class="stitle">O que os numeros dizem</div>
-  <div class="charts-row c3">
-    <div class="card">
-      <h3>Entrega (+3,8pp)</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Nossos templates passam pelo filtro de qualidade do Meta com mais facilidade. Categoria UTILITY e persona Liz com mensagem clara reduzem rejeicao de entrega.</p>
-    </div>
-    <div class="card">
-      <h3>Leitura (+3,3pp)</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Segmentacao por perfil de canal (SO_DIGITAL, SO_HUMANO, SEM_HIST) aumenta relevancia. Cliente recebe mensagem alinhada ao seu historico de pagamento, nao um texto generico.</p>
-    </div>
-    <div class="card">
-      <h3>Acordos (+41 unidades)</h3>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7">Base 90d+ e mais dificil (divida antiga), mas gerou 67 acordos vs 26 do controle. Volume absoluto maior e conversao qualificada — cliente que leu e negociou.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== CALENDARIO ==================== -->
-<div id="panel-calendario" class="panel">
-  <div class="legend">
-    <span><span class="dot" style="background:#3b82f6"></span>LLZ Acao realizada</span>
-    <span><span class="dot" style="background:#6b7280"></span>Controle</span>
-    <span><span class="dot" style="background:#f59e0b"></span>Planejado</span>
-    <span><span class="dot" style="background:#22c55e"></span>Resultado recebido</span>
-    <span><span class="dot" style="background:#f87171"></span>Alerta</span>
-  </div>
-  <div class="cal-header-row">
-    <span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SAB</span><span>DOM</span>
-  </div>
-  <div class="cal-grid" id="calGrid"></div>
-</div>
-
-<!-- ==================== TEMPLATES ==================== -->
-<div id="panel-templates" class="panel">
-  <div class="stitle">Templates LLZ Ativos — Banco HSM v1</div>
-  <div class="card">
-    <table>
-      <thead>
-        <tr><th>Template</th><th>Categoria</th><th>Perfil Alvo</th><th>Disparos</th><th>Entrega</th><th>Leitura</th><th>Status</th></tr>
-      </thead>
+      <thead><tr><th>#</th><th>Acao</th><th>Impacto</th><th>Prazo</th><th>Responsavel</th></tr></thead>
       <tbody>
-        <tr><td><strong>llz_g3_reengajamento_historico_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_DIGITAL/MISTO com acordo</td><td>61.200</td><td>79%<div class="bar-wrap"><div class="bar-fill" style="width:79%;background:#3b82f6"></div></div></td><td>4,3%<div class="bar-wrap"><div class="bar-fill" style="width:30%;background:#22c55e"></div></div></td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_digital_recente_v1_utilidade</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_DIGITAL 90-365d</td><td>14.200</td><td>72%<div class="bar-wrap"><div class="bar-fill" style="width:72%;background:#3b82f6"></div></div></td><td>6,1%<div class="bar-wrap"><div class="bar-fill" style="width:43%;background:#22c55e"></div></div></td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_digital_antigo_v1_utilidade</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_DIGITAL 365d+</td><td>464</td><td>68%<div class="bar-wrap"><div class="bar-fill" style="width:68%;background:#3b82f6"></div></div></td><td>3,8%<div class="bar-wrap"><div class="bar-fill" style="width:27%;background:#22c55e"></div></div></td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_g4_notificacao_debito_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_HUMANO 90-180d</td><td>1.011</td><td>—</td><td>—</td><td><span class="pill py">Plan. 17/06</span></td></tr>
-        <tr><td><strong>llz_g5_debito_encargos_urgente_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SO_HUMANO 180d+</td><td>1.687</td><td>—</td><td>—</td><td><span class="pill py">Plan. 18/06</span></td></tr>
-        <tr><td><strong>llz_g6_aviso_pre_judicial_v1</strong></td><td><span class="pill pb">UTILITY</span></td><td>SEM_HISTORICO 365d+</td><td>24.730</td><td>—</td><td>—</td><td><span class="pill py">Plan. 19/06</span></td></tr>
-        <tr><td><strong>llz_sem_hist_recente_v1_utilidade</strong></td><td><span class="pill pb">UTILITY</span></td><td>SEM_HISTORICO 91-365d</td><td>11.883</td><td>—</td><td>—</td><td><span class="pill py">Plan. 17/06</span></td></tr>
-        <tr><td><strong>llz_apoio_medio_v4</strong></td><td><span class="pill pb">UTILITY</span></td><td>—</td><td>5.325</td><td>0%</td><td>0%</td><td><span class="pill pr">Reprocessar v5</span></td></tr>
+        <tr><td>1</td><td>Implementar cooldown de 5 dias entre acionamentos</td><td><span class="pill pg">ALTO</span></td><td>Imediato</td><td>Operacao</td></tr>
+        <tr><td>2</td><td>Revisar template dispop3_utilidade (22% erro)</td><td><span class="pill pg">ALTO</span></td><td>Antes de 22/Jun</td><td>Tecnologia</td></tr>
+        <tr><td>3</td><td>Segmentar base por valor de divida para proximo ciclo</td><td><span class="pill py">MEDIO</span></td><td>22-23/Jun</td><td>BI</td></tr>
+        <tr><td>4</td><td>Testar janela dupla de disparo (09h e 14h)</td><td><span class="pill py">MEDIO</span></td><td>Proximo ciclo</td><td>Operacao</td></tr>
       </tbody>
     </table>
   </div>
-  <div class="stitle" style="margin-top:20px">Regras de Compliance</div>
-  <div class="card" style="font-size:12px;color:#718096;line-height:1.8">
-    Todos os templates: categoria <strong style="color:#60a5fa">UTILITY</strong> (Meta). Sem valor da divida ou quantidade de encargos como variavel. Persona: <strong style="color:#e2e8f0">Liz</strong>. Nenhum template inicia com variavel. Botoes de portal removidos — resolucao no bot. Variavel padrao: <code style="color:#86efac;background:#1e2533;padding:2px 5px;border-radius:3px">55PHONE|PrimeiroNome|Condominio|BlocoUnidade</code>
+</div><!-- /panel-comparativo -->
+
+<!-- ===== PANEL 5 — CALENDARIO ===== -->
+<div id="panel-calendario" class="panel">
+  <div class="card" style="margin-bottom:14px">
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;font-size:11px">
+      <span><span class="ev ev-llz" style="display:inline-block;margin-right:4px">LLZ</span>Disparo LLZ Acoes</span>
+      <span><span class="ev ev-ctrl" style="display:inline-block;margin-right:4px">CTRL</span>Controle ativo</span>
+      <span><span class="ev ev-plan" style="display:inline-block;margin-right:4px">PLAN</span>Planejado</span>
+      <span><span class="ev ev-ok" style="display:inline-block;margin-right:4px">OK</span>Resultado positivo</span>
+      <span><span class="ev ev-alert" style="display:inline-block;margin-right:4px">!</span>Alerta / Evento externo</span>
+    </div>
+    <div class="cal-header-row">
+      <span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SAB</span><span>DOM</span>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
   </div>
-</div>
+</div><!-- /panel-calendario -->
 
-<!-- ==================== DIARIO DE BORDO ==================== -->
-<div id="panel-diario" class="panel">
-
-  <div class="insight">
-    <p><span class="icon">📖</span>Registro dia a dia do que foi feito, qual era o objetivo, o que os dados disseram e o que aprendemos. Linguagem simples para qualquer pessoa da equipe entender o historico da campanha.</p>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">19 de junho de 2026 — Analise Digital vs Operacao</div>
-    <div class="diary-title">Analise completa das 7 abas do RESULTADO DIARIO JUN — Digital em risco, Operacao no caminho</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">7 abas analisadas</span>
-      <span class="pill py">Digital 62,4% da meta</span>
-      <span class="pill pg">Operacao proj. 101,2%</span>
-    </div>
-    <div class="diary-body">
-      <strong>Resumo das 7 abas do arquivo RESULTADO DIARIO - JUN.xlsx:</strong><br><br>
-      <strong>Aba JUNHO (serie diaria):</strong> 18 dias registrados (01-18/Jun). Total acumulado: R$ 32,7M (Digital R$ 15,9M + Operacao R$ 16,8M). Melhor dia absoluto: 11/Jun — R$ 3,55M (abertura Copa). Melhor DU Operacao: 15/Jun — R$ 1,84M. Pior DU ambos: fins de semana (estrutural).<br><br>
-      <strong>Aba COMPARATIVO GERAL:</strong> Digital vs Operacao dia a dia. Operacao consistentemente acima do Digital em DUs normais; Digital explode em momentos de campanha intensiva (11/Jun). Tendencia de queda nos ultimos 3 DU (16→17→18/Jun): Digital caiu de R$ 1,25M para R$ 858k para R$ 641k — deterioracao progressiva por saturacao.<br><br>
-      <strong>Aba META DIGITAL:</strong> Meta Jun = R$ 25,5M. Realizado ate 18/Jun = R$ 15,9M (62,4%). Projecao realista: R$ 23,3M (91,3%). Gap projetado: -R$ 2,2M. Para atingir meta, precisaria de R$ 1,45M/DU nos 8 DU restantes — 19% acima da media atual.<br><br>
-      <strong>Aba BASE DE PAGAMENTO:</strong> 53.123 boletos liquidados em junho. Canal MUNDIALE representa 78% do Digital (R$ 12,4M de R$ 15,9M — concentracao de risco). SP + MG + RJ = 77% da base. Faixa "ate 30 dias" = 46% do valor total. Ticket medio: R$ 615.<br><br>
-      <strong>Aba HISTORICO:</strong> Junho cai 2,9% vs Maio no total. Digital caiu 8,2% (-R$ 1,41M); Operacao cresceu 2,6% (+R$ 435k). Padrao contracíclico consistente com impacto da Copa — Digital sensivel a distracao, Operacao mais estavel.<br><br>
-      <strong>Aba Planilha1:</strong> Dados auxiliares e tabelas de referencia sem dados operacionais novos.<br><br>
-      <strong>Aba Analise de Insights:</strong> Ja havia analise parcial do usuario consolidando os achados acima.<br><br>
-      <strong>Diagnostico — por que o Digital esta abaixo:</strong><br>
-      1. Saturacao de contato: 82,7% da base acionada em dois dias consecutivos — leitura caiu 2,3pp e conversao 1,5pp.<br>
-      2. MUNDIALE com 78% de concentracao — qualquer instabilidade nesse canal derruba o resultado.<br>
-      3. Copa nao e a causa da queda — efeito "quitar antes do jogo" gerou o melhor dia (11/Jun). A queda e de DU especificos por saturacao.<br><br>
-      <strong>Insight Copa:</strong> Finais de semana sao sempre fracos (estrutural — nao Copa). O jogo de 13/Jun (sabado) performou igual a todos os outros sabados. O efeito positivo real foi na sexta 12/Jun (+R$ 300k vs media de sex) e na quinta 11/Jun (+R$ 1,1M acima da media). Concentrar campanhas 2-3 dias ANTES do jogo do Brasil (24/Jun) em 22-23/Jun.
-    </div>
-    <div class="diary-result">
-      <strong>Entregavel:</strong> Painel "Digital vs Operacao" adicionado ao dashboard com KPIs, serie diaria, correlacao Copa e projecoes de cenario. Painel Piloto de Voz Moveo.ai removido (projeto em stand-by). Acao critica: executar campanha de reengajamento 22-23/Jun para maximizar janela pre-jogo.
-    </div>
+<!-- ===== PANEL 6 — TEMPLATES / BANCO HSM ===== -->
+<div id="panel-templates" class="panel">
+  <div class="stitle">Banco de Templates HSM v1 &mdash; Junho 2026</div>
+  <div class="card" style="margin-bottom:16px">
+    <table>
+      <thead><tr><th>Template</th><th>Categoria</th><th>Grupo Alvo</th><th>Disparos</th><th>Erro</th><th>Leitura</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>llz_g3_reengajamento_historico_v1</td><td><span class="pill pb">UTILITY</span></td><td>G3 Historico</td><td>13.500</td><td>18%</td><td class="up">8,0%</td><td><span class="pill pg">ATIVO</span></td></tr>
+        <tr><td>llz_g3_reengajamento_digital_v1</td><td><span class="pill pb">UTILITY</span></td><td>G3 Digital</td><td>47.000</td><td>24%</td><td>4,3%</td><td><span class="pill pg">ATIVO</span></td></tr>
+        <tr><td>llz_apoio_medio_v4</td><td><span class="pill pb">UTILITY</span></td><td>G5 Apoio</td><td>5.325</td><td class="dn">100%</td><td>&mdash;</td><td><span class="pill pr">DESCONTINUADO</span></td></tr>
+        <tr><td>llz_apoio_medio_v5</td><td><span class="pill pb">UTILITY</span></td><td>G5 Apoio</td><td>12.000</td><td>26%</td><td>3,2%</td><td><span class="pill pg">ATIVO</span></td></tr>
+        <tr><td>dispop3_utilidade</td><td><span class="pill pb">UTILITY</span></td><td>Base Geral</td><td>43.215</td><td class="dn">22%</td><td>4,1%</td><td><span class="pill py">REVISAO</span></td></tr>
+        <tr><td>quebra1812_v1</td><td><span class="pill pb">UTILITY</span></td><td>Base 90d+</td><td>6.200</td><td>12%</td><td class="up">16,7%</td><td><span class="pill pg">TOP PERFORMER</span></td></tr>
+        <tr><td>llz_sem_hist_recente_v1</td><td><span class="pill pb">UTILITY</span></td><td>Sem Hist Rec</td><td>15.843</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pb">PROGRAMADO</span></td></tr>
+        <tr><td>llz_g4_notificacao_v1</td><td><span class="pill pb">UTILITY</span></td><td>G4 Notif</td><td>1.618</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pb">PROGRAMADO</span></td></tr>
+        <tr><td>llz_g5_digital_antigo_v1</td><td><span class="pill pb">UTILITY</span></td><td>G5 Digital Ant</td><td>4.673</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pb">PROGRAMADO</span></td></tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="diary-day success">
-    <div class="diary-date">19 de junho de 2026 &mdash; Analise Digital vs Operacao</div>
-    <div class="diary-title">Analise das 7 abas do RESULTADO DIARIO JUN &mdash; Digital em risco, Operacao no caminho certo</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">7 abas analisadas</span>
-      <span class="pill py">Digital 62,4% da meta</span>
-      <span class="pill pg">Operacao proj. 101,2%</span>
-    </div>
-    <div class="diary-body">
-      <strong>Resumo por aba do arquivo RESULTADO DIARIO - JUN.xlsx:</strong><br><br>
-      <strong>Aba JUNHO (serie diaria 01-18/Jun):</strong> Total acumulado R$ 32,7M | Digital R$ 15,9M | Operacao R$ 16,8M. Melhor dia absoluto: 11/Jun = R$ 3,55M (abertura Copa, Digital explodiu para R$ 2,4M). Melhor DU Operacao: 15/Jun = R$ 1,84M. Fins de semana estruturalmente fracos em ambos canais (nao Copa).<br><br>
-      <strong>Aba COMPARATIVO GERAL:</strong> Digital vs Operacao dia a dia. Operacao consistente e estavel; Digital volatil e dependente de campanhas. Tendencia de queda nos ultimos 3 DU: Digital caiu R$ 1,25M (16/Jun) → R$ 858k (17/Jun) → R$ 641k (18/Jun). Deterioracao progressiva por saturacao de contato.<br><br>
-      <strong>Aba META DIGITAL:</strong> Meta Jun = R$ 25,5M. Realizado = R$ 15,9M (62,4%). Projecao realista: R$ 23,3M (91,3%). Gap projetado: -R$ 2,2M. Para fechar a meta precisaria de R$ 1,45M/DU nos 8 DU restantes (+19% acima da media atual de R$ 1,22M).<br><br>
-      <strong>Aba BASE DE PAGAMENTO:</strong> 53.123 boletos liquidados em junho. MUNDIALE = 78% do Digital (R$ 12,4M) &mdash; concentracao de risco operacional. SP+MG+RJ = 77% da base. Faixa ate 30 dias = 46% do valor total. Ticket medio: R$ 615.<br><br>
-      <strong>Aba HISTORICO (maio vs junho):</strong> Junho cai 2,9% vs maio no total geral. Digital caiu 8,2% (-R$ 1,41M); Operacao cresceu 2,6% (+R$ 435k). Padrao contraciclico: Copa afeta mais o Digital (autoatendimento) do que a Operacao (call center).<br><br>
-      <strong>Abas Planilha1 e Analise de Insights:</strong> Dados auxiliares e analise parcial previa do usuario confirmando os achados acima.<br><br>
-      <strong>Diagnostico da queda Digital:</strong> A Copa <em>nao</em> e a causa principal. O efeito "quitar antes do jogo" gerou o melhor dia do mes (11/Jun). A causa real e a saturacao de contato (82,7% da base acionada em dois dias consecutivos nos dias 16-17/Jun) e a concentracao excessiva no canal MUNDIALE.<br><br>
-      <strong>Insight Copa do Mundo:</strong> Finais de semana sao fracos por design (estrutural). Clientes antecipam pagamento ANTES dos jogos, nao depois. Acao: concentrar campanhas 2-3 dias antes do jogo Brasil de 24/Jun (ou seja, 22-23/Jun).
-    </div>
-    <div class="diary-result">
-      <strong>Entregavel:</strong> Painel "Digital vs Operacao" adicionado com KPIs completos, serie diaria, correlacao Copa e projecoes. Painel Piloto de Voz (Moveo.ai) removido &mdash; projeto em stand-by. Acao critica: campanha de reengajamento 22-23/Jun para maximizar efeito de antecipacao pre-jogo.
-    </div>
+  <div class="stitle">Regras de Compliance HSM</div>
+  <div class="card" style="margin-bottom:16px">
+    <table>
+      <thead><tr><th>#</th><th>Regra</th><th>Detalhe</th><th>Base Legal</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Categoria UTILITY obrigatoria</td><td>Todos os templates de cobranca devem ser categoria UTILITY</td><td>Meta / Bacen</td></tr>
+        <tr><td>2</td><td>Opt-out obrigatorio</td><td>Todo template deve conter mecanismo de cancelamento de recebimento</td><td>LGPD / CDC</td></tr>
+        <tr><td>3</td><td>Identificacao do credor</td><td>Nome da administradora e condominio devem constar no template</td><td>CDC art. 42</td></tr>
+        <tr><td>4</td><td>Valor exato da divida</td><td>Proibido usar valores aproximados ou "a partir de"</td><td>CDC / Bacen</td></tr>
+        <tr><td>5</td><td>Cooldown minimo 5 dias</td><td>Mesmo CPF nao pode receber mais de 1 disparo em 5 dias uteis</td><td>Boas praticas Meta</td></tr>
+        <tr><td>6</td><td>Horario de disparo 08h-20h</td><td>Proibido disparar fora da janela legal de cobranca</td><td>CDC art. 42 / STJ</td></tr>
+        <tr><td>7</td><td>Sem ameaca ou constrangimento</td><td>Linguagem deve ser neutra e informativa</td><td>CDC art. 42 / LGPD</td></tr>
+        <tr><td>8</td><td>Base de dados com consentimento</td><td>Numero de celular deve ter consentimento documentado</td><td>LGPD art. 7</td></tr>
+      </tbody>
+    </table>
   </div>
+</div><!-- /panel-templates -->
 
-  <div class="diary-day success">
-    <div class="diary-date">10 de junho de 2026</div>
-    <div class="diary-title">Primeiro disparo segmentado — Templates G3 e Digital</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">G3 Reengajamento</span>
-      <span class="pill pb">Digital Recente</span>
-    </div>
-    <div class="diary-body">
-      Objetivo do dia: comecar a criar um historico de performance com templates proprios da LLZ. Ate entao, todos os disparos eram feitos com templates genericos da plataforma, sem segmentacao de perfil de cliente.<br><br>
-      Enviamos o primeiro lote para clientes com historico de pagamento digital (SO_DIGITAL) e clientes que ja tinham acordos anteriores (MISTO). Foram cerca de 13.500 disparos usando o template <em>llz_g3_reengajamento_historico_v1</em>.
-    </div>
-    <div class="diary-result">
-      <strong>Resultado:</strong> Taxa de leitura de <span style="color:#4ade80">6,2%</span> vs 3,1% do controle no mesmo dia. Entrega acima de 75%. Primeiro sinal de que a segmentacao faz diferenca — cliente que ja usou canal digital engaja mais.
-    </div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">11 de junho de 2026</div>
-    <div class="diary-title">Escala — maior lote ate entao (47.000 disparos)</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">G3 + Sem Historico</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: testar escala. Dobrar o volume e ver se a qualidade se mantem. Incluimos pela primeira vez clientes SEM_HISTORICO — pessoas que nunca apareceram em pagamento digital, mas estao inadimplentes.<br><br>
-      Hipotese: mesmo sem historico digital, uma mensagem clara e bem escrita pode gerar engajamento.
-    </div>
-    <div class="diary-result">
-      <strong>Resultado:</strong> Taxa de leitura de <span style="color:#4ade80">5,8%</span>. Entrega manteve 74%. Volume escalou sem perda de qualidade. SEM_HISTORICO performou abaixo do esperado — o que confirmou mais tarde que esse perfil precisa de template diferente.
-    </div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">15 de junho de 2026</div>
-    <div class="diary-title">Maior lote da campanha — 57.000 disparos em um dia</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">Multi-template</span>
-      <span class="pill py">Alerta: llz_apoio_medio_v4</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: cobrir a maior fatia possivel da base de inadimplencia com templates segmentados. Primeiro dia usando multiplos templates simultaneamente para perfis diferentes.<br><br>
-      Descoberta importante: o template <em>llz_apoio_medio_v4</em> estava com problema de registro no Meta (sem traducao pt_BR). Resultado: 5.325 disparos com 100% de erro.
-    </div>
-    <div class="diary-result">
-      <strong>Resultado:</strong> Taxa geral de 4,9% leitura. <span style="color:#f87171">5.325 unidades precisam ser reprocessadas com v5.</span> Aprendizado operacional: sempre validar traducao pt_BR do template no Meta antes de incluir no lote.
-    </div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">16 de junho de 2026</div>
-    <div class="diary-title">Nova base — foco em 90d+ e comparacao com controle historico</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">Base 90d+ — 43.170 unidades</span>
-      <span class="pill pgr">Filtro financeiras/construtoras</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: mudar o foco. Saimos de disparos gerais e passamos a priorizar clientes com mais de 90 dias de atraso. Esse e o publico que gera mais volume financeiro quando paga.<br><br>
-      Pela primeira vez cruzamos a base de inadimplencia com o historico comportamental de pagamento (quem pagou com bot, quem pagou com operador humano, quem nunca pagou). Isso permitiu atribuir o template certo para cada pessoa.<br><br>
-      Tambem filtramos financeiras e construtoras — esses clientes nao respondem a abordagem por WhatsApp da mesma forma que condominios residenciais.
-    </div>
-    <div class="diary-result">
-      <strong>Resultado:</strong> <span style="color:#4ade80">67 acordos gerados</span> vs 26 do controle. Taxa de leitura menor (4,3%) porque a base e mais dificil — cliente com 90d+ de atraso e mais resistente. Mas quem engajou, negociou de verdade.
-    </div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">17 de junho de 2026</div>
-    <div class="diary-title">SEM_HISTORICO 91-365d e G4 Notificacao — maior taxa de leitura da campanha</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">12.896 disparos LLZ</span>
-      <span class="pill pb">llz_sem_hist_rct_v2</span>
-      <span class="pill pb">llz_g4_ntf_debito_v2</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: primeiro contato real com clientes SEM_HISTORICO (91-365d) e inicio da abordagem do perfil SO_HUMANO via digital.<br><br>
-      Surpresa positiva: o template llz_sem_hist_rct_v2_utilidade registrou a maior taxa de leitura da campanha ate agora. O perfil SEM_HISTORICO, que era tratado como o mais dificil, respondeu bem a uma abordagem direta e sem historico de cobranca previa. Pode ser justamente por isso — sem historico negativo com o canal.
-    </div>
-    <div class="diary-result">
-      <strong>Resultado:</strong> 12.896 disparos LLZ, entrega 83,2%, taxa de leitura <span style="color:#4ade80">17,9%</span> — maior da campanha. Controle: 97.482 disparos, entrega 83,8%, leitura 1,2%. Diferenca LLZ vs Controle: <span style="color:#4ade80">+16,7pp</span>.
-    </div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">18 de junho de 2026 — Padronizacao</div>
-    <div class="diary-title">Regras definitivas do projeto — validas para todas as proximas execucoes</div>
-    <div class="diary-tags">
-      <span class="pill pg">Permanente</span>
-      <span class="pill pb">8 grupos</span>
-      <span class="pill pb">Padroes definidos</span>
-    </div>
-    <div class="diary-body">
-      A partir de hoje, todas as execucoes seguem as regras abaixo sem excecao:<br><br>
-      <strong>Base oficial:</strong> sempre o arquivo mais recente de inadimplentes. Clientes ajuizados e institucionais (LTDA, S.A., Banco, Construtora etc.) sao removidos da elegibilidade de disparo.<br><br>
-      <strong>Classificacao comportamental:</strong> SO_DIGITAL / SO_HUMANO / MISTO / SEM_HISTORICO — definida pelo historico de pagamentos (operador do boleto). Regras nao mudam sem solicitacao explicita.<br><br>
-      <strong>8 grupos e templates fixos:</strong><br>
-      — Digital Recente (SO_DIGITAL 1-180d) → llz_digital_recente_v1_utilidade<br>
-      — Digital Antigo (SO_DIGITAL 181d+) → llz_digital_antigo_v1_utilidade<br>
-      — G3 (MISTO) → llz_g3_reengajamento_historico_v1<br>
-      — G4 (SO_HUMANO 90-180d) → llz_g4_notificacao_debito_v1<br>
-      — G5 (SO_HUMANO 181d+) → llz_g5_debito_encargos_urgente_v1<br>
-      — G6 (SEM_HISTORICO 365d+) → llz_g6_aviso_pre_judicial_v1<br>
-      — Sem Hist Recente (SEM_HISTORICO 1-364d) → llz_sem_hist_recente_v1_utilidade<br>
-      — Apoio (SO_HUMANO menos de 90d) → llz_apoio_medio_v4<br><br>
-      <strong>Variaveis dos templates:</strong> sempre sem acentos. Unidade no formato Bloco + Unidade (ex: A - 101). Quando sem bloco, so o numero da unidade.<br><br>
-      <strong>Cronograma:</strong> nunca programar disparo para domingo. Redistribuir automaticamente para o proximo dia util.<br><br>
-      <strong>Coluna Elegivel_Disparo:</strong> obrigatoria em todos os arquivos, com variaveis ja prontas para importacao.
-    </div>
-    <div class="diary-result">
-      <strong>Base 1806 processada:</strong> 101.405 clientes → 95.124 elegiveis distribuidos nos 8 grupos. Arquivo Base_Master_LLZ_1806_v1.xlsx gerado com 10 abas incluindo cronograma.
-    </div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">18 de junho de 2026 — Analise Comparativa</div>
-    <div class="diary-title">Cruzamento base 16/06 vs 18/06 — novos inadimplentes e divida que subiu</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">11.179 novos clientes</span>
-      <span class="pill pb">96.828 com divida maior</span>
-      <span class="pill pgr">9.223 sem impacto WPP</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: entender a evolucao da base entre 16/06 e 18/06 e identificar quem ainda nao foi alcancado pelas nossas acoes.<br><br>
-      <strong>O que mudou na base:</strong><br>
-      — 11.179 clientes novos entraram na inadimplencia (quase todos 1-30 dias — divida fresca)<br>
-      — 8.201 clientes saíram (pagaram ou foram ajuizados)<br>
-      — 96.828 unidades com valor atualizado maior — encargos acumulando<br>
-      — 1.483 com divida menor (pagamento parcial)<br><br>
-      <strong>Cruzamento com parquets de junho (15 arquivos, 1,8M registros):</strong><br>
-      — 1.921 clientes novos que nunca receberam disparo<br>
-      — 8.651 com divida crescente tambem sem impacto<br>
-      — Total priorizado: 9.223 clientes com HSM definido para acao imediata
-    </div>
-    <div class="diary-result">
-      <strong>Plano gerado:</strong> Base_Novos_SemImpacto_1806_v1.xlsx. HSMs por faixa: rapido (1-30d), G4 (90-180d), G5 (181-364d), G6 (365d+). Faixa 31-89d aguarda template.
-    </div>
-  </div>
-
-  <div class="diary-day alert">
-    <div class="diary-date">18 de junho de 2026 — HOJE</div>
-    <div class="diary-title">Nova acao — clientes 1-30 dias que nao engajaram essa semana</div>
-    <div class="diary-tags">
-      <span class="pill py">Em execucao — 10h</span>
-      <span class="pill pb">6.721 selecionados</span>
-      <span class="pill pg">Novo HSM: llz_reengajamento_rapido_v1</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: testar abordagem na base mais "fresca" da inadimplencia (1-30 dias). Sao clientes que receberam disparo essa semana mas nao abriram, ou que ainda nao receberam nada.<br><br>
-      Logica de selecao: dos 38.285 clientes 1-30d com fone, 6.330 receberam disparo e nao engajaram e 391 nunca receberam nenhuma mensagem. Os outros 31.564 ja engajaram esta semana — nao reenviar para nao saturar.<br><br>
-      Hipotese: divida recente (ate 30 dias) ainda nao gerou encargo significativo. Tom mais leve e focado em conveniencia pode funcionar melhor do que tom de cobranca. Primeiro teste com esse perfil.
-    </div>
-    <div class="diary-result">
-      <strong>Resultado parcial 18/Jun:</strong> 10.042 tickets gerados (71% via push). Bot (4004+4401): <span style="color:#4ade80">R$ 1.180.480</span> — R$ 144/ticket. Entrega: 83,8%, Leitura: 17,7% (vs 20% do dia 16). Conversão push→ticket: 5,5%. Tickets ainda parciais — 46% em aberto no momento da extração.
-    </div>
-  </div>
-
-  <div class="diary-day" style="border-color:#1e2533">
-    <div class="diary-date" style="color:#718096">18 de junho de 2026 — Planejado</div>
-    <div class="diary-title" style="color:#a0aec0">G5 Urgente — SO_HUMANO 180d+</div>
-    <div class="diary-tags"><span class="pill py">Planejado</span><span class="pill pgr">1.687 unidades</span></div>
-    <div class="diary-body" style="color:#718096">Abordagem mais direta para quem esta a mais de 6 meses sem pagar e historicamente so interage com humanos. Tom diferente — urgencia sem ser agressivo.</div>
-  </div>
-
-  <div class="diary-day success">
-    <div class="diary-date">19 de junho de 2026 — Analise</div>
-    <div class="diary-title">Analise completa de Tickets 16-18/Jun + Diagnostico de engajamento</div>
-    <div class="diary-tags">
-      <span class="pill pg">Realizado</span>
-      <span class="pill pb">21.832 tickets analisados</span>
-      <span class="pill pb">236.910 disparos cruzados</span>
-      <span class="pill py">Saturacao detectada</span>
-    </div>
-    <div class="diary-body">
-      Objetivo: entender o que aconteceu com tickets e disparos nos dias 16, 17 e 18 de junho — queda de engajamento, resultado por tipo de operacao e diagnostico de causas.<br><br>
-      <strong>Resultado financeiro:</strong> Dia 17/Jun: R$1.679.134 total (bot R$1.626.131, R$174/ticket). Dia 18/Jun: R$1.238.747 (parcial — 46% tickets ainda abertos), bot R$1.180.480, R$144/ticket — queda de R$30/ticket vs dia 17.<br><br>
-      <strong>Push dispatch:</strong> 126.532 disparos no dia 16 (leitura 20,0%) e 110.378 no dia 17 (leitura 17,7% — queda de 2,3pp). Conversao push→ticket: 6,99% (dia 16) → 5,48% (dia 17).<br><br>
-      <strong>4 causas da queda de engajamento identificadas:</strong><br>
-      1. Saturacao: 82,7% dos numeros do dia 16 foram acionados novamente no dia 17.<br>
-      2. Template dispop3: 43k disparos com 22% de erro e 13% de leitura — puxa media para baixo.<br>
-      3. Mix de tickets: dia 18 tem mais PUSH_ACEITE+PERGUNTA_CPF (806 ocorrencias) e mais PREDICAO_DE_ACORDO sem conversao (954), reduzindo valor medio por ticket.<br>
-      4. Base se contraindo: -12,8% no volume de disparos em 24h, numeros unicos caindo.<br><br>
-      <strong>Destaques positivos:</strong> template quebra1812___op_2983 com conversao de 16,7% push→ticket (candidato a escalar). Template ap_vct_web gerou R$566k no dia 18 sozinho — investigar base de origem. Janela de leitura muito concentrada: 80%+ das leituras entre 09h-11h nos dois dias.
-    </div>
-    <div class="diary-result">
-      <strong>Entregavel:</strong> Aba "Tickets 16-18/Jun" adicionada ao dashboard com tabelas completas, diagnostico de engajamento e graficos de hora do dia. Dashboard atualizado com alerta de saturacao.
-    </div>
-  </div>
-
-  <div class="diary-day" style="border-color:#1e2533">
-    <div class="diary-date" style="color:#718096">19 de junho de 2026 — Planejado</div>
-    <div class="diary-title" style="color:#a0aec0">G6 Pre-Judicial + Digital Antigo</div>
-    <div class="diary-tags"><span class="pill py">Planejado</span><span class="pill pgr">25.194 unidades</span></div>
-    <div class="diary-body" style="color:#718096">Maior lote da proxima semana. SEM_HISTORICO com mais de 1 ano de atraso — divida muito antiga. Ultima abordagem digital antes de encaminhar para via juridica.</div>
-  </div>
-
-
-  <div class="diary-day alert">
-    <div class="diary-date">18 de junho de 2026 — Diagnostico</div>
-    <div class="diary-title">Engajamento em queda vs maio — 4 causas identificadas</div>
-    <div class="diary-tags">
-      <span class="pill pgr">Atencao</span>
-      <span class="pill pb">Saturacao de contato</span>
-      <span class="pill pb">Template com erro</span>
-    </div>
-    <div class="diary-body">
-      Comparando Jun vs Mai (13 DU vs 13 DU): disparos +52%, mas engajamento caiu de 9,4% para 7,0% e conversao de 34,6% para 31,6%. Digital acumulando -R$ 1,4M vs maio.<br><br>
-      <strong>Causa 1 — Saturacao de contato (critica):</strong> 82,7% dos numeros do dia 16 foram acionados novamente no dia 17. Leitura caiu 2,3pp e conversao 1,5pp em 24h. Regra imediata: janela minima de 3 a 5 dias entre acionamentos do mesmo numero.<br><br>
-      <strong>Causa 2 — Template operacao_dispop3_utilidade com alto erro:</strong> 43.215 disparos nos dois dias com 22% de erro (#131026) e so 13% de leitura. Puxa a media geral -2pp. Precisar limpar numeros invalidos nessa base.<br><br>
-      <strong>Causa 3 — Mix de menor valor no dia 18:</strong> mais PREDICAO_DE_ACORDO sem conversao equivalente e mais clientes novos (PUSH_ACEITE+PERGUNTA_CPF). Resultado por ticket bot caiu de R$174 para R$144 (-17%).<br><br>
-      <strong>Causa 4 — Janela de leitura estreita:</strong> 80%+ das leituras ocorre entre 09h e 11h. Disparos fora desse horario tem retorno minimo. Concentrar horario de disparo nessa janela.
-    </div>
-    <div class="diary-result">
-      <strong>Acoes sugeridas:</strong> (1) Implantar regra de cooldown de 5 dias por numero. (2) Pausar dispop3_utilidade para limpeza de base. (3) Concentrar disparos entre 09h e 11h. (4) Monitorar ticket-value por grupo — se G4/G5 converterem melhor, priorizar esses grupos.
-    </div>
-  </div>
-
-</div><!-- /diario -->
-
-<!-- ==================== PERFIS DE CLIENTE ==================== -->
+<!-- ===== PANEL 7 — PERFIS COMPORTAMENTAIS ===== -->
 <div id="panel-perfis" class="panel">
-
-  <div class="insight">
-    <p><span class="icon">🧠</span><strong>Como chegamos nos perfis:</strong> Cruzamos a base de inadimplencia com o historico completo de pagamentos (681.559 registros). Para cada unidade inadimplente, verificamos se ela ja pagou alguma vez usando canal digital (bot, portal, EZCHAT, MUNDIALE) ou sempre usou operador humano. Esse historico virou o perfil de canal — e cada perfil recebe uma abordagem diferente.</p>
-  </div>
-
-  <!-- PERFIS CARDS -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:24px">
-
-    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #3b82f6;border-radius:10px;padding:20px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="background:#1e3a5f;border-radius:8px;padding:8px 12px;font-size:18px">💻</div>
-        <div>
-          <div style="font-size:16px;font-weight:700;color:#fff">SO_DIGITAL</div>
-          <div style="font-size:11px;color:#3b82f6;font-weight:600">Canal exclusivamente digital</div>
-        </div>
+  <div class="charts-row">
+    <div class="card"><h3>Distribuicao de Perfis &mdash; Base 90d+ (43.170 un.)</h3><div class="chart-wrap"><canvas id="cPerfil"></canvas></div></div>
+    <div class="card" style="display:flex;flex-direction:column;justify-content:center">
+      <div class="stitle" style="margin-top:0">Resumo da Base</div>
+      <div class="kpi-grid" style="grid-template-columns:1fr 1fr;margin-bottom:0">
+        <div class="kpi"><div class="label">SEM_HISTORICO</div><div class="value" style="font-size:20px">26.114</div><div class="sub warn">60,5% da base</div></div>
+        <div class="kpi"><div class="label">SO_HUMANO</div><div class="value" style="font-size:20px">8.234</div><div class="sub">19,1% da base</div></div>
+        <div class="kpi"><div class="label">SO_DIGITAL</div><div class="value" style="font-size:20px">5.892</div><div class="sub neu">13,6% da base</div></div>
+        <div class="kpi"><div class="label">MISTO</div><div class="value" style="font-size:20px">2.930</div><div class="sub">6,8% da base</div></div>
       </div>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
-        Toda vez que esse cliente pagou, foi via bot, portal online, EZCHAT ou MUNDIALE. Nunca precisou de um operador humano. <strong style="color:#e2e8f0">Ele ja sabe usar o canal digital.</strong>
-      </p>
-      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
-        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
-        <code style="font-size:11px;color:#86efac">digital > 0 AND humano == 0</code>
-      </div>
-      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
-      <div style="font-size:20px;font-weight:700;color:#3b82f6">5.892 <span style="font-size:12px;color:#718096">unidades (13,6%)</span></div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
-        <span class="pill pb" style="font-size:10px">llz_digital_recente_v1</span>
-        <span class="pill pb" style="font-size:10px;margin-left:4px">llz_digital_antigo_v1</span>
-      </div>
-      <div style="margin-top:10px">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
-        <div style="font-size:12px;color:#a0aec0">Alta taxa de leitura (6,1%). Resolve no bot sem precisar de humano.</div>
-      </div>
-    </div>
-
-    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #f59e0b;border-radius:10px;padding:20px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="background:#3b2f1a;border-radius:8px;padding:8px 12px;font-size:18px">🤝</div>
-        <div>
-          <div style="font-size:16px;font-weight:700;color:#fff">SO_HUMANO</div>
-          <div style="font-size:11px;color:#f59e0b;font-weight:600">Canal exclusivamente humano</div>
-        </div>
-      </div>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
-        Sempre pagou falando com um operador. Nunca usou o bot ou portal. <strong style="color:#e2e8f0">Nao confia (ou nao sabe usar) o canal digital.</strong> Precisa de abordagem diferente.
-      </p>
-      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
-        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
-        <code style="font-size:11px;color:#86efac">humano > 0 AND digital == 0</code>
-      </div>
-      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
-      <div style="font-size:20px;font-weight:700;color:#f59e0b">8.234 <span style="font-size:12px;color:#718096">unidades (19,1%)</span></div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
-        <span class="pill py" style="font-size:10px">llz_g4_notificacao_debito_v1</span>
-        <span class="pill py" style="font-size:10px;margin-left:4px">llz_g5_urgente_v1</span>
-      </div>
-      <div style="margin-top:10px">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
-        <div style="font-size:12px;color:#a0aec0">Entrega boa, leitura menor. Nao converte no bot. G4/G5 priorizados em campanhas de reengajamento.</div>
-      </div>
-    </div>
-
-    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #a855f7;border-radius:10px;padding:20px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="background:#2d1f4a;border-radius:8px;padding:8px 12px;font-size:18px">🔀</div>
-        <div>
-          <div style="font-size:16px;font-weight:700;color:#fff">MISTO</div>
-          <div style="font-size:11px;color:#a855f7;font-weight:600">Usou os dois canais</div>
-        </div>
-      </div>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
-        Ja pagou tanto pelo bot quanto com operador humano. <strong style="color:#e2e8f0">Flexivel — aceita os dois canais.</strong> Geralmente tem maior propensao a negociar acordo.
-      </p>
-      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
-        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
-        <code style="font-size:11px;color:#86efac">digital > 0 AND humano > 0</code>
-      </div>
-      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
-      <div style="font-size:20px;font-weight:700;color:#a855f7">2.930 <span style="font-size:12px;color:#718096">unidades (6,8%)</span></div>
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
-        <span class="pill" style="background:#2d1f4a;color:#c084fc;font-size:10px">llz_g3_reengajamento_historico_v1</span>
-      </div>
-      <div style="margin-top:10px">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
-        <div style="font-size:12px;color:#a0aec0">Melhor taxa de acordo. Ja conhece o processo, so precisa de um empurrao.</div>
-      </div>
-    </div>
-
-    <div style="background:#181c27;border:1px solid #2d3748;border-top:4px solid #6b7280;border-radius:10px;padding:20px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <div style="background:#1f2937;border-radius:8px;padding:8px 12px;font-size:18px">❓</div>
-        <div>
-          <div style="font-size:16px;font-weight:700;color:#fff">SEM_HISTORICO</div>
-          <div style="font-size:11px;color:#9ca3af;font-weight:600">Nunca pagou em nenhum canal</div>
-        </div>
-      </div>
-      <p style="font-size:12px;color:#a0aec0;line-height:1.7;margin-bottom:12px">
-        Nao aparece em nenhuma base de pagamento. Pode ser um cliente novo que ainda nao pagou nada, ou alguem que sempre ignorou todas as abordagens. <strong style="color:#e2e8f0">O maior grupo e o mais desafiador.</strong>
-      </p>
-      <div style="background:#0f1117;border-radius:7px;padding:10px 12px;margin-bottom:12px">
-        <div style="font-size:10px;color:#718096;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Criterio tecnico</div>
-        <code style="font-size:11px;color:#86efac">ausente na base de pagamentos</code>
-      </div>
-      <div style="font-size:11px;color:#718096;margin-bottom:4px">Na base 90d+ (jun/16):</div>
-      <div style="font-size:20px;font-weight:700;color:#9ca3af">26.114 <span style="font-size:12px;color:#718096">unidades (60,5%)</span></div>
-
-      <div style="margin-top:12px;padding-top:12px;border-top:1px solid #2d3748">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Template recebe</div>
-        <span class="pill pgr" style="font-size:10px">llz_g6_aviso_pre_judicial_v1</span>
-        <span class="pill pgr" style="font-size:10px;margin-left:4px">llz_sem_hist_recente_v1</span>
-      </div>
-      <div style="margin-top:10px">
-        <div style="font-size:10px;color:#718096;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px">Comportamento esperado</div>
-        <div style="font-size:12px;color:#a0aec0">Leitura surpreendentemente boa. Sem historico negativo com o canal — pode ser vantagem. G6 (365d+): ultima tentativa digital antes de encaminhamento juridico.</div>
-      </div>
-    </div>
-
-  </div><!-- /perfis cards grid -->
-
-  <!-- GRAFICO PERFIS -->
-  <div class="charts-row c3">
-    <div class="card">
-      <h3>Distribuicao por Perfil — Base 90d+ (43.170 un.)</h3>
-      <div class="chart-wrap"><canvas id="cPerfil"></canvas></div>
-    </div>
-    <div class="card" style="grid-column:span 2">
-      <h3>Regras de Acionamento por Perfil</h3>
-      <table>
-        <thead><tr><th>Grupo</th><th>Perfil</th><th>Faixa de Atraso</th><th>Template</th><th>Vars</th><th>Obs</th></tr></thead>
-        <tbody>
-          <tr><td>Digital Recente</td><td><span class="pill pb">SO_DIGITAL</span></td><td>ate 180d</td><td>llz_digital_recente_v1</td><td>v3</td><td>Alta leitura esperada</td></tr>
-          <tr><td>Digital Antigo</td><td><span class="pill pb">SO_DIGITAL</span></td><td>&gt;180d</td><td>llz_digital_antigo_v1</td><td>v3</td><td>Tom mais urgente</td></tr>
-          <tr><td>G3 Misto</td><td><span class="pill" style="background:#2d1f4a;color:#c084fc">MISTO</span></td><td>qualquer</td><td>llz_g3_reengajamento_historico_v1</td><td>v3</td><td>Melhor conversao</td></tr>
-          <tr><td>G4 Notificacao</td><td><span class="pill py">SO_HUMANO</span></td><td>90-180d</td><td>llz_g4_notificacao_debito_v1</td><td>v3</td><td>Leve, sem pressao</td></tr>
-          <tr><td>G5 Urgente</td><td><span class="pill py">SO_HUMANO</span></td><td>&gt;180d</td><td>llz_g5_debito_encargos_urgente_v1</td><td>v5</td><td>Inclui dias e valor</td></tr>
-          <tr><td>G6 Pre-Judicial</td><td><span class="pill pgr">SEM_HISTORICO</span></td><td>&gt;365d</td><td>llz_g6_aviso_pre_judicial_v1</td><td>v5</td><td>Ultima chance digital</td></tr>
-          <tr><td>Sem Hist Recente</td><td><span class="pill pgr">SEM_HISTORICO</span></td><td>91-365d</td><td>llz_sem_hist_recente_v1_utilidade</td><td>v3</td><td>Surpreendeu positivo</td></tr>
-          <tr><td>Apoio</td><td><span class="pill py">SO_HUMANO</span></td><td>&lt;90d</td><td>llz_apoio_medio_v4</td><td>v3</td><td>Divida recente</td></tr>
-        </tbody>
-      </table>
     </div>
   </div>
 
+  <div class="profile-grid">
+    <div class="profile-card" style="border-left:3px solid #6b7280">
+      <div class="p-name">SEM_HISTORICO</div>
+      <div class="p-count" style="color:#6b7280">26.114 (60,5%)</div>
+      <div class="p-desc">Clientes sem nenhuma interacao nos ultimos 365 dias. Nunca responderam a nenhuma acao de cobranca &mdash; nem digital nem humana. Maior grupo e o mais dificil de engajar. Requer template de abordagem inicial com linguagem de primeiro contato e oferta diferenciada.</div>
+    </div>
+    <div class="profile-card" style="border-left:3px solid #f59e0b">
+      <div class="p-name">SO_HUMANO</div>
+      <div class="p-count" style="color:#f59e0b">8.234 (19,1%)</div>
+      <div class="p-desc">Clientes que historicamente so respondem ao canal humano (call center). Engajamento digital baixo ou nulo. Estrategia: usar WhatsApp como pre-aquecimento antes da ligacao. Template deve mencionar que um atendente pode entrar em contato.</div>
+    </div>
+    <div class="profile-card" style="border-left:3px solid #3b82f6">
+      <div class="p-name">SO_DIGITAL</div>
+      <div class="p-count" style="color:#3b82f6">5.892 (13,6%)</div>
+      <div class="p-desc">Clientes que preferem resolver pelo canal digital (bot, app, portal). Alta taxa de conversao via WhatsApp. Prioridade maxima para os melhores templates com CTA direto para o bot. Nao escalar para humano sem tentativa digital.</div>
+    </div>
+    <div class="profile-card" style="border-left:3px solid #8b5cf6">
+      <div class="p-name">MISTO</div>
+      <div class="p-count" style="color:#8b5cf6">2.930 (6,8%)</div>
+      <div class="p-desc">Clientes que alternam entre digital e humano conforme a situacao. Perfil mais flexivel. Abordagem hibrida: primeiro digital com fallback rapido para humano. Maior ticket medio historico por ser um perfil mais engajado.</div>
+    </div>
+  </div>
+
+  <div class="stitle">Regras de Roteamento por Perfil</div>
+  <div class="card" style="margin-bottom:16px">
+    <table>
+      <thead><tr><th>Perfil</th><th>Canal Primario</th><th>Template Inicial</th><th>Fallback</th><th>Cooldown</th><th>Prioridade</th></tr></thead>
+      <tbody>
+        <tr><td><span class="pill pgr">SEM_HISTORICO</span></td><td>WhatsApp</td><td>llz_sem_hist_recente_v1</td><td>Call center D+3</td><td>7 dias</td><td><span class="pill py">MEDIA</span></td></tr>
+        <tr><td><span class="pill py">SO_HUMANO</span></td><td>Call center</td><td>Pre-aquecimento WPP</td><td>Ligacao em 24h</td><td>5 dias</td><td><span class="pill pg">ALTA</span></td></tr>
+        <tr><td><span class="pill pb">SO_DIGITAL</span></td><td>WhatsApp Bot</td><td>quebra1812_v1</td><td>Nenhum</td><td>5 dias</td><td><span class="pill pg">ALTA</span></td></tr>
+        <tr><td><span class="pill" style="background:#3b0764;color:#c4b5fd">MISTO</span></td><td>WhatsApp + Call</td><td>llz_g3_reengajamento_historico_v1</td><td>Call center D+1</td><td>5 dias</td><td><span class="pill pg">MAXIMA</span></td></tr>
+        <tr><td colspan="6" style="color:#4b5563;font-style:italic;font-size:11px">Regras adicionais aplicadas sobre os 4 perfis base</td></tr>
+        <tr><td><span class="pill pb">G4 Notificacao</span></td><td>WhatsApp</td><td>llz_g4_notificacao_v1</td><td>Call center</td><td>7 dias</td><td><span class="pill py">MEDIA</span></td></tr>
+        <tr><td><span class="pill pb">G5 Digital Antigo</span></td><td>WhatsApp</td><td>llz_g5_digital_antigo_v1</td><td>Portal</td><td>7 dias</td><td><span class="pill py">MEDIA</span></td></tr>
+        <tr><td><span class="pill pb">G6 Pre-Judicial</span></td><td>WhatsApp + Carta</td><td>Template juridico especial</td><td>Juridico</td><td>10 dias</td><td><span class="pill pr">URGENTE</span></td></tr>
+        <tr><td><span class="pill pb">G7 Judicial</span></td><td>Carta + Juridico</td><td>N/A WhatsApp</td><td>N/A</td><td>N/A</td><td><span class="pill pr">JURIDICO</span></td></tr>
+      </tbody>
+    </table>
+  </div>
 </div><!-- /panel-perfis -->
 
-<!-- ==================== BANCO HSM ==================== -->
-<div id="panel-bancohsm" class="panel">
-  <div class="insight">
-    <p><span class="icon">📋</span><strong>Banco de HSMs LLZ:</strong> Todos os templates aprovados e em uso. Categoria UTILITY (Meta). Persona: Liz. Nenhum template inicia com variavel. Sem dados sensiveis expostos (CPF, valor exato da divida como variavel livre).</p>
+<!-- ===== PANEL 8 — DIARIO DE BORDO ===== -->
+<div id="panel-diario" class="panel">
+
+  <div class="diary-day success">
+    <div class="diary-date">19/Jun/2026 &mdash; Sexta-feira</div>
+    <div class="diary-title">Analise Digital vs Operacao + Copa do Mundo</div>
+    <div class="diary-tags">
+      <span class="pill pb">Digital</span>
+      <span class="pill py">Operacao</span>
+      <span class="pill pgr">Copa 2026</span>
+      <span class="pill pg">Diagnostico</span>
+    </div>
+    <div class="diary-body">
+      Total acumulado Jun R$ 32,7M &mdash; Digital R$ 15,9M (62,4% da meta) | Operacao R$ 16,8M (projecao 101,2%).
+      Copa do Mundo NAO e a causa da queda &mdash; jogos do Brasil geraram alta de +90% nos fins de semana
+      (efeito antecipar pagamento). Queda concentrada em DUs especificos por saturacao + template com erro.
+      MUNDIALE concentra 78% do resultado digital. Meta realista: R$ 23,3M (91,3%).
+      Acao imediata: campanha focada 22-23/Jun antes do jogo de 24/Jun.
+    </div>
+    <div class="diary-result">
+      <strong>Resultado Digital:</strong> R$ 15.858.538 (62,4% da meta de R$ 25,5M) &nbsp;|&nbsp;
+      <strong>Operacao:</strong> R$ 16.844.837 &rarr; projecao R$ 26,3M (101,2%) &nbsp;|&nbsp;
+      <strong>Total Geral:</strong> R$ 32,7M acumulado
+    </div>
   </div>
-  <div class="card">
-    <h3>Templates Aprovados — Versao Atual</h3>
-    <table>
-      <thead><tr><th>Template</th><th>Grupo Alvo</th><th>Vars</th><th>Disparos Acum.</th><th>Leitura</th><th>Conversao</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td><strong>llz_g3_reengajamento_historico_v1</strong></td><td>G3 MISTO</td><td>v3</td><td>61.200</td><td>4,3%</td><td>—</td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_digital_recente_v1_utilidade</strong></td><td>Digital Recente</td><td>v3</td><td>14.200</td><td>6,1%</td><td>—</td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_digital_antigo_v1_utilidade</strong></td><td>Digital Antigo</td><td>v3</td><td>464</td><td>3,8%</td><td>—</td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_sem_hist_rct_v2_utilidade</strong></td><td>Sem Hist Recente</td><td>v3</td><td>12.896</td><td>17,7%</td><td>—</td><td><span class="pill pg">Melhor taxa</span></td></tr>
-        <tr><td><strong>llz_g4_notificacao_debito_v1</strong></td><td>G4 SO_HUMANO 90-180d</td><td>v3</td><td>1.618</td><td>—</td><td>—</td><td><span class="pill py">Planejado</span></td></tr>
-        <tr><td><strong>llz_g5_debito_encargos_urgente_v1</strong></td><td>G5 SO_HUMANO 180d+</td><td>v5</td><td>1.687</td><td>—</td><td>—</td><td><span class="pill py">Planejado</span></td></tr>
-        <tr><td><strong>llz_g6_aviso_pre_judicial_v1</strong></td><td>G6 SEM_HIST 365d+</td><td>v5</td><td>18.497</td><td>—</td><td>—</td><td><span class="pill py">Planejado</span></td></tr>
-        <tr><td><strong>llz_reengajamento_rapido_v1</strong></td><td>1-30d sem engajamento</td><td>v3</td><td>6.721</td><td>—</td><td>—</td><td><span class="pill pg">Ativo</span></td></tr>
-        <tr><td><strong>llz_apoio_medio_v4</strong></td><td>Apoio SO_HUMANO &lt;90d</td><td>v3</td><td>5.325</td><td>0%</td><td>—</td><td><span class="pill pr">Reprocessar</span></td></tr>
-      </tbody>
-    </table>
+
+  <div class="diary-day alert">
+    <div class="diary-date">18/Jun/2026 &mdash; Quinta-feira</div>
+    <div class="diary-title">Diagnostico de Engajamento &mdash; 4 Causas Identificadas</div>
+    <div class="diary-tags">
+      <span class="pill pr">Atencao</span>
+      <span class="pill pr">Saturacao de contato</span>
+      <span class="pill py">Template com erro</span>
+    </div>
+    <div class="diary-body">
+      (1) Saturacao: 82,7% re-acionada em &lt;24h &mdash; cooldown 5 dias obrigatorio.
+      (2) Template dispop3_utilidade: 43.215 disparos, 22% erro &mdash; revisar antes do proximo lote.
+      (3) Mix de menor valor no dia 18: ticket medio caiu de R$174 para R$144 (-17%).
+      (4) Janela de leitura estreita: 80% concentrada entre 09h e 11h.
+    </div>
+    <div class="diary-result">
+      <strong>Impacto imediato:</strong> Conversao push&rarr;ticket caiu de 6,99% para 5,48% (&minus;1,51pp) &nbsp;|&nbsp;
+      <strong>Acao prioritaria:</strong> Cooldown 5 dias + revisar dispop3
+    </div>
   </div>
-  <div class="stitle" style="margin-top:20px">Padroes Definitivos — Todos os Disparos</div>
-  <div class="card" style="font-size:12px;color:#a0aec0;line-height:2">
-    <strong style="color:#e2e8f0">R1</strong> — 8 grupos fixos (Digital Recente, Digital Antigo, G3, G4, G5, G6, Sem Hist Recente, Apoio)<br>
-    <strong style="color:#e2e8f0">R2</strong> — Variaveis: v3 para todos exceto G5 e G6 (v5 com dias e valor)<br>
-    <strong style="color:#e2e8f0">R3</strong> — Bloco+Unidade como campo unidade (nunca so Unidade)<br>
-    <strong style="color:#e2e8f0">R4</strong> — Sem domingo — redistribuir para proximo dia util<br>
-    <strong style="color:#e2e8f0">R5</strong> — Sem acentos em nenhum campo de disparo<br>
-    <strong style="color:#e2e8f0">R6</strong> — Coluna Elegivel_Disparo obrigatoria em toda base (0/1)<br>
-    <strong style="color:#e2e8f0">R7</strong> — Toda execucao registrada no Diario de Bordo<br>
-    <strong style="color:#e2e8f0">R8</strong> — Nunca dado pessoal (CPF, fone, nome) no dashboard publico<br>
-    <strong style="color:#e2e8f0">R9</strong> — Base atualizada diariamente — nunca reusar base de dia anterior sem filtro novo
+
+  <div class="diary-day">
+    <div class="diary-date">18/Jun/2026 &mdash; Quinta-feira</div>
+    <div class="diary-title">Analise de Tickets 16-18/Jun</div>
+    <div class="diary-tags">
+      <span class="pill pg">Tickets</span>
+      <span class="pill pb">Push</span>
+      <span class="pill pgr">Bot 4004/4401</span>
+    </div>
+    <div class="diary-body">
+      Bot 17/Jun: R$ 1.626.131 (11.339 tickets, R$174/ticket).
+      Parcial 18/Jun: R$ 1.180.480 (10.042 tickets, R$144/ticket &mdash; queda de -17%).
+      Conversao push&rarr;ticket: 6,99% (16/Jun) &rarr; 5,48% (17/Jun).
+    </div>
+    <div class="diary-result">
+      <strong>Total bot 3 dias:</strong> R$ 2.876.457 &nbsp;|&nbsp;
+      <strong>Abandono bot 17/Jun:</strong> 32% &nbsp;|&nbsp;
+      <strong>Canal principal:</strong> WhatsApp Meta (87% dos tickets)
+    </div>
   </div>
-</div><!-- /panel-bancohsm -->
+
+  <div class="diary-day">
+    <div class="diary-date">18/Jun/2026 &mdash; Quinta-feira</div>
+    <div class="diary-title">Base Master 1806 + Padroes Definitivos</div>
+    <div class="diary-tags">
+      <span class="pill pg">Base Master</span>
+      <span class="pill pb">8 grupos</span>
+      <span class="pill pgr">Padrao definitivo</span>
+    </div>
+    <div class="diary-body">
+      Base oficial consolidada: 101.405 inadimplentes totais. Elegíveis para disparo WhatsApp: 75.632.
+      Estrutura definitiva: 8 grupos de acionamento + 9 regras permanentes de classificacao.
+      Padrao de segmentacao aprovado para uso em todas as campanhas futuras.
+    </div>
+    <div class="diary-result">
+      <strong>Base elegivel:</strong> 75.632 unidades &nbsp;|&nbsp;
+      <strong>Grupos:</strong> G1 a G8 + regras de exclusao &nbsp;|&nbsp;
+      <strong>Status:</strong> <span class="pill pg">APROVADO</span>
+    </div>
+  </div>
+
+  <div class="diary-day">
+    <div class="diary-date">17/Jun/2026 &mdash; Quarta-feira</div>
+    <div class="diary-title">Analise Comparativa 16/06 vs 18/06 &mdash; Novos Clientes</div>
+    <div class="diary-tags">
+      <span class="pill pg">Comparativo</span>
+      <span class="pill pb">Novos clientes</span>
+      <span class="pill pgr">Sem impacto</span>
+    </div>
+    <div class="diary-body">
+      Identificados 1.921 clientes novos (nao presentes em 16/Jun).
+      701 com divida maior do que na base anterior.
+      9.223 clientes elegiveis sem nenhum impacto de acionamento anterior.
+      Reengajamento 1-30d sem historico digital: 6.721 unidades adicionais.
+    </div>
+    <div class="diary-result">
+      <strong>Novos:</strong> 1.921 &nbsp;|&nbsp;
+      <strong>Divida maior:</strong> 701 &nbsp;|&nbsp;
+      <strong>Sem impacto:</strong> 9.223 &nbsp;|&nbsp;
+      <strong>Reengajamento 1-30d:</strong> 6.721
+    </div>
+  </div>
+
+  <div class="diary-day success">
+    <div class="diary-date">16/Jun/2026 &mdash; Terca-feira</div>
+    <div class="diary-title">Maior Lote da Campanha &mdash; 57.000 Disparos</div>
+    <div class="diary-tags">
+      <span class="pill pg">Base 90d+</span>
+      <span class="pill pb">3 templates</span>
+      <span class="pill py">Escala</span>
+    </div>
+    <div class="diary-body">
+      Maior lote da campanha com 57.000 disparos totais (LLZ + Controle).
+      llz_apoio_medio_v4 apresentou 100% de erro &mdash; substituido por v5.
+      Taxa de leitura LLZ: 17,9% vs Controle 1,2% (+16,7pp de diferenca).
+    </div>
+    <div class="diary-result">
+      <strong>Disparos LLZ:</strong> 43.170 &nbsp;|&nbsp;
+      <strong>Leitura LLZ:</strong> 17,9% &nbsp;|&nbsp;
+      <strong>Leitura Controle:</strong> 1,2% &nbsp;|&nbsp;
+      <strong>Acordos gerados:</strong> 67
+    </div>
+  </div>
+
+  <div class="diary-day">
+    <div class="diary-date">15/Jun/2026 &mdash; Segunda-feira</div>
+    <div class="diary-title">Escala &mdash; 47.000 Disparos</div>
+    <div class="diary-tags">
+      <span class="pill pg">47k disparos</span>
+      <span class="pill pb">Expansao</span>
+    </div>
+    <div class="diary-body">
+      47.000 disparos. Expansao para base mais ampla 90d+.
+      Melhor DU da Operacao no mes: R$ 1.840.000.
+    </div>
+    <div class="diary-result">
+      <strong>Disparos:</strong> 47.000 &nbsp;|&nbsp;
+      <strong>Base:</strong> 90d+ ampliada &nbsp;|&nbsp;
+      <strong>Digital 15/Jun:</strong> R$ 1.770.000
+    </div>
+  </div>
+
+  <div class="diary-day">
+    <div class="diary-date">10/Jun/2026 &mdash; Quarta-feira</div>
+    <div class="diary-title">Primeiro Disparo Segmentado LLZ</div>
+    <div class="diary-tags">
+      <span class="pill pb">G3</span>
+      <span class="pill pg">Digital</span>
+      <span class="pill pgr">Estreia</span>
+    </div>
+    <div class="diary-body">
+      Primeiro lote com templates LLZ Acoes. 13.500 disparos com llz_g3_reengajamento_historico_v1.
+      Taxa de leitura de 8% &mdash; 4,4x acima do controle historico.
+    </div>
+    <div class="diary-result">
+      <strong>Disparos:</strong> 13.500 &nbsp;|&nbsp;
+      <strong>Leitura:</strong> 8,0% &nbsp;|&nbsp;
+      <strong>Template:</strong> llz_g3_reengajamento_historico_v1 &nbsp;|&nbsp;
+      <strong>Acordos/mil:</strong> 4,9
+    </div>
+  </div>
+
+</div><!-- /panel-diario -->
 
 </div><!-- /content -->
 
 <script>
-// ============================================================
-// NAVEGACAO POR TABS
-// ============================================================
+// ─── TAB SWITCHER ───────────────────────────────────────────────────────────
 function tab(el, panelId) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); });
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
   el.classList.add('active');
   var panel = document.getElementById('panel-' + panelId);
   if (panel) panel.classList.add('active');
+  // Forcar resize dos charts no painel ativo (fix display:none)
+  setTimeout(function() {
+    if (typeof Chart !== 'undefined') {
+      Object.values(Chart.instances).forEach(function(c) { c.resize(); });
+    }
+  }, 50);
 }
 
-// ============================================================
-// DATA/HORA
-// ============================================================
-document.getElementById('now').textContent = new Date().toLocaleString('pt-BR');
+// ─── LIVE CLOCK ─────────────────────────────────────────────────────────────
+(function clock(){
+  var d=new Date();
+  var s=d.toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  document.getElementById('now').textContent=s;
+  setTimeout(clock,30000);
+})();
 
-// ============================================================
-// CALENDARIO — JUNHO 2026
-// ============================================================
-const CAL = [
-  {d:8,  ev:[]},
-  {d:9,  ev:[]},
+// ─── CALENDAR ───────────────────────────────────────────────────────────────
+var CAL = [
+  {d:1, ev:[]},
+  {d:2, ev:[]},
+  {d:3, ev:[{t:'Controle ativo',c:'ev-ctrl'},{t:'310k disparos — 44% erro op2518',c:'ev-alert'}]},
+  {d:4, ev:[]},
+  {d:5, ev:[{t:'Pipeline travado',c:'ev-alert'},{t:'52% msgs em fila CREATED',c:'ev-alert'}]},
+  {d:6, ev:[]},
+  {d:7, ev:[]},
+  {d:8, ev:[]},
+  {d:9, ev:[]},
   {d:10, ev:[{t:'09h — G3 + Digital',c:'ev-llz'},{t:'13.500 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
-  {d:11, ev:[{t:'Controle ativo',c:'ev-ctrl'}]},
-  {d:12, ev:[{t:'Analise de dados',c:'ev-ctrl'}]},
-  {d:13, ev:[]},
+  {d:11, ev:[{t:'Abertura Copa 2026',c:'ev-alert'},{t:'Digital R$ 2,4M (+26%)',c:'ev-ok'}]},
+  {d:12, ev:[{t:'Controle ativo',c:'ev-ctrl'}]},
+  {d:13, ev:[{t:'Brasil x Marrocos',c:'ev-alert'},{t:'Digital +90% vs historico',c:'ev-ok'}]},
   {d:14, ev:[]},
-  {d:15, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'47.000 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
-  {d:16, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'43.170 disparos',c:'ev-llz'},{t:'67 acordos | R$ 74k tickets',c:'ev-ok'}]},
+  {d:15, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'47.000 disparos',c:'ev-llz'},{t:'Maior lote da campanha',c:'ev-ok'}]},
+  {d:16, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'43.170 disparos LLZ',c:'ev-llz'},{t:'67 acordos | R$ 74k tickets',c:'ev-ok'}]},
   {d:17, ev:[{t:'09h — Sem Hist 91-365d',c:'ev-llz'},{t:'12.896 disparos LLZ',c:'ev-llz'},{t:'R$ 1,63M bot | Leitura 17,7%',c:'ev-ok'}]},
-  {d:18, ev:[{t:'09h — Digital Recente + G3',c:'ev-llz'},{t:'10.042 tickets | R$ 1,18M bot',c:'ev-llz'},{t:'Leitura 17,7% - Saturacao',c:'ev-alert'}]},
-  {d:19, ev:[{t:'09h — Sem Hist Recente',c:'ev-plan'},{t:'15.843 unidades',c:'ev-plan'}]},
+  {d:18, ev:[{t:'09h — Digital Recente',c:'ev-llz'},{t:'10.042 tickets | R$ 1,18M bot',c:'ev-llz'},{t:'Saturacao detectada',c:'ev-alert'}]},
+  {d:19, ev:[{t:'Brasil x Haiti',c:'ev-alert'},{t:'09h — Sem Hist Recente',c:'ev-plan'},{t:'15.843 unidades',c:'ev-plan'}]},
   {d:20, ev:[{t:'09h — G4 Notificacao',c:'ev-plan'},{t:'1.618 unidades',c:'ev-plan'}]},
   {d:21, ev:[]},
-  {d:22, ev:[{t:'09h — G5 + Digital Antigo',c:'ev-plan'},{t:'4.673 unidades',c:'ev-plan'},{t:'Sem domingo 21/06',c:'ev-ok'}]},
+  {d:22, ev:[{t:'09h — G5 + Digital Antigo',c:'ev-plan'},{t:'4.673 unidades',c:'ev-plan'}]},
   {d:23, ev:[{t:'09h — G6 Pre-Judicial',c:'ev-plan'},{t:'18.497 unidades',c:'ev-plan'}]},
-  {d:24, ev:[{t:'09h — Apoio',c:'ev-plan'},{t:'7.044 unidades',c:'ev-plan'}]},
+  {d:24, ev:[{t:'Brasil x Escocia',c:'ev-alert'},{t:'09h — Apoio',c:'ev-plan'},{t:'7.044 unidades',c:'ev-plan'}]},
   {d:25, ev:[]},
   {d:26, ev:[]},
   {d:27, ev:[]},
@@ -1175,341 +697,161 @@ const CAL = [
   {d:30, ev:[]}
 ];
 
-// Junho 2026 começa em SEG (col 0, base 0)
-// Primeira semana: dias 1-7 aparecem como células vazias com número
 function buildCalendar() {
   var grid = document.getElementById('calGrid');
   if (!grid) return;
+  var today = 19;
+  // June 2026 day 1 = Monday (col 0)
   var html = '';
-
-  // Dias 1-7: primeiros 7 dias (semana 1) — sem eventos registrados no CAL
-  for (var d = 1; d <= 7; d++) {
-    var isToday = (d === 19) ? ' today' : '';
-    html += '<div class="cal-day' + isToday + '"><div class="day-num"><strong>' + d + '</strong></div></div>';
-  }
-
-  // Dias 8-30 a partir do CAL
-  CAL.forEach(function(day) {
-    var isToday = (day.d === 19) ? ' today' : '';
-    var isSunday = (day.d % 7 === 0); // d=7,14,21,28 são DOM neste layout
-    // Coluna: (d-1) % 7 — d=8 => col 0 (SEG), d=14 => col 6 (DOM), d=15 => col 0 (SEG)
-    var col = (day.d - 1) % 7; // 0=SEG ... 6=DOM
-    var sunday = (col === 6);
-    var evHtml = '';
-    if (sunday && day.d === 21) {
-      evHtml = '<div class="ev ev-ctrl">Sem disparo (DOM)</div>';
-    } else {
-      day.ev.forEach(function(e) {
-        evHtml += '<div class="ev ' + e.c + '">' + e.t + '</div>';
-      });
+  // col = (d-1) % 7
+  for (var i = 0; i < CAL.length; i++) {
+    var day = CAL[i];
+    var cls = 'cal-day' + (day.d === today ? ' today' : '');
+    html += '<div class="' + cls + '">';
+    html += '<div class="day-num"><strong>' + day.d + '</strong></div>';
+    for (var j = 0; j < day.ev.length; j++) {
+      html += '<div class="ev ' + day.ev[j].c + '">' + day.ev[j].t + '</div>';
     }
-    html += '<div class="cal-day' + isToday + '"><div class="day-num"><strong>' + day.d + '</strong></div>' + evHtml + '</div>';
-  });
-
+    html += '</div>';
+  }
   grid.innerHTML = html;
 }
+
+// ─── CHART DEFAULTS ─────────────────────────────────────────────────────────
+Chart.defaults.color = '#718096';
+Chart.defaults.borderColor = '#2d3748';
+Chart.defaults.font.family = "'Segoe UI', sans-serif";
+Chart.defaults.font.size = 11;
+
+var GRID = { color: '#1e2533', drawBorder: false };
+var TICKS = { color: '#718096' };
+
+// ─── CHART 1: Taxa de Leitura ────────────────────────────────────────────────
+new Chart(document.getElementById('cLeitura'), {
+  type: 'line',
+  data: {
+    labels: ['10/Jun','15/Jun','16/Jun','17/Jun'],
+    datasets: [
+      { label: 'LLZ Acoes', data: [4.3,6.1,20.0,17.7], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.15)', tension: 0.4, pointRadius: 5, fill: true },
+      { label: 'Controle', data: [1.2,0.8,1.1,1.2], borderColor: '#6b7280', backgroundColor: 'rgba(107,114,128,.1)', tension: 0.4, pointRadius: 5, fill: true }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true, max: 25 } } }
+});
+
+// ─── CHART 2: Funil Doughnut ─────────────────────────────────────────────────
+new Chart(document.getElementById('cFunil'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Lido','Entregue nao lido','Erro'],
+    datasets: [{ data: [5.1,69.7,25.2], backgroundColor: ['#10b981','#3b82f6','#ef4444'], borderWidth: 2, borderColor: '#181c27' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 12 } } } }
+});
+
+// ─── CHART 3: Disparos por Dia (bar) ─────────────────────────────────────────
+new Chart(document.getElementById('cDiario'), {
+  type: 'bar',
+  data: {
+    labels: ['10/Jun','15/Jun','16/Jun','17/Jun'],
+    datasets: [
+      { label: 'LLZ Acoes', data: [13500,47000,43170,12896], backgroundColor: '#3b82f6' },
+      { label: 'Controle', data: [85000,320000,83362,97482], backgroundColor: '#4b5563' }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
+});
+
+// ─── CHART 4: Perfil Comportamental (doughnut) ───────────────────────────────
+new Chart(document.getElementById('cCanal'), {
+  type: 'doughnut',
+  data: {
+    labels: ['SEM_HISTORICO','SO_HUMANO','SO_DIGITAL','MISTO'],
+    datasets: [{ data: [26114,8234,5892,2930], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10 } } } }
+});
+
+// ─── CHART 5: Digital vs Operacao (bar) ──────────────────────────────────────
+new Chart(document.getElementById('cDvO'), {
+  type: 'bar',
+  data: {
+    labels: ['01','02','03','04','05','08','09','10','11','12','13','15','16','17','18'],
+    datasets: [
+      { label: 'Digital', data: [600000,750000,480000,320000,290000,520000,680000,890000,2404210,710000,478343,1250000,1250000,858000,641375], backgroundColor: '#3b82f6' },
+      { label: 'Operacao', data: [780000,820000,690000,540000,610000,720000,830000,950000,1150000,980000,820000,1840000,1200000,1100000,980000], backgroundColor: '#f59e0b' }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
+});
+
+// ─── CHART 6: Resultado Bot por Dia ──────────────────────────────────────────
+new Chart(document.getElementById('cMixTickets'), {
+  type: 'bar',
+  data: {
+    labels: ['16/Jun','17/Jun','18/Jun (parc.)'],
+    datasets: [{ label: 'Resultado Bot (R$)', data: [69846,1626131,1180480], backgroundColor: ['#6b7280','#3b82f6','#f59e0b'] }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
+});
+
+// ─── CHART 7: Janela de Leitura (bar) ────────────────────────────────────────
+new Chart(document.getElementById('cReadHour'), {
+  type: 'bar',
+  data: {
+    labels: ['09h','10h','11h','Outros'],
+    datasets: [{ label: '% Leituras', data: [42.9,36.6,10.0,10.5], backgroundColor: ['#10b981','#3b82f6','#60a5fa','#4b5563'] }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true, max: 60 } } }
+});
+
+// ─── CHART 8: Comparativo Entrega/Leitura (grouped bar) ──────────────────────
+new Chart(document.getElementById('cCompRadar'), {
+  type: 'bar',
+  data: {
+    labels: ['Entrega','Leitura','Erro'],
+    datasets: [
+      { label: 'LLZ Acoes', data: [74.8,5.1,25.2], backgroundColor: '#3b82f6' },
+      { label: 'Controle', data: [71.0,1.8,29.0], backgroundColor: '#6b7280' }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true, max: 100 } } }
+});
+
+// ─── CHART 9: Acordos por 1.000 Disparos ────────────────────────────────────
+new Chart(document.getElementById('cAcordos'), {
+  type: 'bar',
+  data: {
+    labels: ['10/Jun','15/Jun','16/Jun','17/Jun'],
+    datasets: [
+      { label: 'LLZ Acoes', data: [4.9,1.4,1.6,5.2], backgroundColor: '#3b82f6' },
+      { label: 'Controle', data: [0.3,0.1,0.3,0.3], backgroundColor: '#6b7280' }
+    ]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
+});
+
+// ─── CHART 10: Perfis (doughnut) ────────────────────────────────────────────
+new Chart(document.getElementById('cPerfil'), {
+  type: 'doughnut',
+  data: {
+    labels: ['SEM_HISTORICO (60,5%)','SO_HUMANO (19,1%)','SO_DIGITAL (13,6%)','MISTO (6,8%)'],
+    datasets: [{ data: [26114,8234,5892,2930], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
+  },
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10 } } } }
+});
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
 buildCalendar();
 
-// ============================================================
-// CHARTS.JS
-// ============================================================
-var chartDefaults = {
-  color: '#a0aec0',
-  plugins: {
-    legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
-    tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0' }
-  }
-};
-
-// --- Grafico: Perfil Comportamental (distribuicao na base 90d+) ---
-(function() {
-  var el = document.getElementById('cPerfil');
-  if (!el) return;
-  new Chart(el, {
-    type: 'doughnut',
-    data: {
-      labels: ['SO_DIGITAL (13,6%)', 'SO_HUMANO (19,1%)', 'MISTO (6,8%)', 'SEM_HISTORICO (60,5%)'],
-      datasets: [{
-        data: [5892, 8234, 2930, 26114],
-        backgroundColor: ['#3b82f6', '#f59e0b', '#a855f7', '#6b7280'],
-        borderWidth: 0
-      }]
-    },
-    options: Object.assign({}, chartDefaults, { maintainAspectRatio: false })
-  });
-})();
-
-// --- Charts dos outros paineis (performance, tickets, comparativo) ---
-// Mix de canais de tickets
-(function() {
-  var el = document.getElementById('cMixTickets');
-  if (!el) return;
-  new Chart(el, {
-    type: 'bar',
-    data: {
-      labels: ['Dia 16', 'Dia 17', 'Dia 18 (parc.)'],
-      datasets: [
-        { label: 'Bot (4004+4401)', data: [69846, 1626131, 1180480], backgroundColor: '#3b82f6' },
-        { label: 'Humano', data: [0, 53003, 58267], backgroundColor: '#f59e0b' }
-      ]
-    },
-    options: Object.assign({}, chartDefaults, {
-      maintainAspectRatio: false,
-      scales: {
-        x: { ticks: { color: '#718096' }, grid: { color: '#1e2533' } },
-        y: { ticks: { color: '#718096', callback: function(v){ return 'R$' + (v/1000).toFixed(0) + 'k'; } }, grid: { color: '#1e2533' } }
-      }
-    })
-  });
-})();
-
-// Leitura por dia
-(function() {
-  var el = document.getElementById('cLeitura');
-  if (!el) return;
-  new Chart(el, {
-    type: 'line',
-    data: {
-      labels: ['Dia 10', 'Dia 15', 'Dia 16', 'Dia 17', 'Dia 18'],
-      datasets: [{
-        label: 'Taxa de Leitura (%)',
-        data: [4.3, 5.8, 20.0, 17.7, 17.7],
-        borderColor: '#3b82f6',
-        backgroundColor: 'rgba(59,130,246,0.1)',
-        tension: 0.3,
-        fill: true,
-        pointBackgroundColor: '#3b82f6'
-      }]
-    },
-    options: Object.assign({}, chartDefaults, {
-      maintainAspectRatio: false,
-      scales: {
-        x: { ticks: { color: '#718096' }, grid: { color: '#1e2533' } },
-        y: { ticks: { color: '#718096', callback: function(v){ return v + '%'; } }, grid: { color: '#1e2533' } }
-      }
-    })
-  });
-})();
-
-// --- Chart Digital vs Operacao ---
-(function() {
-  var el = document.getElementById('cDvO');
-  if (!el) return;
-  var labels = ['01/Jun','02/Jun','03/Jun','04/Jun','05/Jun','06/Jun','07/Jun',
-                '08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','13/Jun','14/Jun',
-                '15/Jun','16/Jun','17/Jun','18/Jun'];
-  var digital   = [1050000,670000,741000,336000,1010000,373000,173000,
-                   1070000,709000,811000,2400000,1310000,478000,210000,
-                   1770000,1250000,858000,641000];
-  var operacao  = [1450000,992000,1080000,111000,1380000,110000,56000,
-                   1650000,974000,1350000,1140000,1440000,175000,59000,
-                   1840000,981000,999000,1050000];
-  // dias de jogo do Brasil: idx 10 (11/Jun), idx 12 (13/Jun), idx 18 (19/Jun - hoje)
-  var bgDigital = labels.map(function(l,i){
-    return (i===10||i===12) ? 'rgba(239,68,68,0.35)' : 'rgba(59,130,246,0.75)';
-  });
-  new Chart(el, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        { label: 'Digital', data: digital, backgroundColor: bgDigital, order: 1 },
-        { label: 'Operacao', data: operacao, backgroundColor: 'rgba(245,158,11,0.75)', order: 2 }
-      ]
-    },
-    options: Object.assign({}, chartDefaults, {
-      maintainAspectRatio: false,
-      scales: {
-        x: { ticks: { color: '#718096', maxRotation: 45 }, grid: { color: '#1e2533' } },
-        y: { ticks: { color: '#718096', callback: function(v){ return 'R$'+(v/1000000).toFixed(1)+'M'; } }, grid: { color: '#1e2533' } }
-      },
-      plugins: Object.assign({}, chartDefaults.plugins, {
-        annotation: { annotations: {} }
-      })
-    })
-  });
-})();
-
-// --- Chart Digital vs Operacao ---
-(function() {
-  var el = document.getElementById('cDvO');
-  if (!el) return;
-  var labels = ['01/Jun','02/Jun','03/Jun','04/Jun','05/Jun','06/Jun','07/Jun',
-                '08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','13/Jun','14/Jun',
-                '15/Jun','16/Jun','17/Jun','18/Jun'];
-  var digital  = [1050000,670000,741000,336000,1010000,373000,173000,
-                  1070000,709000,811000,2400000,1310000,478000,210000,
-                  1770000,1250000,858000,641000];
-  var operacao = [1450000,992000,1080000,111000,1380000,110000,56000,
-                  1650000,974000,1350000,1140000,1440000,175000,59000,
-                  1840000,981000,999000,1050000];
-  var bgD = labels.map(function(l,i){
-    return (i===10||i===12) ? 'rgba(239,68,68,0.45)' : 'rgba(59,130,246,0.8)';
-  });
-  new Chart(el, {
-    type: 'bar',
-    data: {
-      labels: labels,
-      datasets: [
-        { label: 'Digital', data: digital, backgroundColor: bgD },
-        { label: 'Operacao', data: operacao, backgroundColor: 'rgba(245,158,11,0.8)' }
-      ]
-    },
-    options: Object.assign({}, chartDefaults, {
-      maintainAspectRatio: false,
-      scales: {
-        x: { ticks: { color: '#718096', maxRotation: 45, font:{size:10} }, grid: { color: '#1e2533' } },
-        y: { ticks: { color: '#718096', callback: function(v){ return 'R$'+(v/1000000).toFixed(1)+'M'; } }, grid: { color: '#1e2533' } }
-      }
-    })
-  });
-})();
-
-
-// --- Funil de Entrega Total LLZ ---
-(function() {
-  var el = document.getElementById('cFunil');
-  if (!el) return;
-  new Chart(el, {
-    type: 'doughnut',
-    data: {
-      labels: ['Lido (READ)', 'Entregue nao lido', 'Erro / Nao entregue'],
-      datasets: [{
-        data: [5.1, 69.7, 25.2],
-        backgroundColor: ['#22c55e', '#3b82f6', '#ef4444'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom', labels: { color: '#a0aec0', font: { size: 11 } } },
-        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0',
-          callbacks: { label: function(c) { return ' ' + c.label + ': ' + c.raw + '%'; } }
-        }
-      }
+// Resize apos load para garantir charts em paineis ocultos
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    if (typeof Chart !== 'undefined') {
+      Object.values(Chart.instances).forEach(function(c) { c.resize(); });
     }
-  });
-})();
-
-// --- Disparos por Dia ---
-(function() {
-  var el = document.getElementById('cDiario');
-  if (!el) return;
-  new Chart(el, {
-    type: 'bar',
-    data: {
-      labels: ['01/Jun','02/Jun','03/Jun','04/Jun','05/Jun','06/Jun','08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','13/Jun','15/Jun','16/Jun','17/Jun'],
-      datasets: [
-        { label: 'LLZ', data: [3200, 4100, 8900, 2800, 6200, 280, 4500, 6200, 13500, 12000, 8900, 3200, 47000, 43170, 12896], backgroundColor: '#3b82f6' },
-        { label: 'Controle', data: [28000, 31000, 302000, 22000, 88000, 18000, 38000, 49000, 85000, 92000, 76000, 31000, 320000, 83362, 97482], backgroundColor: '#374151' }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
-        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0' }
-      },
-      scales: {
-        x: { ticks: { color: '#718096', font: { size: 9 } }, grid: { color: '#1f2937' } },
-        y: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } }
-      }
-    }
-  });
-})();
-
-// --- Perfil Canal Base 90d+ ---
-(function() {
-  var el = document.getElementById('cCanal');
-  if (!el) return;
-  new Chart(el, {
-    type: 'doughnut',
-    data: {
-      labels: ['SEM_HISTORICO (60,5%)', 'SO_HUMANO (19,1%)', 'SO_DIGITAL (13,6%)', 'MISTO (6,8%)'],
-      datasets: [{
-        data: [26114, 8234, 5892, 2930],
-        backgroundColor: ['#6b7280', '#f59e0b', '#3b82f6', '#a855f7'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: {
-        legend: { position: 'bottom', labels: { color: '#a0aec0', font: { size: 10 } } },
-        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0',
-          callbacks: { label: function(c) { return ' ' + c.label + ': ' + c.raw.toLocaleString('pt-BR') + ' unidades'; } }
-        }
-      }
-    }
-  });
-})();
-
-// --- Entrega vs Leitura LLZ x Controle ---
-(function() {
-  var el = document.getElementById('cCompRadar');
-  if (!el) return;
-  new Chart(el, {
-    type: 'bar',
-    data: {
-      labels: ['Entrega (%)', 'Leitura (%)', 'Erro (%)'],
-      datasets: [
-        { label: 'LLZ Acoes', data: [74.8, 5.1, 25.2], backgroundColor: '#3b82f6' },
-        { label: 'Controle', data: [71.0, 1.8, 29.0], backgroundColor: '#4b5563' }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
-        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0',
-          callbacks: { label: function(c) { return ' ' + c.dataset.label + ': ' + c.raw + '%'; } }
-        }
-      },
-      scales: {
-        x: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } },
-        y: { ticks: { color: '#718096', callback: function(v) { return v + '%'; } }, grid: { color: '#1f2937' }, max: 100 }
-      }
-    }
-  });
-})();
-
-// --- Acordos por 1000 Disparos ---
-(function() {
-  var el = document.getElementById('cAcordos');
-  if (!el) return;
-  new Chart(el, {
-    type: 'bar',
-    data: {
-      labels: ['10/Jun', '15/Jun', '16/Jun', '17/Jun'],
-      datasets: [
-        { label: 'LLZ (acordos/1k)', data: [4.9, 1.4, 1.6, 5.2], backgroundColor: '#22c55e', borderRadius: 4 },
-        { label: 'Controle (acordos/1k)', data: [0.3, 0.1, 0.3, 0.3], backgroundColor: '#374151', borderRadius: 4 }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
-        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0' }
-      },
-      scales: {
-        x: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } },
-        y: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } }
-      }
-    }
-  });
-})();
-
-// Ativar primeiro painel ao carregar
-(function() {
-  var firstTab = document.querySelector('.tab');
-  var firstPanel = document.getElementById('panel-performance');
-  if (firstTab) firstTab.classList.add('active');
-  if (firstPanel) firstPanel.classList.add('active');
-  // Remover duplicata se existir
-  document.querySelectorAll('.panel').forEach(function(p) {
-    if (p.id !== 'panel-performance') p.classList.remove('active');
-  });
-})();
-
+  }, 200);
+});
 </script>
 </body>
 </html>
