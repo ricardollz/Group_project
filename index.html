@@ -1365,6 +1365,139 @@ var chartDefaults = {
   });
 })();
 
+
+// --- Funil de Entrega Total LLZ ---
+(function() {
+  var el = document.getElementById('cFunil');
+  if (!el) return;
+  new Chart(el, {
+    type: 'doughnut',
+    data: {
+      labels: ['Lido (READ)', 'Entregue nao lido', 'Erro / Nao entregue'],
+      datasets: [{
+        data: [5.1, 69.7, 25.2],
+        backgroundColor: ['#22c55e', '#3b82f6', '#ef4444'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { color: '#a0aec0', font: { size: 11 } } },
+        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0',
+          callbacks: { label: function(c) { return ' ' + c.label + ': ' + c.raw + '%'; } }
+        }
+      }
+    }
+  });
+})();
+
+// --- Disparos por Dia ---
+(function() {
+  var el = document.getElementById('cDiario');
+  if (!el) return;
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: ['01/Jun','02/Jun','03/Jun','04/Jun','05/Jun','06/Jun','08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','13/Jun','15/Jun','16/Jun','17/Jun'],
+      datasets: [
+        { label: 'LLZ', data: [3200, 4100, 8900, 2800, 6200, 280, 4500, 6200, 13500, 12000, 8900, 3200, 47000, 43170, 12896], backgroundColor: '#3b82f6' },
+        { label: 'Controle', data: [28000, 31000, 302000, 22000, 88000, 18000, 38000, 49000, 85000, 92000, 76000, 31000, 320000, 83362, 97482], backgroundColor: '#374151' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
+        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0' }
+      },
+      scales: {
+        x: { ticks: { color: '#718096', font: { size: 9 } }, grid: { color: '#1f2937' } },
+        y: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } }
+      }
+    }
+  });
+})();
+
+// --- Perfil Canal Base 90d+ ---
+(function() {
+  var el = document.getElementById('cCanal');
+  if (!el) return;
+  new Chart(el, {
+    type: 'doughnut',
+    data: {
+      labels: ['SEM_HISTORICO (60,5%)', 'SO_HUMANO (19,1%)', 'SO_DIGITAL (13,6%)', 'MISTO (6,8%)'],
+      datasets: [{
+        data: [26114, 8234, 5892, 2930],
+        backgroundColor: ['#6b7280', '#f59e0b', '#3b82f6', '#a855f7'],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'bottom', labels: { color: '#a0aec0', font: { size: 10 } } },
+        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0',
+          callbacks: { label: function(c) { return ' ' + c.label + ': ' + c.raw.toLocaleString('pt-BR') + ' unidades'; } }
+        }
+      }
+    }
+  });
+})();
+
+// --- Entrega vs Leitura LLZ x Controle ---
+(function() {
+  var el = document.getElementById('cCompRadar');
+  if (!el) return;
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: ['Entrega (%)', 'Leitura (%)', 'Erro (%)'],
+      datasets: [
+        { label: 'LLZ Acoes', data: [74.8, 5.1, 25.2], backgroundColor: '#3b82f6' },
+        { label: 'Controle', data: [71.0, 1.8, 29.0], backgroundColor: '#4b5563' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
+        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0',
+          callbacks: { label: function(c) { return ' ' + c.dataset.label + ': ' + c.raw + '%'; } }
+        }
+      },
+      scales: {
+        x: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } },
+        y: { ticks: { color: '#718096', callback: function(v) { return v + '%'; } }, grid: { color: '#1f2937' }, max: 100 }
+      }
+    }
+  });
+})();
+
+// --- Acordos por 1000 Disparos ---
+(function() {
+  var el = document.getElementById('cAcordos');
+  if (!el) return;
+  new Chart(el, {
+    type: 'bar',
+    data: {
+      labels: ['10/Jun', '15/Jun', '16/Jun', '17/Jun'],
+      datasets: [
+        { label: 'LLZ (acordos/1k)', data: [4.9, 1.4, 1.6, 5.2], backgroundColor: '#22c55e', borderRadius: 4 },
+        { label: 'Controle (acordos/1k)', data: [0.3, 0.1, 0.3, 0.3], backgroundColor: '#374151', borderRadius: 4 }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { labels: { color: '#a0aec0', font: { size: 11 } } },
+        tooltip: { backgroundColor: '#1e2533', titleColor: '#e2e8f0', bodyColor: '#a0aec0' }
+      },
+      scales: {
+        x: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } },
+        y: { ticks: { color: '#718096' }, grid: { color: '#1f2937' } }
+      }
+    }
+  });
+})();
+
 // Ativar primeiro painel ao carregar
 (function() {
   var firstTab = document.querySelector('.tab');
