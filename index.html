@@ -114,11 +114,12 @@ tbody td{padding:8px 10px;vertical-align:top}
 <div class="tabs">
   <div class="tab active" onclick="tab(this,'performance')">Visao Geral</div>
   <div class="tab" onclick="tab(this,'digitalop')">Digital vs Operacao</div>
-  <div class="tab" onclick="tab(this,'tickets')">Tickets 18-20/Jun</div>
+  <div class="tab" onclick="tab(this,'tickets')">Analises Jun</div>
   <div class="tab" onclick="tab(this,'comparativo')">Diagnostico HSM</div>
   <div class="tab" onclick="tab(this,'calendario')">Calendario</div>
   <div class="tab" onclick="tab(this,'templates')">Templates / Banco HSM</div>
   <div class="tab" onclick="tab(this,'perfis')">Perfis Comportamentais</div>
+  <div class="tab" onclick="tab(this,'retrospectiva')">Retrospectiva Jun</div>
   <div class="tab" onclick="tab(this,'diario')">Diario de Bordo</div>
 </div>
 <div class="content">
@@ -267,71 +268,108 @@ tbody td{padding:8px 10px;vertical-align:top}
   </div>
 </div><!-- /panel-digitalop -->
 
-<!-- ===== PANEL 3 — TICKETS 18-20/Jun ===== -->
+<!-- ===== PANEL 3 — ANALISES INDEXADAS ===== -->
 <div id="panel-tickets" class="panel">
-  <div class="stitle">Tickets & Bot 18-20/Jun</div>
-  <div class="kpi-grid">
-    <div class="kpi"><div class="label">Tickets 18/Jun</div><div class="value">10.441</div><div class="sub" style="color:#4ade80">Bot 4004+4401: R$ 1.255.915</div></div>
-    <div class="kpi"><div class="label">Tickets 19/Jun</div><div class="value">10.425</div><div class="sub" style="color:#4ade80">Bot 4004+4401: R$ 1.556.686</div></div>
-    <div class="kpi"><div class="label">Tickets 20/Jun</div><div class="value">5.668</div><div class="sub warn">sabado | Bot: R$ 805.320</div></div>
-    <div class="kpi"><div class="label">Push&rarr;Ticket 18/Jun</div><div class="value">7.388</div><div class="sub">Ativo + campanha PUSH</div></div>
-    <div class="kpi"><div class="label">Push&rarr;Ticket 19/Jun</div><div class="value">7.714</div><div class="sub" style="color:#4ade80">+4,4% vs 18/Jun</div></div>
-    <div class="kpi"><div class="label">Push&rarr;Ticket 20/Jun</div><div class="value">4.384</div><div class="sub warn">sabado &mdash; volume menor</div></div>
-    <div class="kpi"><div class="label">Ticket medio 18/Jun</div><div class="value">R$ 490</div><div class="sub" style="color:#4ade80">Produtividade 29,5%</div></div>
-    <div class="kpi"><div class="label">Ticket medio 19/Jun</div><div class="value">R$ 478</div><div class="sub warn">Produtividade 29,9%</div></div>
-    <div class="kpi"><div class="label">Ticket medio 20/Jun</div><div class="value">R$ 482</div><div class="sub warn">Produtividade 25,9%</div></div>
-  </div>
-  <div class="stitle">Top Templates por Volume</div>
-  <div class="card" style="margin-bottom:14px">
-    <table>
-      <thead><tr><th>Data</th><th>Template</th><th>Disparos</th></tr></thead>
-      <tbody>
-        <tr><td>18/Jun</td><td>ap_vct_web</td><td>75.421</td></tr>
-        <tr><td>18/Jun</td><td>llz_g6_aviso_pre_judicial_v1</td><td>24.564</td></tr>
-        <tr><td>18/Jun</td><td>bot_cobranca4_utilidade___op_3049</td><td>11.662</td></tr>
-        <tr><td>19/Jun</td><td>bot_lizgeraboleto2_utilidade</td><td>71.217</td></tr>
-        <tr><td>19/Jun</td><td>pre_cobranca_01_utilidade</td><td>62.906</td></tr>
-        <tr><td>19/Jun</td><td>operacao_dispop3_utilidade</td><td>38.165</td></tr>
-        <tr><td>20/Jun</td><td>colchao_0506</td><td>215</td></tr>
-        <tr><td>20/Jun</td><td>operacao_juridico1_utilidade___op_2518</td><td>158</td></tr>
-        <tr><td>20/Jun</td><td>at_vct_web</td><td>101</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="stitle">Alertas de Qualidade</div>
-  <div class="insight"><p>
-    <strong>20/Jun (Sabado):</strong> Taxa de erro 31,5% &mdash; volume baixo (1.011 disparos) com alta proporcao de erros. Verificar qualidade da base e cooldown antes do proximo disparo de segunda-feira. &nbsp;|&nbsp;
-    <strong>19/Jun:</strong> Leitura caiu para 11,1% (vs 18,0% em 18/Jun) com volume muito maior (206k vs 136k) &mdash; sinal de saturacao parcial de lista. &nbsp;|&nbsp;
-    <strong>Bot 4004+4401:</strong> Total 3 dias = <strong>R$ 3.617.921</strong>. Pico em 19/Jun (sexta-feira).
-  </p></div>
+  <div class="stitle">Analises &mdash; Junho 2026</div>
 
-  <div class="charts-row">
-    <div class="card"><h3>Resultado Bot por Dia (R$)</h3><div class="chart-wrap"><canvas id="cMixTickets"></canvas></div></div>
-    <div class="card"><h3>Janela de Leitura &mdash; Horario (%)</h3><div class="chart-wrap"><canvas id="cReadHour"></canvas></div></div>
+  <!-- INDEX ──────────────────────────────────────────────────────────────── -->
+  <div style="background:#1a1f2e;border:1px solid #2d3748;border-radius:8px;padding:14px 20px;margin-bottom:22px">
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#718096;margin-bottom:10px">Indice de Analises</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+      <a href="#analise-travadas" style="background:#2d3748;color:#63b3ed;padding:5px 12px;border-radius:20px;font-size:12px;text-decoration:none">#1 Unidades Travadas &mdash; Jun/2026</a>
+    </div>
   </div>
 
-  <div class="stitle">Operacoes por Tipo</div>
-  <div class="card" style="margin-bottom:16px">
-    <table>
-      <thead><tr><th>Operacao</th><th>16/Jun</th><th>17/Jun</th><th>18/Jun</th><th>Ticket Medio</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td><strong>LLZ-4004 (Bot)</strong></td><td>R$ 69.846</td><td class="up">R$ 1.626.131</td><td>R$ 1.180.480</td><td>R$ 174 &rarr; R$ 144</td><td><span class="pill pg">PRINCIPAL</span></td></tr>
-        <tr><td><strong>LLZ-4401 (Bot+)</strong></td><td>&mdash;</td><td>R$ 53.003</td><td>R$ 58.267</td><td>~R$ 150</td><td><span class="pill pb">SUPORTE</span></td></tr>
-        <tr><td><strong>LLZ humano</strong></td><td>R$ 4.267</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td><span class="pill pgr">ESCALADO</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+  <!-- BOX #1: UNIDADES TRAVADAS ────────────────────────────────────────────── -->
+  <div id="analise-travadas" style="border:1px solid #2d3748;border-radius:10px;overflow:hidden;margin-bottom:24px">
 
-  <div class="stitle">Canais de Atendimento</div>
-  <div class="card" style="margin-bottom:16px">
-    <table>
-      <thead><tr><th>Canal</th><th>Tickets 17/Jun</th><th>% Total</th><th>Resultado Bot</th><th>Status</th></tr></thead>
-      <tbody>
-        <tr><td><strong>WhatsApp Meta</strong></td><td>9.850</td><td>87%</td><td class="up">R$ 1.415.534</td><td><span class="pill pg">PRINCIPAL</span></td></tr>
-        <tr><td><strong>Web Chat</strong></td><td>1.489</td><td>13%</td><td>R$ 210.597</td><td><span class="pill pb">SECUNDARIO</span></td></tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- header -->
+    <div style="background:#2d3748;padding:12px 20px;display:flex;align-items:center;gap:12px">
+      <span style="background:#3b82f6;color:#fff;font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px">#1</span>
+      <span style="font-weight:600;font-size:14px;color:#e2e8f0">Unidades Travadas &mdash; Disparos e Resultados (01&ndash;22/Jun)</span>
+      <span style="margin-left:auto;font-size:11px;color:#718096">Base: 01/06/2026 &mdash; Analise: 22/06/2026</span>
+    </div>
+
+    <div style="padding:18px 20px">
+
+      <!-- KPIs topo -->
+      <div class="kpi-grid" style="margin-bottom:20px">
+        <div class="kpi"><div class="label">Total Travadas</div><div class="value">5.379</div><div class="sub neu">FASE 0 &mdash; TRAVADO</div></div>
+        <div class="kpi"><div class="label">Na Base_Master_1806</div><div class="value" style="color:#3b82f6">3.844</div><div class="sub" style="color:#3b82f6">71,5% identificadas</div></div>
+        <div class="kpi"><div class="label">Fora da Base</div><div class="value" style="color:#f59e0b">1.535</div><div class="sub" style="color:#f59e0b">28,5% sem classificacao</div></div>
+        <div class="kpi"><div class="label">Phones Encontrados</div><div class="value">3.826</div><div class="sub neu">de 3.844 na base</div></div>
+      </div>
+
+      <!-- Disparos -->
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#718096;margin-bottom:10px">Disparos 01&ndash;17/Jun (via WhatsApp)</div>
+      <div class="kpi-grid" style="margin-bottom:20px">
+        <div class="kpi"><div class="label">Phones Atingidos</div><div class="value" style="color:#10b981">3.762</div><div class="sub" style="color:#10b981">98,3% dos identificados</div></div>
+        <div class="kpi"><div class="label">Total Disparos</div><div class="value">33.165</div><div class="sub neu">01&ndash;17/Jun</div></div>
+        <div class="kpi"><div class="label">Taxa de Leitura</div><div class="value" style="color:#3b82f6">20,5%</div><div class="sub neu">3.710 lidas</div></div>
+        <div class="kpi"><div class="label">Erros de Envio</div><div class="value" style="color:#ef4444">7.411</div><div class="sub" style="color:#ef4444">22,3% erro</div></div>
+      </div>
+
+      <!-- Tickets -->
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#718096;margin-bottom:10px">Resultados em Ticket (16&ndash;20/Jun)</div>
+      <div class="kpi-grid" style="margin-bottom:20px">
+        <div class="kpi"><div class="label">Unidades c/ Ticket</div><div class="value" style="color:#a78bfa">469</div><div class="sub" style="color:#a78bfa">8,7% do total travadas</div></div>
+        <div class="kpi"><div class="label">RETENCAO</div><div class="value" style="color:#10b981">430</div><div class="sub" style="color:#10b981">tickets atendidos</div></div>
+        <div class="kpi"><div class="label">NEGOCIACAO</div><div class="value" style="color:#3b82f6">140</div><div class="sub" style="color:#3b82f6">em negociacao</div></div>
+        <div class="kpi"><div class="label">Valor Recuperado</div><div class="value" style="color:#10b981;font-size:16px">R$ 67.387</div><div class="sub" style="color:#10b981">RETENCAO + NEGOCIACAO</div></div>
+      </div>
+
+      <!-- Templates usados -->
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#718096;margin-bottom:10px">Templates mais usados nos disparos</div>
+      <div style="overflow-x:auto;margin-bottom:20px">
+        <table class="data-table">
+          <thead><tr><th>Template</th><th>Disparos</th><th>%</th></tr></thead>
+          <tbody>
+            <tr><td>bot_lizgeraboleto2_utilidade</td><td>10.834</td><td>32,7%</td></tr>
+            <tr><td>bot_pgtopend_utilidade</td><td>4.710</td><td>14,2%</td></tr>
+            <tr><td>bot_seras4_utilidade</td><td>3.598</td><td>10,8%</td></tr>
+            <tr><td>bot_cobranca4_utilidade</td><td>3.348</td><td>10,1%</td></tr>
+            <tr><td>ap_vct_web</td><td>2.548</td><td>7,7%</td></tr>
+            <tr><td style="color:#f87171">llz_g6_aviso_pre_judicial_v1 &#9888;</td><td>2.259</td><td>6,8%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="background:#1a1f2e;border-left:3px solid #f59e0b;padding:8px 12px;border-radius:0 4px 4px 0;font-size:12px;color:#fbbf24;margin-bottom:20px">
+        &#9888; llz_g6_aviso_pre_judicial_v1 usado em 2.259 disparos para unidades travadas &mdash; revisar conformidade CDC/LGPD com juridico antes de novo ciclo.
+      </div>
+
+      <!-- Classificacao cruzada -->
+      <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#718096;margin-bottom:10px">Classificacao: Arquivo (faixa de atraso) vs LLZ (Grupo)</div>
+      <div style="overflow-x:auto;margin-bottom:12px">
+        <table class="data-table" style="font-size:11px">
+          <thead>
+            <tr>
+              <th>Status no Arquivo</th><th>Qtde</th><th>Apoio</th><th>Digital Antigo</th><th>Digital Recente</th><th>G3</th><th>G4</th><th>G5</th><th>G6</th><th>Sem Hist</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Ate 30 dias</td><td>329</td><td>46</td><td>0</td><td>70</td><td>94</td><td>3</td><td>1</td><td>8</td><td>2</td></tr>
+            <tr><td>31 - 60 dias</td><td>281</td><td>50</td><td>2</td><td>79</td><td>66</td><td>0</td><td>9</td><td>1</td><td>1</td></tr>
+            <tr><td>61 - 90 dias</td><td>164</td><td>5</td><td>17</td><td>30</td><td>31</td><td>17</td><td>15</td><td>0</td><td>0</td></tr>
+            <tr><td>91 - 180 dias</td><td>717</td><td>2</td><td>47</td><td>48</td><td>95</td><td>125</td><td>93</td><td>0</td><td>27</td></tr>
+            <tr><td>181 - 270 dias</td><td>430</td><td>3</td><td>44</td><td>2</td><td>27</td><td>0</td><td>71</td><td>0</td><td>173</td></tr>
+            <tr><td>271 - 364 dias</td><td>344</td><td>0</td><td>21</td><td>2</td><td>9</td><td>0</td><td>63</td><td>49</td><td>111</td></tr>
+            <tr><td style="color:#ef4444">12 - 24 meses</td><td style="color:#ef4444">1.884</td><td>7</td><td>83</td><td>1</td><td>33</td><td>0</td><td>180</td><td style="color:#ef4444">1.073</td><td>4</td></tr>
+            <tr><td style="color:#ef4444">24 - 36 meses</td><td style="color:#ef4444">1.008</td><td>1</td><td>31</td><td>1</td><td>9</td><td>0</td><td>79</td><td style="color:#ef4444">630</td><td>0</td></tr>
+            <tr><td style="color:#ef4444">36 - 48 meses</td><td style="color:#ef4444">193</td><td>0</td><td>4</td><td>0</td><td>3</td><td>0</td><td>10</td><td>118</td><td>0</td></tr>
+            <tr><td style="color:#ef4444">48+ meses</td><td style="color:#ef4444">29</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>17</td><td>0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="background:#1a1f2e;border-left:3px solid #ef4444;padding:8px 12px;border-radius:0 4px 4px 0;font-size:12px;color:#fca5a5;margin-bottom:8px">
+        <strong>Insight principal:</strong> 2.892 unidades (54%) com atraso acima de 12 meses foram classificadas majoritariamente como G6 (1.838 unidades). Esses clientes receberam template de aviso pre-judicial sem validacao juridica previa.
+      </div>
+      <div style="background:#1a1f2e;border-left:3px solid #3b82f6;padding:8px 12px;border-radius:0 4px 4px 0;font-size:12px;color:#93c5fd">
+        <strong>Oportunidade:</strong> 1.535 unidades travadas nao estao na Base_Master_1806 e <em>nao receberam nenhum disparo</em>. Incluir no proximo ciclo apos classificacao.
+      </div>
+
+    </div><!-- /padding -->
+  </div><!-- /box #1 -->
+
 </div><!-- /panel-tickets -->
 
 <!-- ===== PANEL 4 — DIAGNOSTICO HSM ===== -->
@@ -675,6 +713,104 @@ tbody td{padding:8px 10px;vertical-align:top}
   </div>
 </div><!-- /panel-perfis -->
 
+<!-- ===== PANEL 9 — RETROSPECTIVA JUNHO ===== -->
+<div id="panel-retrospectiva" class="panel">
+  <div class="stitle">Retrospectiva Junho &mdash; Acertos, Erros e Plano Julho</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px">
+
+    <!-- ACERTOS -->
+    <div style="background:#0f2518;border:1px solid #166534;border-radius:10px;padding:18px">
+      <div style="font-size:13px;font-weight:700;color:#4ade80;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:16px">&#9989;</span> O que funcionou
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:#a7f3d0">
+        <div style="border-left:3px solid #22c55e;padding-left:10px">
+          <strong style="color:#4ade80">Segmentacao por Grupo funciona.</strong><br>
+          G4 e G5 geraram melhor conversao em ticket. Digital Recente teve leitura consistente de 25&ndash;30%.
+        </div>
+        <div style="border-left:3px solid #22c55e;padding-left:10px">
+          <strong style="color:#4ade80">Cobertura das travadas foi quase total.</strong><br>
+          98,3% das unidades identificadas receberam disparo. Nao foi falha de alcance, foi de conversao.
+        </div>
+        <div style="border-left:3px solid #22c55e;padding-left:10px">
+          <strong style="color:#4ade80">Taxa de leitura acima do historico.</strong><br>
+          Media geral de 22&ndash;24% em todo o mes. LLZ Principal chegou a 28% em dias bons.
+        </div>
+        <div style="border-left:3px solid #22c55e;padding-left:10px">
+          <strong style="color:#4ade80">Dashboard como ferramenta de decisao.</strong><br>
+          Criamos estrutura de monitoramento diario com dados reais, sem dep&ecirc;ndencia de relatorio manual.
+        </div>
+        <div style="border-left:3px solid #22c55e;padding-left:10px">
+          <strong style="color:#4ade80">R$ 67k recuperado de carteira travada.</strong><br>
+          469 unidades em FASE 0 geraram ticket ativo. Sem esse cruzamento, esse numero seria invisivel.
+        </div>
+      </div>
+    </div>
+
+    <!-- ERROS -->
+    <div style="background:#1f1515;border:1px solid #7f1d1d;border-radius:10px;padding:18px">
+      <div style="font-size:13px;font-weight:700;color:#f87171;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:16px">&#10060;</span> O que nao funcionou
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:#fca5a5">
+        <div style="border-left:3px solid #dc2626;padding-left:10px">
+          <strong style="color:#f87171">Variaveis_HSM erradas na base original.</strong><br>
+          Incluimos Dias e Valor que os templates nao usam. Corrigido no v2, mas atrasou os disparos.
+        </div>
+        <div style="border-left:3px solid #dc2626;padding-left:10px">
+          <strong style="color:#f87171">Double-55 no telefone.</strong><br>
+          Prefixo internacional duplicado em parte da base. Corrigido, mas causou erros de entrega nao contabilizados.
+        </div>
+        <div style="border-left:3px solid #dc2626;padding-left:10px">
+          <strong style="color:#ef4444">G6 disparado sem validacao juridica. &#9888;</strong><br>
+          llz_g6_aviso_pre_judicial_v1 foi para 2.259 clientes travados (12+ meses atraso) sem revisao previa. Risco CDC/LGPD real.
+        </div>
+        <div style="border-left:3px solid #dc2626;padding-left:10px">
+          <strong style="color:#f87171">1.535 travadas sem classificacao.</strong><br>
+          28,5% do arquivo nao estava na base de disparo. Nao receberam nenhuma acao em junho.
+        </div>
+        <div style="border-left:3px solid #dc2626;padding-left:10px">
+          <strong style="color:#f87171">publicar.bat sobrescrevia o dashboard.</strong><br>
+          Cada publicacao restaurava versao antiga. Semana perdida antes de identificar o bug.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLANO JULHO -->
+  <div style="background:#1a1f2e;border:1px solid #2d3748;border-radius:10px;padding:18px">
+    <div style="font-size:13px;font-weight:700;color:#93c5fd;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+      <span style="font-size:16px">&#128197;</span> Foco Julho &mdash; 3 prioridades
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px">
+
+      <div style="background:#0f172a;border:1px solid #1e3a5f;border-radius:8px;padding:14px">
+        <div style="background:#1e40af;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px">PRIORIDADE 1</div>
+        <div style="font-size:13px;font-weight:600;color:#93c5fd;margin-bottom:6px">Revisao Juridica G5/G6</div>
+        <div style="font-size:12px;color:#64748b">Nao disparar llz_g5 e llz_g6 ate juridico validar. Criar checklist de aprovacao antes de qualquer novo template pre-judicial.</div>
+      </div>
+
+      <div style="background:#0f172a;border:1px solid #1e3a5f;border-radius:8px;padding:14px">
+        <div style="background:#1e40af;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px">PRIORIDADE 2</div>
+        <div style="font-size:13px;font-weight:600;color:#93c5fd;margin-bottom:6px">Incluir as 1.535 Travadas</div>
+        <div style="font-size:12px;color:#64748b">Classificar e adicionar ao ciclo as unidades sem identificacao. Sao clientes reais com divida ativa que nao receberam nenhum contato em junho.</div>
+      </div>
+
+      <div style="background:#0f172a;border:1px solid #1e3a5f;border-radius:8px;padding:14px">
+        <div style="background:#1e40af;color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px">PRIORIDADE 3</div>
+        <div style="font-size:13px;font-weight:600;color:#93c5fd;margin-bottom:6px">Disciplina Operacional</div>
+        <div style="font-size:12px;color:#64748b">Checar variaveis antes de gerar base. Validar formato de telefone. Nao inventar campos novos. Foco em resultado diario, nao em criar novas features.</div>
+      </div>
+
+    </div>
+    <div style="margin-top:14px;background:#0f172a;border-left:3px solid #6366f1;padding:10px 14px;border-radius:0 6px 6px 0;font-size:12px;color:#a5b4fc">
+      <strong>Regra de ouro julho:</strong> Variaveis_HSM = Phone|PrimeiroNome|Condominio|BU &mdash; nada mais, nada menos. Antes de qualquer base nova, testar com 10 linhas manualmente.
+    </div>
+  </div>
+
+</div><!-- /panel-retrospectiva -->
+
 <!-- ===== PANEL 8 — DIARIO DE BORDO ===== -->
 <div id="panel-diario" class="panel">
 
@@ -971,13 +1107,14 @@ var TICKS = { color: '#718096' };
 new Chart(document.getElementById('cLeitura'), {
   type: 'line',
   data: {
-    labels: ['10/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
+    labels: ['01/Jun','02/Jun','03/Jun','05/Jun','08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
     datasets: [
-      { label: 'LLZ Acoes', data: [4.3,6.1,20.0,17.7,18.0,11.1,12.6], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.15)', tension: 0.4, pointRadius: 5, fill: true },
-      { label: 'Controle', data: [1.2,0.8,1.1,1.2,null,null,null], borderColor: '#6b7280', backgroundColor: 'rgba(107,114,128,.1)', tension: 0.4, pointRadius: 5, fill: true }
+      { label: 'LLZ Principal', data: [26.4,24.7,26.6,22.6,24.5,28.5,16.0,23.5,15.7,24.8,24.0,24.2,25.7,13.1,17.1], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.15)', tension: 0.4, pointRadius: 4, fill: true },
+      { label: 'LLZ-4004', data: [18.4,28.9,18.3,18.3,18.6,18.6,25.7,27.3,20.7,24.4,30.1,26.3,29.0,16.6,36.9], borderColor: '#f59e0b', backgroundColor: 'rgba(245,158,11,.08)', tension: 0.4, pointRadius: 4, fill: false },
+      { label: 'Media Geral', data: [20.2,27.9,23.1,20.1,20.4,20.3,24.1,26.8,22.4,22.4,28.6,26.0,28.5,16.9,22.0], borderColor: '#10b981', backgroundColor: 'rgba(16,185,129,.08)', tension: 0.4, pointRadius: 4, borderDash:[4,3], fill: false }
     ]
   },
-  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true, max: 25 } } }
+  options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true, max: 40 } } }
 });
 
 // ─── CHART 2: Funil Doughnut ─────────────────────────────────────────────────
@@ -994,7 +1131,7 @@ new Chart(document.getElementById('cFunil'), {
 new Chart(document.getElementById('cDiario'), {
   type: 'bar',
   data: {
-    labels: ['10/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
+    labels: ['01/Jun','02/Jun','03/Jun','05/Jun','08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
     datasets: [
       { label: 'LLZ Acoes', data: [13500,47000,43170,12896,136558,206446,1011], backgroundColor: '#3b82f6' },
       { label: 'Controle', data: [85000,320000,83362,97482,0,0,0], backgroundColor: '#4b5563' }
@@ -1096,4 +1233,3 @@ window.addEventListener('load', function() {
 </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
