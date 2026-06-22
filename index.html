@@ -114,7 +114,7 @@ tbody td{padding:8px 10px;vertical-align:top}
 <div class="tabs">
   <div class="tab active" onclick="tab(this,'performance')">Visao Geral</div>
   <div class="tab" onclick="tab(this,'digitalop')">Digital vs Operacao</div>
-  <div class="tab" onclick="tab(this,'tickets')">Tickets 16-18/Jun</div>
+  <div class="tab" onclick="tab(this,'tickets')">Tickets 18-20/Jun</div>
   <div class="tab" onclick="tab(this,'comparativo')">Diagnostico HSM</div>
   <div class="tab" onclick="tab(this,'calendario')">Calendario</div>
   <div class="tab" onclick="tab(this,'templates')">Templates / Banco HSM</div>
@@ -126,14 +126,14 @@ tbody td{padding:8px 10px;vertical-align:top}
 <!-- ===== PANEL 1 — VISAO GERAL ===== -->
 <div id="panel-performance" class="panel active">
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Disparos LLZ Jun</div><div class="value">155.566</div><div class="sub">campanha ativa</div></div>
-    <div class="kpi"><div class="label">Taxa Entrega LLZ</div><div class="value">74,8%</div><div class="sub">+3,8pp vs controle</div></div>
-    <div class="kpi"><div class="label">Taxa Leitura LLZ</div><div class="value">5,1%</div><div class="sub warn">G2: 8% | G3: 4,3%</div></div>
-    <div class="kpi"><div class="label">Acordos Gerados</div><div class="value">67</div><div class="sub">base 90d+ jun/16</div></div>
-    <div class="kpi"><div class="label">Templates Ativos</div><div class="value">16</div><div class="sub neu">Banco HSM v1</div></div>
-    <div class="kpi"><div class="label">Digital vs Meta</div><div class="value">62,4%</div><div class="sub err">R$ 9,6M de gap</div></div>
+    <div class="kpi"><div class="label">Disparos LLZ 18-20/Jun</div><div class="value">343.015</div><div class="sub">18: 136k | 19: 206k | 20: 1k</div></div>
+    <div class="kpi"><div class="label">Taxa Entrega (media)</div><div class="value">79,7%</div><div class="sub">18: 80,3% | 19: 78,4% | 20: 83,4%</div></div>
+    <div class="kpi"><div class="label">Taxa Leitura (media)</div><div class="value">13,9%</div><div class="sub warn">18: 18% | 19: 11,1% | 20: 12,6%</div></div>
+    <div class="kpi"><div class="label">Bot R$ 18-20/Jun</div><div class="value" style="font-size:18px">R$ 3,62M</div><div class="sub" style="color:#4ade80">18: R$1,26M | 19: R$1,56M | 20: R$0,81M</div></div>
+    <div class="kpi"><div class="label">Tickets 3 dias</div><div class="value">26.534</div><div class="sub neu">media R$483/ticket</div></div>
+    <div class="kpi"><div class="label">Base Extra 1-90d (2206)</div><div class="value">76.608</div><div class="sub" style="color:#4ade80">16.310 entrantes novos</div></div>
   </div>
-  <div class="insight"><p><strong>Atualizado 19/Jun &mdash; Analise Digital vs Operacao:</strong>
+  <div class="insight"><p><strong>Atualizado 22/Jun &mdash; Performance 18-20/Jun + Base Extra 1-90d:</strong>
   Digital R$ 15,9M (62,4% da meta). Operacao no caminho de 101,2%.
   Copa do Mundo: jogos do Brasil nao prejudicaram performance &mdash; queda concentrada em DUs especificos por saturacao de contato.</p></div>
 
@@ -267,16 +267,43 @@ tbody td{padding:8px 10px;vertical-align:top}
   </div>
 </div><!-- /panel-digitalop -->
 
-<!-- ===== PANEL 3 — TICKETS 16-18/Jun ===== -->
+<!-- ===== PANEL 3 — TICKETS 18-20/Jun ===== -->
 <div id="panel-tickets" class="panel">
+  <div class="stitle">Tickets & Bot 18-20/Jun</div>
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Tickets 16/Jun</div><div class="value">7.234</div><div class="sub">Bot: R$ 69.846</div></div>
-    <div class="kpi"><div class="label">Tickets 17/Jun</div><div class="value">11.339</div><div class="sub" style="color:#4ade80">Bot: R$ 1.626.131</div></div>
-    <div class="kpi"><div class="label">Tickets 18/Jun</div><div class="value">10.042</div><div class="sub warn">parcial | Bot: R$ 1.180.480</div></div>
-    <div class="kpi"><div class="label">Push&rarr;Ticket conv. 16/Jun</div><div class="value">6,99%</div><div class="sub">taxa de conversao</div></div>
-    <div class="kpi"><div class="label">Push&rarr;Ticket conv. 17/Jun</div><div class="value" style="color:#f87171">5,48%</div><div class="sub err">queda vs 16/Jun</div></div>
-    <div class="kpi"><div class="label">Ticket medio bot</div><div class="value" style="font-size:18px">R$174&rarr;R$144</div><div class="sub err">-17% no dia 18/Jun</div></div>
+    <div class="kpi"><div class="label">Tickets 18/Jun</div><div class="value">10.441</div><div class="sub" style="color:#4ade80">Bot 4004+4401: R$ 1.255.915</div></div>
+    <div class="kpi"><div class="label">Tickets 19/Jun</div><div class="value">10.425</div><div class="sub" style="color:#4ade80">Bot 4004+4401: R$ 1.556.686</div></div>
+    <div class="kpi"><div class="label">Tickets 20/Jun</div><div class="value">5.668</div><div class="sub warn">sabado | Bot: R$ 805.320</div></div>
+    <div class="kpi"><div class="label">Push&rarr;Ticket 18/Jun</div><div class="value">7.388</div><div class="sub">Ativo + campanha PUSH</div></div>
+    <div class="kpi"><div class="label">Push&rarr;Ticket 19/Jun</div><div class="value">7.714</div><div class="sub" style="color:#4ade80">+4,4% vs 18/Jun</div></div>
+    <div class="kpi"><div class="label">Push&rarr;Ticket 20/Jun</div><div class="value">4.384</div><div class="sub warn">sabado &mdash; volume menor</div></div>
+    <div class="kpi"><div class="label">Ticket medio 18/Jun</div><div class="value">R$ 490</div><div class="sub" style="color:#4ade80">Produtividade 29,5%</div></div>
+    <div class="kpi"><div class="label">Ticket medio 19/Jun</div><div class="value">R$ 478</div><div class="sub warn">Produtividade 29,9%</div></div>
+    <div class="kpi"><div class="label">Ticket medio 20/Jun</div><div class="value">R$ 482</div><div class="sub warn">Produtividade 25,9%</div></div>
   </div>
+  <div class="stitle">Top Templates por Volume</div>
+  <div class="card" style="margin-bottom:14px">
+    <table>
+      <thead><tr><th>Data</th><th>Template</th><th>Disparos</th></tr></thead>
+      <tbody>
+        <tr><td>18/Jun</td><td>ap_vct_web</td><td>75.421</td></tr>
+        <tr><td>18/Jun</td><td>llz_g6_aviso_pre_judicial_v1</td><td>24.564</td></tr>
+        <tr><td>18/Jun</td><td>bot_cobranca4_utilidade___op_3049</td><td>11.662</td></tr>
+        <tr><td>19/Jun</td><td>bot_lizgeraboleto2_utilidade</td><td>71.217</td></tr>
+        <tr><td>19/Jun</td><td>pre_cobranca_01_utilidade</td><td>62.906</td></tr>
+        <tr><td>19/Jun</td><td>operacao_dispop3_utilidade</td><td>38.165</td></tr>
+        <tr><td>20/Jun</td><td>colchao_0506</td><td>215</td></tr>
+        <tr><td>20/Jun</td><td>operacao_juridico1_utilidade___op_2518</td><td>158</td></tr>
+        <tr><td>20/Jun</td><td>at_vct_web</td><td>101</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="stitle">Alertas de Qualidade</div>
+  <div class="insight"><p>
+    <strong>20/Jun (Sabado):</strong> Taxa de erro 31,5% &mdash; volume baixo (1.011 disparos) com alta proporcao de erros. Verificar qualidade da base e cooldown antes do proximo disparo de segunda-feira. &nbsp;|&nbsp;
+    <strong>19/Jun:</strong> Leitura caiu para 11,1% (vs 18,0% em 18/Jun) com volume muito maior (206k vs 136k) &mdash; sinal de saturacao parcial de lista. &nbsp;|&nbsp;
+    <strong>Bot 4004+4401:</strong> Total 3 dias = <strong>R$ 3.617.921</strong>. Pico em 19/Jun (sexta-feira).
+  </p></div>
 
   <div class="charts-row">
     <div class="card"><h3>Resultado Bot por Dia (R$)</h3><div class="chart-wrap"><canvas id="cMixTickets"></canvas></div></div>
@@ -414,14 +441,14 @@ tbody td{padding:8px 10px;vertical-align:top}
 <!-- ===== PANEL 7 — PERFIS COMPORTAMENTAIS ===== -->
 <div id="panel-perfis" class="panel">
   <div class="charts-row">
-    <div class="card"><h3>Distribuicao de Perfis &mdash; Base 90d+ (43.170 un.)</h3><div class="chart-wrap"><canvas id="cPerfil"></canvas></div></div>
+    <div class="card"><h3>Distribuicao de Perfis &mdash; Base 1-90d 2206 (76.608 un.)</h3><div class="chart-wrap"><canvas id="cPerfil"></canvas></div></div>
     <div class="card" style="display:flex;flex-direction:column;justify-content:center">
       <div class="stitle" style="margin-top:0">Resumo da Base</div>
       <div class="kpi-grid" style="grid-template-columns:1fr 1fr;margin-bottom:0">
-        <div class="kpi"><div class="label">SEM_HISTORICO</div><div class="value" style="font-size:20px">26.114</div><div class="sub warn">60,5% da base</div></div>
-        <div class="kpi"><div class="label">SO_HUMANO</div><div class="value" style="font-size:20px">8.234</div><div class="sub">19,1% da base</div></div>
-        <div class="kpi"><div class="label">SO_DIGITAL</div><div class="value" style="font-size:20px">5.892</div><div class="sub neu">13,6% da base</div></div>
-        <div class="kpi"><div class="label">MISTO</div><div class="value" style="font-size:20px">2.930</div><div class="sub">6,8% da base</div></div>
+        <div class="kpi"><div class="label">SEM_HISTORICO</div><div class="value" style="font-size:20px">37.676</div><div class="sub warn">49,2% da base</div></div>
+        <div class="kpi"><div class="label">SO_HUMANO</div><div class="value" style="font-size:20px">12.997</div><div class="sub">17,0% da base</div></div>
+        <div class="kpi"><div class="label">SO_DIGITAL</div><div class="value" style="font-size:20px">20.199</div><div class="sub neu">26,4% da base</div></div>
+        <div class="kpi"><div class="label">MISTO</div><div class="value" style="font-size:20px">5.736</div><div class="sub">7,5% da base</div></div>
       </div>
     </div>
   </div>
@@ -429,22 +456,22 @@ tbody td{padding:8px 10px;vertical-align:top}
   <div class="profile-grid">
     <div class="profile-card" style="border-left:3px solid #6b7280">
       <div class="p-name">SEM_HISTORICO</div>
-      <div class="p-count" style="color:#6b7280">26.114 (60,5%)</div>
+      <div class="p-count" style="color:#6b7280">37.676 (49,2%)</div>
       <div class="p-desc">Clientes sem nenhuma interacao nos ultimos 365 dias. Nunca responderam a nenhuma acao de cobranca &mdash; nem digital nem humana. Maior grupo e o mais dificil de engajar. Requer template de abordagem inicial com linguagem de primeiro contato e oferta diferenciada.</div>
     </div>
     <div class="profile-card" style="border-left:3px solid #f59e0b">
       <div class="p-name">SO_HUMANO</div>
-      <div class="p-count" style="color:#f59e0b">8.234 (19,1%)</div>
+      <div class="p-count" style="color:#f59e0b">12.997 (17,0%)</div>
       <div class="p-desc">Clientes que historicamente so respondem ao canal humano (call center). Engajamento digital baixo ou nulo. Estrategia: usar WhatsApp como pre-aquecimento antes da ligacao. Template deve mencionar que um atendente pode entrar em contato.</div>
     </div>
     <div class="profile-card" style="border-left:3px solid #3b82f6">
       <div class="p-name">SO_DIGITAL</div>
-      <div class="p-count" style="color:#3b82f6">5.892 (13,6%)</div>
+      <div class="p-count" style="color:#3b82f6">20.199 (26,4%)</div>
       <div class="p-desc">Clientes que preferem resolver pelo canal digital (bot, app, portal). Alta taxa de conversao via WhatsApp. Prioridade maxima para os melhores templates com CTA direto para o bot. Nao escalar para humano sem tentativa digital.</div>
     </div>
     <div class="profile-card" style="border-left:3px solid #8b5cf6">
       <div class="p-name">MISTO</div>
-      <div class="p-count" style="color:#8b5cf6">2.930 (6,8%)</div>
+      <div class="p-count" style="color:#8b5cf6">5.736 (7,5%)</div>
       <div class="p-desc">Clientes que alternam entre digital e humano conforme a situacao. Perfil mais flexivel. Abordagem hibrida: primeiro digital com fallback rapido para humano. Maior ticket medio historico por ser um perfil mais engajado.</div>
     </div>
   </div>
@@ -472,7 +499,41 @@ tbody td{padding:8px 10px;vertical-align:top}
 <div id="panel-diario" class="panel">
 
   <div class="diary-day success">
+    <div class="diary-date">22/Jun/2026 &mdash; Segunda-feira</div>
+    <div class="diary-title">Resultados 18-20/Jun + Acao Extra 1-90d (Base 2206)</div>
+    <div class="diary-tags">
+      <span class="pill pg">Push 18-20/Jun</span>
+      <span class="pill pb">Bot R$ 3,6M acum.</span>
+      <span class="pill py">Base 2206</span>
+      <span class="pill pgr">76.608 elegiveis</span>
+    </div>
+    <div class="diary-body">
+      <strong style="color:#fff">Resultados 18-20/Jun:</strong><br>
+      Dia 18: 136.558 disparos LLZ, leitura 18,0%, bot R$ 1,26M, 10.441 tickets.<br>
+      Dia 19 (Brasil x Haiti): 206.446 disparos, leitura caiu para 11,1% com volume +51% &mdash; sinal de saturacao parcial. Bot R$ 1,56M, 10.425 tickets.<br>
+      Dia 20 (sabado): 1.011 disparos residuais, erro 31,5% &mdash; lista fria. Bot R$ 805k, 5.668 tickets.<br><br>
+      <strong style="color:#fff">Acao extra 1-90d (Base 2206):</strong><br>
+      Base 2206 processada: 95.915 registros → 76.608 elegiveis apos filtros (ajuizados, institucional, sem fone).<br>
+      16.310 entrantes novos desde 18/Jun. Distribuicao por perfil: SEM_HISTORICO 49,2% (37.676), SO_DIGITAL 26,4% (20.199), SO_HUMANO 17,0% (12.997), MISTO 7,5% (5.736).<br>
+      Arquivo gerado: Base_Extra_1a90d_2206_v1.xlsx.
+    </div>
+    <div class="diary-result">
+      <strong>Acumulado Bot 18-20/Jun:</strong> R$ 3.617.921 &nbsp;|&nbsp;
+      <strong>Tickets:</strong> 26.534 &nbsp;|&nbsp;
+      <strong>Alerta:</strong> Leitura caindo com volume crescendo — cooldown necessario antes do proximo ciclo.
+    </div>
+  </div>
+
+
+    <div class="diary-day success">
     <div class="diary-date">19/Jun/2026 &mdash; Sexta-feira</div>
+    <div class="diary-title">Analise Digital vs Operacao + Copa do Mundo</div>
+    <div class="diary-tags">
+      <span class="pill pb">Digital</span>
+      <span class="pill py">Operacao</span>
+      <span class="pill pgr">Copa 2026</span>
+      <span class="pill pg">Diagnostico</span>
+    </div>
     <div class="diary-title">Analise Digital vs Operacao + Copa do Mundo</div>
     <div class="diary-tags">
       <span class="pill pb">Digital</span>
@@ -682,11 +743,11 @@ var CAL = [
   {d:15, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'47.000 disparos',c:'ev-llz'},{t:'Maior lote da campanha',c:'ev-ok'}]},
   {d:16, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'43.170 disparos LLZ',c:'ev-llz'},{t:'67 acordos | R$ 74k tickets',c:'ev-ok'}]},
   {d:17, ev:[{t:'09h — Sem Hist 91-365d',c:'ev-llz'},{t:'12.896 disparos LLZ',c:'ev-llz'},{t:'R$ 1,63M bot | Leitura 17,7%',c:'ev-ok'}]},
-  {d:18, ev:[{t:'09h — Digital Recente',c:'ev-llz'},{t:'10.042 tickets | R$ 1,18M bot',c:'ev-llz'},{t:'Saturacao detectada',c:'ev-alert'}]},
-  {d:19, ev:[{t:'Brasil x Haiti',c:'ev-alert'},{t:'09h — Sem Hist Recente',c:'ev-plan'},{t:'15.843 unidades',c:'ev-plan'}]},
-  {d:20, ev:[{t:'09h — G4 Notificacao',c:'ev-plan'},{t:'1.618 unidades',c:'ev-plan'}]},
+  {d:18, ev:[{t:'136.558 disparos LLZ',c:'ev-llz'},{t:'Bot R$ 1,26M | Entrega 80,3%',c:'ev-ok'},{t:'Leitura 18,0% | Erro 21,3%',c:'ev-ok'}]},
+  {d:19, ev:[{t:'Brasil x Haiti',c:'ev-alert'},{t:'206.446 disparos LLZ',c:'ev-llz'},{t:'Bot R$ 1,56M | Maior lote',c:'ev-ok'}]},
+  {d:20, ev:[{t:'1.011 disparos (sab)',c:'ev-llz'},{t:'Bot R$ 805k | Erro 31,5%',c:'ev-alert'}]},
   {d:21, ev:[]},
-  {d:22, ev:[{t:'09h — G5 + Digital Antigo',c:'ev-plan'},{t:'4.673 unidades',c:'ev-plan'}]},
+  {d:22, ev:[{t:'Base Extra 1-90d pronta',c:'ev-ok'},{t:'76.608 elegiveis | 16.310 entrantes',c:'ev-llz'},{t:'4 perfis | 4 templates',c:'ev-llz'}]},
   {d:23, ev:[{t:'09h — G6 Pre-Judicial',c:'ev-plan'},{t:'18.497 unidades',c:'ev-plan'}]},
   {d:24, ev:[{t:'Brasil x Escocia',c:'ev-alert'},{t:'09h — Apoio',c:'ev-plan'},{t:'7.044 unidades',c:'ev-plan'}]},
   {d:25, ev:[]},
@@ -700,7 +761,7 @@ var CAL = [
 function buildCalendar() {
   var grid = document.getElementById('calGrid');
   if (!grid) return;
-  var today = 19;
+  var today = 22;
   // June 2026 day 1 = Monday (col 0)
   var html = '';
   // col = (d-1) % 7
@@ -730,10 +791,10 @@ var TICKS = { color: '#718096' };
 new Chart(document.getElementById('cLeitura'), {
   type: 'line',
   data: {
-    labels: ['10/Jun','15/Jun','16/Jun','17/Jun'],
+    labels: ['10/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
     datasets: [
-      { label: 'LLZ Acoes', data: [4.3,6.1,20.0,17.7], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.15)', tension: 0.4, pointRadius: 5, fill: true },
-      { label: 'Controle', data: [1.2,0.8,1.1,1.2], borderColor: '#6b7280', backgroundColor: 'rgba(107,114,128,.1)', tension: 0.4, pointRadius: 5, fill: true }
+      { label: 'LLZ Acoes', data: [4.3,6.1,20.0,17.7,18.0,11.1,12.6], borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,.15)', tension: 0.4, pointRadius: 5, fill: true },
+      { label: 'Controle', data: [1.2,0.8,1.1,1.2,null,null,null], borderColor: '#6b7280', backgroundColor: 'rgba(107,114,128,.1)', tension: 0.4, pointRadius: 5, fill: true }
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true, max: 25 } } }
@@ -753,10 +814,10 @@ new Chart(document.getElementById('cFunil'), {
 new Chart(document.getElementById('cDiario'), {
   type: 'bar',
   data: {
-    labels: ['10/Jun','15/Jun','16/Jun','17/Jun'],
+    labels: ['10/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
     datasets: [
-      { label: 'LLZ Acoes', data: [13500,47000,43170,12896], backgroundColor: '#3b82f6' },
-      { label: 'Controle', data: [85000,320000,83362,97482], backgroundColor: '#4b5563' }
+      { label: 'LLZ Acoes', data: [13500,47000,43170,12896,136558,206446,1011], backgroundColor: '#3b82f6' },
+      { label: 'Controle', data: [85000,320000,83362,97482,0,0,0], backgroundColor: '#4b5563' }
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
@@ -767,7 +828,7 @@ new Chart(document.getElementById('cCanal'), {
   type: 'doughnut',
   data: {
     labels: ['SEM_HISTORICO','SO_HUMANO','SO_DIGITAL','MISTO'],
-    datasets: [{ data: [26114,8234,5892,2930], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
+    datasets: [{ data: [37676,12997,20199,5736], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10 } } } }
 });
@@ -789,8 +850,8 @@ new Chart(document.getElementById('cDvO'), {
 new Chart(document.getElementById('cMixTickets'), {
   type: 'bar',
   data: {
-    labels: ['16/Jun','17/Jun','18/Jun (parc.)'],
-    datasets: [{ label: 'Resultado Bot (R$)', data: [69846,1626131,1180480], backgroundColor: ['#6b7280','#3b82f6','#f59e0b'] }]
+    labels: ['18/Jun','19/Jun','20/Jun (sab)'],
+    datasets: [{ label: 'Resultado Bot R$ (4004+4401)', data: [1255915,1556686,805320], backgroundColor: ['#3b82f6','#4ade80','#f59e0b'] }]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
 });
@@ -822,10 +883,10 @@ new Chart(document.getElementById('cCompRadar'), {
 new Chart(document.getElementById('cAcordos'), {
   type: 'bar',
   data: {
-    labels: ['10/Jun','15/Jun','16/Jun','17/Jun'],
+    labels: ['10/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun'],
     datasets: [
-      { label: 'LLZ Acoes', data: [4.9,1.4,1.6,5.2], backgroundColor: '#3b82f6' },
-      { label: 'Controle', data: [0.3,0.1,0.3,0.3], backgroundColor: '#6b7280' }
+      { label: 'LLZ Acoes', data: [4.9,1.4,1.6,5.2,null,null], backgroundColor: '#3b82f6' },
+      { label: 'Controle', data: [0.3,0.1,0.3,0.3,null,null], backgroundColor: '#6b7280' }
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
@@ -836,7 +897,7 @@ new Chart(document.getElementById('cPerfil'), {
   type: 'doughnut',
   data: {
     labels: ['SEM_HISTORICO (60,5%)','SO_HUMANO (19,1%)','SO_DIGITAL (13,6%)','MISTO (6,8%)'],
-    datasets: [{ data: [26114,8234,5892,2930], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
+    datasets: [{ data: [37676,12997,20199,5736], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10 } } } }
 });
