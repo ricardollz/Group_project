@@ -165,7 +165,7 @@ tbody td{padding:8px 10px;vertical-align:top}
   </div>
   <div class="charts-row">
     <div class="card"><h3>Disparos por Dia</h3><div class="chart-wrap"><canvas id="cDiario"></canvas></div></div>
-    <div class="card"><h3>Perfil Comportamental &mdash; Base 90d+</h3><div class="chart-wrap"><canvas id="cCanal"></canvas></div></div>
+    <div class="card"><h3>Perfil Comportamental &mdash; Base 1806 (75.6k un.)</h3><div class="chart-wrap"><canvas id="cCanal"></canvas></div></div>
   </div>
 
   <div class="stitle">Performance por Template</div>
@@ -377,10 +377,10 @@ tbody td{padding:8px 10px;vertical-align:top}
   <div class="stitle">Diagnostico de Queda de Engajamento</div>
 
   <div class="kpi-grid">
-    <div class="kpi"><div class="label">Saturacao</div><div class="value" style="color:#f87171">82,7%</div><div class="sub err">re-acionados &lt;24h</div></div>
-    <div class="kpi"><div class="label">Janela de leitura</div><div class="value">80%+</div><div class="sub warn">entre 09h-11h</div></div>
+    <div class="kpi"><div class="label">Total Disparos Jun</div><div class="value" style="color:#3b82f6">2,07M</div><div class="sub err">re-acionados &lt;24h</div></div>
+    <div class="kpi"><div class="label">Taxa Leitura Media</div><div class="value" style="color:#10b981">22,7%</div><div class="sub warn">entre 09h-11h</div></div>
     <div class="kpi"><div class="label">Template com erro</div><div class="value" style="color:#f87171">dispop3</div><div class="sub err">22% de erro</div></div>
-    <div class="kpi"><div class="label">Queda de conversao</div><div class="value">6,99%&rarr;5,48%</div><div class="sub err">-1,51pp em 24h</div></div>
+    <div class="kpi"><div class="label">Taxa de Erro Media</div><div class="value" style="color:#f59e0b">23,8%</div><div class="sub err">-1,51pp em 24h</div></div>
   </div>
 
   <div class="diag-grid">
@@ -1042,28 +1042,28 @@ function tab(el, panelId) {
 
 // ─── CALENDAR ───────────────────────────────────────────────────────────────
 var CAL = [
-  {d:1, ev:[]},
-  {d:2, ev:[]},
-  {d:3, ev:[{t:'Controle ativo',c:'ev-ctrl'},{t:'310k disparos — 44% erro op2518',c:'ev-alert'}]},
-  {d:4, ev:[]},
-  {d:5, ev:[{t:'Pipeline travado',c:'ev-alert'},{t:'52% msgs em fila CREATED',c:'ev-alert'}]},
-  {d:6, ev:[]},
+  {d:1, ev:[{t:'79.6k disparos — inicio campanha',c:'ev-llz'},{t:'LLZ + 4004 + 4401 + 0718 ativos',c:'ev-llz'}]},
+  {d:2, ev:[{t:'62.8k disparos',c:'ev-llz'},{t:'LLZ-4004: taxa leitura 28,9%',c:'ev-ok'}]},
+  {d:3, ev:[{t:'310.7k disparos — maior lote ini',c:'ev-llz'},{t:'137k erros (44%) op2518',c:'ev-alert'}]},
+  {d:4, ev:[{t:'11.2k disparos — LLZ-4004',c:'ev-llz'}]},
+  {d:5, ev:[{t:'178.7k disparos',c:'ev-llz'},{t:'52% msgs em fila CREATED',c:'ev-alert'}]},
+  {d:6, ev:[{t:'18k disparos — quase todos erro',c:'ev-alert'}]},
   {d:7, ev:[]},
-  {d:8, ev:[]},
-  {d:9, ev:[]},
-  {d:10, ev:[{t:'09h — G3 + Digital',c:'ev-llz'},{t:'13.500 disparos',c:'ev-llz'},{t:'Parquet recebido',c:'ev-ok'}]},
-  {d:11, ev:[{t:'Abertura Copa 2026',c:'ev-alert'},{t:'Digital R$ 2,4M (+26%)',c:'ev-ok'}]},
-  {d:12, ev:[{t:'Controle ativo',c:'ev-ctrl'}]},
-  {d:13, ev:[{t:'Brasil x Marrocos',c:'ev-alert'},{t:'Digital +90% vs historico',c:'ev-ok'}]},
+  {d:8, ev:[{t:'93.1k disparos',c:'ev-llz'},{t:'LLZ-0718: leitura 38,8%',c:'ev-ok'}]},
+  {d:9, ev:[{t:'85k disparos',c:'ev-llz'},{t:'LLZ principal: leitura 28,5%',c:'ev-ok'}]},
+  {d:10, ev:[{t:'134.6k disparos',c:'ev-llz'},{t:'LLZ-4004: leitura 25,7%',c:'ev-ok'}]},
+  {d:11, ev:[{t:'Copa do Mundo 2026 — abertura',c:'ev-alert'},{t:'158.3k disparos',c:'ev-llz'},{t:'Digital +26% vs historico',c:'ev-ok'}]},
+  {d:12, ev:[{t:'280.5k disparos — PICO do mes',c:'ev-llz'},{t:'LLZ-4004: 166k disparos',c:'ev-llz'}]},
+  {d:13, ev:[{t:'Brasil x Marrocos',c:'ev-alert'},{t:'862 disparos (sabado)',c:'ev-llz'}]},
   {d:14, ev:[]},
-  {d:15, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'47.000 disparos',c:'ev-llz'},{t:'Maior lote da campanha',c:'ev-ok'}]},
-  {d:16, ev:[{t:'09h — Base 90d+',c:'ev-llz'},{t:'43.170 disparos LLZ',c:'ev-llz'},{t:'67 acordos | R$ 74k tickets',c:'ev-ok'}]},
-  {d:17, ev:[{t:'09h — Sem Hist 91-365d',c:'ev-llz'},{t:'12.896 disparos LLZ',c:'ev-llz'},{t:'R$ 1,63M bot | Leitura 17,7%',c:'ev-ok'}]},
-  {d:18, ev:[{t:'136.558 disparos LLZ',c:'ev-llz'},{t:'Bot R$ 1,26M | Entrega 80,3%',c:'ev-ok'},{t:'Leitura 18,0% | Erro 21,3%',c:'ev-ok'}]},
-  {d:19, ev:[{t:'Brasil x Haiti',c:'ev-alert'},{t:'206.446 disparos LLZ',c:'ev-llz'},{t:'Bot R$ 1,56M | Maior lote',c:'ev-ok'}]},
-  {d:20, ev:[{t:'1.011 disparos (sab)',c:'ev-llz'},{t:'Bot R$ 805k | Erro 31,5%',c:'ev-alert'}]},
+  {d:15, ev:[{t:'191.8k disparos',c:'ev-llz'},{t:'LLZ-4004: leitura 24,4%',c:'ev-ok'}]},
+  {d:16, ev:[{t:'126.5k disparos',c:'ev-llz'},{t:'67 acordos | R$ 74k tickets',c:'ev-ok'}]},
+  {d:17, ev:[{t:'110.4k disparos',c:'ev-llz'},{t:'Sem Hist 91-365d — leitura 24,2%',c:'ev-ok'}]},
+  {d:18, ev:[{t:'136.6k disparos',c:'ev-llz'},{t:'Base_Master_1806 gerada',c:'ev-ok'},{t:'Leitura 25,7% | Erro 21,3%',c:'ev-ok'}]},
+  {d:19, ev:[{t:'Brasil x Haiti',c:'ev-alert'},{t:'206.4k disparos — 2o maior lote',c:'ev-llz'},{t:'Leitura 13,1% (copa impact)',c:'ev-alert'}]},
+  {d:20, ev:[{t:'1k disparos (sabado)',c:'ev-llz'}]},
   {d:21, ev:[]},
-  {d:22, ev:[{t:'Base Extra 1-90d pronta',c:'ev-ok'},{t:'76.608 elegiveis | 16.310 entrantes',c:'ev-llz'},{t:'4 perfis | 4 templates',c:'ev-llz'}]},
+  {d:22, ev:[{t:'Base Extra 1-90d pronta',c:'ev-ok'},{t:'75.6k elegiveis | Perfis 4 grupos',c:'ev-llz'},{t:'Analise Unidades Travadas',c:'ev-ok'}]},
   {d:23, ev:[{t:'09h — G6 Pre-Judicial',c:'ev-plan'},{t:'18.497 unidades',c:'ev-plan'}]},
   {d:24, ev:[{t:'Brasil x Escocia',c:'ev-alert'},{t:'09h — Apoio',c:'ev-plan'},{t:'7.044 unidades',c:'ev-plan'}]},
   {d:25, ev:[]},
@@ -1133,8 +1133,8 @@ new Chart(document.getElementById('cDiario'), {
   data: {
     labels: ['01/Jun','02/Jun','03/Jun','05/Jun','08/Jun','09/Jun','10/Jun','11/Jun','12/Jun','15/Jun','16/Jun','17/Jun','18/Jun','19/Jun','20/Jun'],
     datasets: [
-      { label: 'LLZ Acoes', data: [13500,47000,43170,12896,136558,206446,1011], backgroundColor: '#3b82f6' },
-      { label: 'Controle', data: [85000,320000,83362,97482,0,0,0], backgroundColor: '#4b5563' }
+      { label: 'LLZ Principal', data: [13998,22085,111182,35769,23394,10965,26909,29755,47809,10953,40047,22969,11986,45053,808], backgroundColor: '#3b82f6' },
+      { label: 'Clientes (4004+4401)', data: [65593,40750,199586,142907,69674,74066,107729,128506,232674,180868,86485,87409,124572,161393,203], backgroundColor: '#6366f1' }
     ]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: '#a0aec0' } } }, scales: { x: { grid: GRID, ticks: TICKS }, y: { grid: GRID, ticks: TICKS, beginAtZero: true } } }
@@ -1145,7 +1145,7 @@ new Chart(document.getElementById('cCanal'), {
   type: 'doughnut',
   data: {
     labels: ['SEM_HISTORICO','SO_HUMANO','SO_DIGITAL','MISTO'],
-    datasets: [{ data: [37676,12997,20199,5736], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
+    datasets: [{ data: [34340,11807,19560,9925], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10 } } } }
 });
@@ -1214,7 +1214,7 @@ new Chart(document.getElementById('cPerfil'), {
   type: 'doughnut',
   data: {
     labels: ['SEM_HISTORICO (60,5%)','SO_HUMANO (19,1%)','SO_DIGITAL (13,6%)','MISTO (6,8%)'],
-    datasets: [{ data: [37676,12997,20199,5736], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
+    datasets: [{ data: [34340,11807,19560,9925], backgroundColor: ['#6b7280','#f59e0b','#3b82f6','#8b5cf6'], borderWidth: 2, borderColor: '#181c27' }]
   },
   options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom', labels: { color: '#a0aec0', padding: 10 } } } }
 });
